@@ -2,9 +2,9 @@
 title: Mitmachen
 ---
 
-## Voluntariat
+## Volontariat
 
-Mach ein freiwilliges Voluntariat oder Frewilligendienst auf GGA.
+Mach ein freiwilliges Volontariat oder Frewilligendienst auf GGA.
 
 ## (Sach-)Spenden
 
