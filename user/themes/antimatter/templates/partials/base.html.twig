@@ -82,6 +82,7 @@
         </header>
         {% endblock %}
 
+        {% include 'modular/lightslider.html.twig' with {'page': page.find('/slider', true)} %}
         {% block showcase %}{% endblock %}
 
         {% block body %}
