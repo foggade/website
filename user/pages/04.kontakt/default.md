@@ -1,6 +1,6 @@
 ---
 title: Kontakt
----
+
 
 simple_contact:
   subject: "Tretet mit uns in Kontakt"
@@ -30,3 +30,5 @@ simple_contact:
     success: "Thank You! Your message has been sent."
     error: "Oops! There was a problem with your submission. Please complete the form and try again."
     fail: "Oops! Something went wrong and we couldn't send your message."
+
+---
