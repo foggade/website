@@ -6,14 +6,14 @@ lightslider:
     slider_type: text
     type_text_vertical_padding: 70px;
     type_text_horizontal_padding: 50px;
-    type_text_brightness: -100
+    type_text_brightness: 0
     mode: slide
     pager: 'true'
     controls: 'true'
     keyPress: 'true'
     pause: 2000
     speed: 1000
-    verticalHeight: 400
+    type_text_height: 400px
 ---
 
 # Die GGA Familie
