@@ -1,5 +1,6 @@
 ---
 title: Impressum
+visible: false
 ---
 
 Verein Freunde von God's Golden Acre Deutschland e. V.  
