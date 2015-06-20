@@ -1,8 +1,7 @@
 ---
 title: Kontakt
 
-
-simple_contact:
+simplecontact:
   subject: "Tretet mit uns in Kontakt"
   recipient: "admin@godsgoldenacre.de"
 
