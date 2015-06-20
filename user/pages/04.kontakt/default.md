@@ -12,7 +12,7 @@ simplecontact:
 
     email:
       label: "E-Mail"
-      placeholder: ""
+      placeholder: "Deine Mailadresse"
 
     message:
       label: "Nachricht"
