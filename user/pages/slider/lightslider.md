@@ -1,7 +1,7 @@
 ---
 title: Slider Content
 routable: false
-visible: true
+visible: false
 lightslider:
     slider_type: text
     type_text_vertical_padding: 70px;
