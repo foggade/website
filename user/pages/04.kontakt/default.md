@@ -3,12 +3,12 @@ title: Kontakt
 
 simplecontact:
   subject: "Tretet mit uns in Kontakt"
-  recipient: "admin@godsgoldenacre.de"
+  recipient: "info@godsgoldenacre.de"
 
   fields:
     name:
       label: "Name"
-      placeholder: "Dein  Vor- und Nachname"
+      placeholder: "Dein Vor- und Nachname"
 
     email:
       label: "E-Mail"
@@ -19,15 +19,15 @@ simplecontact:
       placeholder: "Dein Anliegen"
 
     antispam:
-      label: "Antispam"
-      placeholder: "Please leave this field empty for Antispam"
+      label: "Subject"
+      placeholder: "Subject"
 
     submit:
       label: "Absenden"
 
   messages:
-    success: "Thank You! Your message has been sent."
-    error: "Oops! There was a problem with your submission. Please complete the form and try again."
-    fail: "Oops! Something went wrong and we couldn't send your message."
+    success: "Wir haben deine Anfrage erhalten und melden uns schnellstmöglich bei dir."
+    error: "Oops! Es gab ein Problem beim Versenden. Bitte versuche es erneut."
+    fail: "Oops! Leider konnte die Nachricht nicht versendet werden."
 
 ---
