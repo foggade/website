@@ -19,7 +19,7 @@ simplecontact:
       placeholder: "Dein Anliegen"
 
     antispam:
-      label: "Subject"
+      label: "Antispam"
       placeholder: "Subject"
 
     submit:
