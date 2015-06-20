@@ -2,7 +2,7 @@
 title: Kontakt
 
 simplecontact:
-  subject: "Tretet mit uns in Kontakt"
+  subject: "Anfrage über Kontaktformular"
   recipient: "info@godsgoldenacre.de"
 
   fields:
