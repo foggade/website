@@ -3,7 +3,7 @@ title: Slider Content
 routable: false
 visible: false
 lightslider:
-    slider_type: text
+    slider_type: image
     type_text_vertical_padding: 70px;
     type_text_horizontal_padding: 50px;
     type_text_brightness: -100
