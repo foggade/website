@@ -13,8 +13,8 @@
     <meta name="MobileOptimized" content="320">
     <meta name="format-detection" content="telephone=no">
     
-    <meta name="application-name" content={% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }} />
-    <meta name="msapplication-tooltip" content={% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }} />
+    <meta name="application-name" content="{{ site.title|e('html') }}" />
+    <meta name="msapplication-tooltip" content="{{ site.title|e('html') }}" />
     <meta name="msapplication-starturl" content="/" />
     
     <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
