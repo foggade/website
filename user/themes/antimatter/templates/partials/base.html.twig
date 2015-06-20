@@ -69,7 +69,8 @@
         <header id="header">
 
                 <div id="logo">
-                    <h3><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h3>
+                    <img src="{{ url('theme://images') }}/favicon-96x96.png" alt="{{ config.site.title }} Logo">
+                    <h5><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h5>
                 </div>
                 <div id="navbar">
                     {% block header_extra %}{% endblock %}
