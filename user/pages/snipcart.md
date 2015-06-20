@@ -1,6 +1,5 @@
 ---
 title: Shop
-onpage_menu: true
 body_classes: fullwidth
 content:
     items: @self.children
