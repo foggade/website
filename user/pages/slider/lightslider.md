@@ -5,7 +5,7 @@ visible: false
 lightslider:
     slider_type: text
     type_text_vertical_padding: 70px;
-    type_text_horizontal_padding: 50px;
+    type_text_horizontal_padding: 150px;
     type_text_brightness: -20
     mode: slide
     pager: 'true'
@@ -17,7 +17,7 @@ lightslider:
 ---
 
 # Eine Familie
-## Wir sind die glückliche Bewohner des Kinderheimes
+## Wir sind die glücklichen Bewohner des Kinderheimes
 ___
 # Liebenswerte Kinder
 ## Zwischen 0 und 18 Jahren

@@ -25,7 +25,8 @@ simplecontact:
     submit:
       label: "Absenden"
       
-    reset: "Zurücksetzen"
+    reset: 
+        label: "Zurücksetzen"
 
   messages:
     success: "Wir haben deine Anfrage erhalten und melden uns schnellstmöglich bei dir."
