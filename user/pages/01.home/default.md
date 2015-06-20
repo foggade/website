@@ -2,7 +2,7 @@
 title: Home
 
 content:
-    items: @self.default
+    items: @self.children
     order:
         by: default
         dir: asc
