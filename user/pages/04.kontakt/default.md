@@ -6,24 +6,24 @@ simplecontact:
   recipient: "info@godsgoldenacre.de"
 
   fields:
-    name:
-      label: "Name"
-      placeholder: "Dein Vor- und Nachname"
+  name:
+    label: "Name"
+    placeholder: "Add your name"
 
-    email:
-      label: "E-Mail"
-      placeholder: "Deine Mailadresse"
+  email:
+    label: "Email"
+    placeholder: "Add your email"
 
-    message:
-      label: "Nachricht"
-      placeholder: "Dein Anliegen"
+  message:
+    label: "Message"
+    placeholder: "Add your message"
 
-    antispam:
-      label: "Antispam"
-      placeholder: "Subject"
+  antispam:
+    label: "Antispam"
+    placeholder: "Please leave this field empty for Antispam"
 
-    submit:
-      label: "Absenden"
+  submit:
+    label: "Submit"
 
   messages:
     success: "Wir haben deine Anfrage erhalten und melden uns schnellstmöglich bei dir."
