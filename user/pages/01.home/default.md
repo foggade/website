@@ -2,4 +2,4 @@
 title: Home
 ---
 
-# Willkommen auf der Website des Deutschen Unterstützervereins für God's Golden Acre
+## Willkommen auf der Website der Freunde von God's Golden Acre Deutschland e. V.
