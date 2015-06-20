@@ -2,10 +2,12 @@
 title: Impressum
 ---
 
-Verein Freunde von God's Golden Acre Deutschland e. V.
-Blastr 5
+Verein Freunde von God's Golden Acre Deutschland e. V.  
+vertreten durch den Vorstandsvorsitzenden:
+
+Moritz Putzar-Sattler  
+Blastr 5  
 84949 Halle
 
-vertreten durch den Vorstand
-Moritz Putzar-Sattler
+
 
