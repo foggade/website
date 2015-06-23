@@ -12,7 +12,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="format-detection" content="telephone=no">
-    
+    <meta name="keywords" content="{{site.keywords}}"
     <meta name="application-name" content="{{ site.title|e('html') }}" />
     <meta name="msapplication-tooltip" content="{{ site.title|e('html') }}" />
     <meta name="msapplication-starturl" content="/" />
@@ -69,7 +69,7 @@
         <header id="header">
 
                 <div id="logo">
-                    <img src="{{ url('theme://images') }}/logo-foggade.png" alt="{{ config.site.title }} Logo" style="max-width: 100%;height: auto;width: auto\9;"><h6 style="float: right; margin-left: 2rem;"><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h6>
+                    <img src="{{ url('theme://images') }}/logo-foggade.png" alt="{{ config.site.title }} Logo" style="max-width: 100%;height: auto;width: auto\9;"><h5 style="float: right; margin-left: 2rem;"><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.displayTitle }}</a></h5>
                 </div>
                 <div id="navbar">
                     {% block header_extra %}{% endblock %}
