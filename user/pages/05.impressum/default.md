@@ -12,7 +12,7 @@ Blastr 5
 Gemeinschaftlich vertretungsbefugt:
 
 1. Vorsitzender: Moritz Putzar-Sattler 
-2. Vorsitzender: Stefan Oeknigk
+2. Vorsitzender: Stefan Oeknigk  
 Kassenwart: Luca Diem
 
 Registergericht:  
