@@ -5,8 +5,8 @@ visible: false
 lightslider:
     slider_type: text
     type_text_vertical_padding: 170px;
-    type_text_horizontal_padding: 50px;
-    type_text_brightness: -20
+    type_text_horizontal_padding: 0px;
+    type_text_brightness: -30
     mode: slide
     pager: 'true'
     controls: 'true'

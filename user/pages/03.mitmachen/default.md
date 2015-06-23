@@ -2,14 +2,14 @@
 title: Mitmachen
 ---
 
-## Volontariat
+### Volontariat
 
 Mach ein freiwilliges Volontariat oder Frewilligendienst auf GGA.
 
-## (Sach-)Spenden
+### Spenden
 
-Hilf uns mit deiner Spende
+Hilf uns mit deiner Spende.
 
-## Childsponsorship
+### Childsponsorship
 
 Hast du ein Kind auf GGA liebgewonnen? Unterstütze es persönlich und direkt.
