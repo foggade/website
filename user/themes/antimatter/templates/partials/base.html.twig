@@ -69,7 +69,7 @@
         <header id="header">
 
                 <div id="logo">
-                    <img src="{{ url('theme://images') }}/logo-foggade.png" alt="{{ config.site.title }} Logo"><h6 style="float: right; margin-left: 2rem;"><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h6>
+                    <img src="{{ url('theme://images') }}/logo-foggade.png" alt="{{ config.site.title }} Logo" style="max-width: 100%;height: auto;width: auto\9;"><h6 style="float: right; margin-left: 2rem;"><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h6>
                 </div>
                 <div id="navbar">
                     {% block header_extra %}{% endblock %}
