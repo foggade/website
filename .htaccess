@@ -59,3 +59,4 @@ AuthType Basic
 AuthName "website"
 AuthUserFile .htpasswd
 Require valid-user
+
