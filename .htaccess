@@ -55,8 +55,8 @@ RewriteRule ^(system|user|vendor)/(.*)\.(txt|md|html|yaml|php|twig|sh|bat)$ erro
 Options -Indexes
 # End - Prevent Browsing
 
-AuthType Basic
-AuthName "website"
-AuthUserFile .htpasswd
-Require valid-user
+#AuthType Basic
+#AuthName "website"
+#AuthUserFile .htpasswd
+#Require valid-user
 
