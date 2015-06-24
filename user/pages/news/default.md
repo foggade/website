@@ -3,6 +3,9 @@ title: News
 routable: true
 visible: false
 date: 01/01/2014 3:14pm
+taxonomy:
+    category: news
+    tag: [news, newsletter, gga]
 ---
 
 #### God's Golden Acre Newsletter 2015
