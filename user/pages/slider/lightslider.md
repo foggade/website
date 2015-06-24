@@ -17,10 +17,10 @@ lightslider:
 ---
 
 # Eine Familie
-## Wir sind die glücklichen Bewohner des Kinderheimes
+## Kindern ein Zuhause geben
 ___
 # Liebenswerte Kinder
-## Zwischen 0 und 18 Jahren
+## verschiedener Altersgruppen
 ___
 # Schöne Lage
 ## In der ländlichen Gegend bei Durban
