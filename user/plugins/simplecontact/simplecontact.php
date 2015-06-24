@@ -146,7 +146,7 @@ class SimpleContactPlugin extends Plugin
     }
   }
 
-  protected function mergeConfig( Page $page )
+  private function mergeConfig( Page $page )
   {
     $defaults = (array) $this->grav['config']->get('plugins.simplecontact');
     if ( isset($page->header()->simplecontact) ) {
