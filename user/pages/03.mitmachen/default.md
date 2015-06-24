@@ -8,7 +8,7 @@ Neben dem "täglich Brot" müssen durch Spenden vor allem Medikamente, der Schul
 
 ### Volontariat
 
-Mach ein freiwilliges Volontariat oder Bundesfreiwilligendienst auf GGA. >[Weitere Infos.](http://godsgoldenacre.org/volunteering.html "God's Golden Acre Volunteering")
+Mach ein freiwilliges Volontariat oder Bundesfreiwilligendienst auf GGA. [Weitere Infos.](http://godsgoldenacre.org/volunteering.html "God's Golden Acre Volunteering")
 
 ### Spenden
 
