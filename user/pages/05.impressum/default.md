@@ -3,7 +3,7 @@ title: Impressum
 visible: false
 ---
 
-Verein Freunde von God's Golden Acre Deutschland e. V.  
+Verein Freunde von God's Golden Acre Deutschland e.V.  
 Goethestraße 1  
 06114 Halle  
 
@@ -15,8 +15,8 @@ Gemeinschaftlich vertretungsbefugt:
 2. Vorsitzender: Stefan Oeknigk  
 Kassenwart: Luca Diem
 
-Registergericht: Amtsgericht Brilon  
-Registernummer:  
+Registergericht: Amtsgericht Arnsberg  
+Registernummer:  VR 1442
 
 
 
