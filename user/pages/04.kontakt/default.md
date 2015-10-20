@@ -1,6 +1,8 @@
 ---
 title: Kontakt
 
+recaptchacontact: true
+
 simplecontact:
   subject: "Anfrage über Kontaktformular"
   recipient: "info@godsgoldenacre.de"
