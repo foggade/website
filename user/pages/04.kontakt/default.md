@@ -1,7 +1,7 @@
 ---
 title: Kontakt
 
-recaptchacontact: true
+recaptchacontact: false
 
 simplecontact:
   subject: "Anfrage über Kontaktformular"
