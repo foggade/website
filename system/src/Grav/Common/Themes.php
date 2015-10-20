@@ -90,8 +90,8 @@ class Themes extends Iterator
             throw new \RuntimeException('Theme name not provided.');
         }
 
-        $blueprints = new Blueprints("themes://{$name}");
-        $blueprint = $blueprints->get('blueprints');
+        $blueprints = new Blueprints('themes://');
+        $blueprint = $blueprints->get("{$name}/blueprints");
         $blueprint->name = $name;
 
         // Find thumbnail.
@@ -141,15 +141,16 @@ class Themes extends Iterator
         $locator = $grav['locator'];
         $file = $locator('theme://theme.php') ?: $locator("theme://{$name}.php");
 
+        $inflector = $grav['inflector'];
+
         if ($file) {
             // Local variables available in the file: $grav, $config, $name, $file
             $class = include $file;
 
             if (!is_object($class)) {
-
                 $themeClassFormat = [
                     'Grav\\Theme\\'.ucfirst($name),
-                    'Grav\\Theme\\'.Inflector::camelize($name)
+                    'Grav\\Theme\\'.$inflector->camelize($name)
                 ];
                 $themeClassName = false;
 
@@ -187,7 +188,6 @@ class Themes extends Iterator
         /** @var UniformResourceLocator $locator */
         $locator = $this->grav['locator'];
 
-        // TODO: move
         $registered = stream_get_wrappers();
         $schemes = $config->get(
             "themes.{$name}.streams.schemes",
@@ -221,7 +221,13 @@ class Themes extends Iterator
     protected function loadConfiguration($name, Config $config)
     {
         $themeConfig = CompiledYamlFile::instance("themes://{$name}/{$name}" . YAML_EXT)->content();
-
         $config->joinDefaults("themes.{$name}", $themeConfig);
+
+        if ($this->config->get('system.languages.translations', true)) {
+            $languages = CompiledYamlFile::instance("themes://{$name}/languages". YAML_EXT)->content();
+            if ($languages) {
+                $config->getLanguages()->mergeRecursive($languages);
+            }
+        }
     }
 }

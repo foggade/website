@@ -3,6 +3,7 @@ namespace Grav\Common\Page;
 
 use Grav\Common\Grav;
 use Grav\Common\Iterator;
+use Grav\Common\Utils;
 
 /**
  * Collection of Pages.
@@ -211,27 +212,33 @@ class Collection extends Iterator
     }
 
     /**
-     * Returns the items between a set of date ranges where second value is optional
+     * Returns the items between a set of date ranges of either the page date field (default) or
+     * an arbitrary datetime page field where end date is optional
      * Dates can be passed in as text that strtotime() can process
      * http://php.net/manual/en/function.strtotime.php
      *
      * @param      $startDate
      * @param bool $endDate
+     * @param      $field
      *
      * @return $this
      * @throws \Exception
      */
-    public function dateRange($startDate, $endDate = false)
+    public function dateRange($startDate, $endDate = false, $field = false)
     {
-        $start = strtotime($startDate);
-        $end = $endDate ? strtotime($endDate) : strtotime("now +1000 years");
+        $start = Utils::date2timestamp($startDate);
+        $end = $endDate ? Utils::date2timestamp($endDate) : strtotime("now +1000 years");
 
         $date_range = [];
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if ($page->date() > $start && $page->date() < $end) {
-                $date_range[$path] = $slug;
+            if ($page !== null) {
+                $date = $field ? strtotime($page->value($field)) : $page->date();
+
+                if ($date > $start && $date < $end) {
+                    $date_range[$path] = $slug;
+                }
             }
         }
         $this->items = $date_range;
@@ -249,7 +256,7 @@ class Collection extends Iterator
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if ($page->visible()) {
+            if ($page !== null && $page->visible()) {
                 $visible[$path] = $slug;
             }
         }
@@ -268,7 +275,7 @@ class Collection extends Iterator
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if (!$page->visible()) {
+            if ($page !== null && !$page->visible()) {
                 $visible[$path] = $slug;
             }
         }
@@ -287,7 +294,7 @@ class Collection extends Iterator
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if ($page->modular()) {
+            if ($page !== null && $page->modular()) {
                 $modular[$path] = $slug;
             }
         }
@@ -306,7 +313,7 @@ class Collection extends Iterator
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if (!$page->modular()) {
+            if ($page !== null && !$page->modular()) {
                 $modular[$path] = $slug;
             }
         }
@@ -325,7 +332,7 @@ class Collection extends Iterator
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if ($page->published()) {
+            if ($page !== null && $page->published()) {
                 $published[$path] = $slug;
             }
         }
@@ -344,7 +351,7 @@ class Collection extends Iterator
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if (!$page->published()) {
+            if ($page !== null && !$page->published()) {
                 $published[$path] = $slug;
             }
         }
@@ -363,7 +370,8 @@ class Collection extends Iterator
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if ($page->routable()) {
+
+            if ($page !== null && $page->routable()) {
                 $routable[$path] = $slug;
             }
         }
@@ -383,11 +391,54 @@ class Collection extends Iterator
 
         foreach ($this->items as $path => $slug) {
             $page = $this->pages->get($path);
-            if (!$page->routable()) {
+            if ($page !== null && !$page->routable()) {
                 $routable[$path] = $slug;
             }
         }
         $this->items = $routable;
         return $this;
     }
+
+    /**
+     * Creates new collection with only pages of the specified type
+     *
+     * @return Collection The collection
+     */
+    public function ofType($type)
+    {
+        $items = [];
+
+        foreach ($this->items as $path => $slug) {
+            $page = $this->pages->get($path);
+            if ($page !== null && $page->template() == $type) {
+                $items[$path] = $slug;
+            }
+        }
+
+        $this->items = $items;
+        return $this;
+    }
+
+    /**
+     * Creates new collection with only pages of one of the specified types
+     *
+     * @return Collection The collection
+     */
+    public function ofOneOfTheseTypes($types)
+    {
+        $items = [];
+
+        foreach ($this->items as $path => $slug) {
+            $page = $this->pages->get($path);
+            if ($page !== null && in_array($page->template(), $types)) {
+                $items[$path] = $slug;
+            }
+        }
+
+        $this->items = $items;
+        return $this;
+    }
+
+
+
 }

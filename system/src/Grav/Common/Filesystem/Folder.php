@@ -38,12 +38,12 @@ abstract class Folder
      * Recursively find the last modified time under given path by file.
      *
      * @param  string $path
+     * @param string  $extensions   which files to search for specifically
+     *
      * @return int
      */
-    public static function lastModifiedFile($path)
+    public static function lastModifiedFile($path, $extensions = 'md|yaml')
     {
-        // pipe separated list of extensions to search for changes with
-        $extensions = 'md|yaml';
         $last_modified = 0;
 
         $dirItr = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
@@ -244,7 +244,7 @@ abstract class Folder
     public static function delete($target)
     {
         if (!is_dir($target)) {
-            throw new \RuntimeException('Cannot delete non-existing folder.');
+            return;
         }
 
         $success = self::doDelete($target);

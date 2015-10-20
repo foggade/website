@@ -1,3 +1,292 @@
+# v0.9.45
+## 10/08/2015
+
+1. [](#bugfix)
+    * Fixed a regression issue resulting in incorrect default language
+
+# v0.9.44
+## 10/07/2015
+
+1. [](#new)
+    * Added Redis back as a supported cache mechanism
+    * Allow Twig `nicetime` translations
+    * Added `-y` option for 'Yes to all' in `bin/gpm update`
+    * Added CSS `media` attribute to the Assets manager
+    * New German language support
+    * New Czech language support
+    * New French language support
+    * Added `modulus` twig filter
+1. [](#improved)
+    * URL decode in medium actions to allow complex syntax
+    * Take into account `HTTP_HOST` before `SERVER_NAME` (helpful with Nginx)
+    * More friendly cache naming to ease manual management of cache systems
+    * Added default Apache resource for `DirectoryIndex`
+1. [](#bugfix)
+    * Fix GPM failure when offline
+    * Fix `open_basedir` error in `bin/gpm install`
+    * Fix an HHVM error in Truncator
+    * Fix for XSS vulnerability with params
+    * Fix chaining for responsive size derivatives
+    * Fix for saving pages when removing the page title and all other header elements
+    * Fix when saving array fields
+    * Fix for ports being included in `HTTP_HOST`
+    * Fix for Truncator to handle PHP tags gracefully
+    * Fix for locate style lang codes in `getNativeName()`
+    * Urldecode image basenames in markdown
+
+# v0.9.43
+## 09/16/2015
+
+1. [](#new)
+    * Added new `AudioMedium` for HTML5 audio
+    * Added ability for Assets to be added and displayed in separate *groups*
+    * New support for responsive image derivative sizes
+1. [](#improved)
+    * GPM theme install now uses a `copy` method so new files are not lost (e.g. `/css/custom.css`)
+    * Code analysis improvements and cleanup
+    * Removed Twig panel from debugger (no longer supported in Twig 1.20)
+    * Updated composer packages
+    * Prepend active language to `convertUrl()` when used in markdown links
+    * Added some pre/post flight options for installer via blueprints
+    * Hyphenize the site name in the backup filename
+1. [](#bugfix)
+    * Fix broken routable logic
+    * Check for `phpinfo()` method in case it is restricted by hosting provider
+    * Fixes for windows when running GPM
+    * Fix for ampersand (`&`) causing error in `truncateHtml()` via `Page.summary()`
+
+# v0.9.42
+## 09/11/2015
+
+1. [](#bugfix)
+    * Fixed `User.authorise()` to be backwards compabile
+
+# v0.9.41
+## 09/11/2015
+
+1. [](#new)
+    * New and improved multibyte-safe TruncateHTML function and filter
+    * Added support for custom page date format
+    * Added a `string` Twig filter to render as json_encoded string
+    * Added `authorize` Twig filter
+    * Added support for theme inheritance in the admin
+    * Support for multiple content collections on a page
+    * Added configurable files/folders ignores for pages
+    * Added the ability to set the default PHP locale and override via multi-lang configuration
+    * Added ability to save as YAML via admin
+    * Added check for `mbstring` support
+    * Added new `redirect` header for pages
+1. [](#improved)
+    * Changed dependencies from `develop` to `master`
+    * Updated logging to log everything from `debug` level on (was `warning`)
+    * Added missing `accounts/` folder
+    * Default to performing a 301 redirect for URIs with trailing slashes
+    * Improved Twig error messages
+    * Allow validating of forms from anywhere such as plugins
+    * Added logic so modular pages are by default non-routable
+    * Hide password input in `bin/grav newuser` command
+1. [](#bugfix)
+    * Fixed `Pages.all()` not returning modular pages
+    * Fix for modular template types not getting found
+    * Fix for `markdown_extra:` overriding `markdown:extra:` setting
+    * Fix for multi-site routing
+    * Fix for multi-lang page name error
+    * Fixed a redirect loop in `URI` class
+    * Fixed a potential error when `unsupported_inline_types` is empty
+    * Correctly generate 2x retina image
+    * Typo fixes in page publish/unpublish blueprint
+
+# v0.9.40
+## 08/31/2015
+
+1. [](#new)
+    * Added some new Twig filters: `defined`, `rtrim`, `ltrim`
+    * Admin support for customizable page file name + template override
+1. [](#improved)
+    * Better message for incompatible/unsupported Twig template
+    * Improved User blueprints with better help
+    * Switched to composer **install** rather than **update** by default
+    * Admin autofocus on page title
+    * `.htaccess` hardening (`.htaccess` & `htaccess.txt`)
+    * Cache safety checks for missing folders
+1. [](#bugfix)
+    * Fixed issue with unescaped `o` character in date formats
+
+# v0.9.39
+## 08/25/2015
+
+1. [](#bugfix)
+    * `Page.active()` not triggering on **homepage**
+    * Fix for invalid session name in Opera browser
+
+# v0.9.38
+## 08/24/2015
+
+1. [](#new)
+    * Added `language` to **user** blueprint
+    * Added translations to blueprints
+    * New extending logic for blueprints
+    * Blueprints are now loaded with Streams to allow for better overrides
+    * Added new Symfony `dump()` method
+1. [](#improved)
+    * Catch YAML header parse exception so site doesn't die
+    * Better `Page.parent()` logic
+    * Improved GPM display layout
+    * Tweaked default page layout
+    * Unset route and slug for improved reliability of route changes
+    * Added requirements to README.md
+    * Updated various libraries
+    * Allow use of custom page date field for dateRange collections
+1. [](#bugfix)
+    * Slug fixes with GPM
+    * Unset plaintext password on save
+    * Fix for trailing `/` not matching active children
+
+# v0.9.37
+## 08/12/2015
+
+3. [](#bugfix)
+    * Fixed issue when saving `header.process` in page forms via the **admin plugin**
+    * Fixed error due to use of `set_time_limit` that might be disabled on some hosts
+
+# v0.9.36
+## 08/11/2015
+
+1. [](#new)
+    * Added a new `newuser` CLI command to create user accounts
+    * Added `default` blueprint for all templates
+    * Support `user` and `system` language translation merging
+1. [](#improved)
+    * Added isSymlink method in GPM to determine if Grav is symbolically linked or not
+    * Refactored page recursing
+    * Updated blueprints to use new toggles
+    * Updated blueprints to use current date for date format fields
+    * Updated composer.phar
+    * Use sessions for admin even when disabled for site
+    * Use `GRAV_ROOT` in session identifier
+
+# v0.9.35
+## 08/06/2015
+
+1. [](#new)
+    * Added `body_classes` field
+    * Added `visiblity` toggle and help tooltips on new page form
+    * Added new `Page.unsetRoute()` method to allow admin to regenerate the route
+2. [](#improved)
+    * User save no longer stores username each time
+    * Page list form field now shows all pages except root
+    * Removed required option from page title
+    * Added configuration settings for running Nginx in sub directory
+3. [](#bugfix)
+    * Fixed deep translation merging
+    * Fixed broken **metadata** merging with site defaults
+    * Fixed broken **summary** field
+    * Fixed broken robots field
+    * Fixed GPM issue when using cURL, throwing an `Undefined offset: 1` exception
+    * Removed duplicate hidden page `type` field
+
+# v0.9.34
+## 08/04/2015
+
+1. [](#new)
+    * Added new `cache_all` system setting + media `cache()` method
+    * Added base languages configuration
+    * Added property language to page to help plugins identify page language
+    * New `Utils::arrayFilterRecursive()` method
+2. [](#improved)
+    * Improved Session handling to support site and admin independently
+    * Allow Twig variables to be modified in other events
+    * Blueprint updates in preparation for Admin plugin
+    * Changed `Inflector` from static to object and added multi-language support
+    * Support for admin override of a page's blueprints
+3. [](#bugfix)
+    * Removed unused `use` in `VideoMedium` that was causing error
+    * Array fix in `User.authorise()` method
+    * Fix for typo in `translations_fallback`
+    * Fixed moving page to the root
+
+# v0.9.33
+## 07/21/2015
+
+1. [](#new)
+    * Added new `onImageMediumSaved()` event (useful for post-image processing)
+    * Added `Vary: Accept-Encoding` option
+2. [](#improved)
+    * Multilang-safe delimeter position
+    * Refactored Twig classes and added optional umask setting
+    * Removed `pageinit()` timing
+    * `Page->routable()` now takes `published()` state into account
+    * Improved how page extension is set
+    * Support `Language->translate()` method taking string and array
+3. [](#bugfix)
+    * Fixed `backup` command to include empty folders
+
+# v0.9.32
+## 07/14/2015
+
+1. [](#new)
+    * Detect users preferred language via `http_accept_language` setting
+    * Added new `translateArray()` language method
+2. [](#improved)
+    * Support `en` translations by default for plugins & themes
+    * Improved default generator tag
+    * Minor language tweaks and fixes
+3. [](#bugfix)
+    * Fix for session active language and homepage redirects
+    * Ignore root-level page rather than throwing error
+
+# v0.9.31
+## 07/09/2015
+
+1. [](#new)
+    * Added xml, json, css and js to valid media file types
+2. [](#improved)
+    * Better handling of unsupported media type downloads
+    * Improved `bin/grav backup` command to mimic admin plugin location/name
+3. [](#bugfix)
+    * Critical fix for broken language translations
+    * Fix for Twig markdown filter error
+    * Safety check for download extension
+
+# v0.9.30
+## 07/08/2015
+
+1. [](#new)
+    * BIG NEWS! Extensive Multi-Language support is all new in 0.9.30!
+    * Translation support via Twig filter/function and PHP method
+    * Page specific default route
+    * Page specific route aliases
+    * Canonical URL route support
+    * Added built-in session support
+    * New `Page.rawRoute()` to get a consistent folder-based route to a page
+    * Added option to always redirect to default page on alias URL
+    * Added language safe redirect function for use in core and plugins
+2. [](#improved)
+    * Improved `Page.active()` and `Page.activeChild()` methods to support route aliases
+    * Various spelling corrections in `.php` comments, `.md` and `.yaml` files
+    * `Utils::startsWith()` and `Utils::endsWith()` now support needle arrays
+    * Added a new timer around `pageInitialized` event
+    * Updated jQuery library to v2.1.4
+3. [](#bugfix)
+    * In-page CSS and JS files are now handled properly
+    * Fix for `enable_media_timestamp` not working properly
+
+# v0.9.29
+## 06/22/2015
+
+1. [](#new)
+    * New and improved Regex-powered redirect and route alias logic
+    * Added new `onBuildPagesInitialized` event for memory critical or time-consuming plugins
+    * Added a `setSummary()` method for pages
+2. [](#improved)
+    * Improved `MergeConfig()` logic for more control
+    * Travis skeleton build trigger implemented
+    * Set composer.json versions to stable versions where possible
+    * Disabled `last_modified` and `etag` page headers by default (causing too much page caching)
+3. [](#bugfix)
+    * Preload classes during `bin/gpm selfupgrade` to avoid issues with updated classes
+    * Fix for directory relative _down_ links
+
 # v0.9.28
 ## 06/16/2015
 
@@ -19,7 +308,7 @@
     * Fix for `+` in image filenames
     * Fix for dot files causing issues with page processing
     * Fix for Uri path detection on Windows platform
-    * Fix for atlernative media resolutions
+    * Fix for alternative media resolutions
     * Fix for modularTypes key properties
 
 # v0.9.27
@@ -33,7 +322,7 @@
     * Added a new `parseLinks` method to Plugins class
     * Added `starts_with` and `ends_with` Twig filters
 2. [](#improved)
-    * Opitmized install of vendor libraries for speed improvement
+    * Optimized install of vendor libraries for speed improvement
     * Improved configuration handling in preparation for admin plugin
     * Cache optimization: Don't cache Twig templates when you pass dynamic params
     * Moved `Utils::rcopy` to `Folder::rcopy`
@@ -47,7 +336,7 @@
     * Fix for URLs with trailing slashes
     * Handle condition where certain errors resulted in blank page
     * Fix for issue with theme name equal to base_url and asset pipeline
-    * Fix to properly nomralize font rewrite path
+    * Fix to properly normalize font rewrite path
     * Fix for absolute URLs below the current page
     * Fix for `..` page references
 
@@ -65,7 +354,7 @@
 2. [](#improved)
     * Refactored media image handling to make it more flexible and support absolute paths
     * Refactored page modification check process to make it faster
-    * User account improvements in preparation for Admin plugin
+    * User account improvements in preparation for admin plugin
     * Protect against timing attacks
     * Reset default system expires time to 0 seconds (can override if you need to)
 3. [](#bugfix)
@@ -193,7 +482,7 @@
     * Improved the markdown Lightbox functionality to better mimic Twig version
     * Fullsize Lightbox can now have filters applied
     * Added a new `mergeConfig()` method to Plugin class to merge system + page header configuration
-    * Added a new `disable()` method to Plugin class to programatically disable a plugin
+    * Added a new `disable()` method to Plugin class to programmatically disable a plugin
     * Updated Parsedown and Parsedown Extra to address bugs
     * Various PSR fixes
 3. [](#bugfix)
@@ -246,7 +535,7 @@
     * Added `publish_date` in page headers to automatically publish page
     * Added `unpublish_date` in page headers to automatically unpublish page
     * Added `dateRange()` capability for collections
-    * Added ability to dynamically control Cache lifetime programatically
+    * Added ability to dynamically control Cache lifetime programmatically
     * Added ability to sort by anything in the page header. E.g. `sort: header.taxonomy.year`
     * Added various helper methods to collections: `copy, nonVisible, modular, nonModular, published, nonPublished, nonRoutable`
 2. [](#improved)
@@ -421,7 +710,7 @@
     * Broke cache types out into multiple directories in the cache folder
     * Removed vendor libs from github repository
     * Various PSR cleanup of code
-    * Various Blueprint updates to support upcoming Admin plugin
+    * Various Blueprint updates to support upcoming admin plugin
     * Added ability to filter page children for normal/modular/all
     * Added `sort_by_key` twig filter
     * Added `visible()` and `routable()` filters to page collections
@@ -494,7 +783,7 @@
     * Addition of Dependency Injection Container
     * Refactored plugins to use Symfony Event Dispatcher
     * New Asset Manager to provide unified management of JavaScript and CSS
-    * Asset Pipelining to provide unification, minify, and optimazation of JavaScript and CSS
+    * Asset Pipelining to provide unification, minify, and optimization of JavaScript and CSS
     * Grav Media support directly in Markdown syntax
     * Additional Grav Generator meta tag in default themes
     * Added support for PHP Stream Wrapper for resource location

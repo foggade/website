@@ -2,7 +2,6 @@
 namespace Grav\Common\Page\Medium;
 
 use Grav\Common\Data\Blueprint;
-use Gregwar\Image\Image as ImageFile;
 
 class ImageMedium extends Medium
 {
@@ -58,6 +57,16 @@ class ImageMedium extends Medium
     ];
 
     /**
+     * @var array
+     */
+    protected $derivatives = [];
+
+    /**
+     * @var string
+     */
+    protected $sizes = '100vw';
+
+    /**
      * Construct.
      *
      * @param array $items
@@ -67,17 +76,23 @@ class ImageMedium extends Medium
     {
         parent::__construct($items, $blueprint);
 
+        $config = self::$grav['config'];
+
         $image_info = getimagesize($this->get('filepath'));
         $this->def('width', $image_info[0]);
         $this->def('height', $image_info[1]);
         $this->def('mime', $image_info['mime']);
-        $this->def('debug', self::$grav['config']->get('system.images.debug'));
+        $this->def('debug', $config->get('system.images.debug'));
 
         $this->set('thumbnails.media', $this->get('filepath'));
 
-        $this->default_quality = self::$grav['config']->get('system.images.default_image_quality', 85);
+        $this->default_quality = $config->get('system.images.default_image_quality', 85);
 
         $this->reset();
+
+        if ($config->get('system.images.cache_all', false)) {
+            $this->cache();
+        }
     }
 
     /**
@@ -130,6 +145,19 @@ class ImageMedium extends Medium
         return self::$grav['base_url'] . $output . $this->querystring() . $this->urlHash();
     }
 
+    /**
+     * Simply processes with no extra methods.  Useful for triggering events.
+     *
+     * @return $this
+     */
+    public function cache()
+    {
+        if (!$this->image) {
+            $this->image();
+        }
+        return $this;
+    }
+
 
     /**
      * Return srcset string for this Medium and its alternatives.
@@ -139,20 +167,66 @@ class ImageMedium extends Medium
      */
     public function srcset($reset = true)
     {
-        if (empty($this->alternatives)) {
+        if (empty($this->alternatives) && empty($this->derivatives)) {
             if ($reset) {
                 $this->reset();
             }
             return '';
         }
 
-        $srcset = [ $this->url($reset) . ' ' . $this->get('width') . 'w' ];
+        if (!empty($this->derivatives)) {
+          asort($this->derivatives);
 
-        foreach ($this->alternatives as $ratio => $medium) {
-            $srcset[] = $medium->url($reset) . ' ' . $medium->get('width') . 'w';
+          foreach ($this->derivatives as $url => $width) {
+              $srcset[] = $url . ' ' . $width . 'w';
+          }
+
+          $srcset[] = $this->url($reset) . ' ' . $this->get('width') . 'w';
+        }
+        else {
+          $srcset = [ $this->url($reset) . ' ' . $this->get('width') . 'w' ];
+          foreach ($this->alternatives as $ratio => $medium) {
+              $srcset[] = $medium->url($reset) . ' ' . $medium->get('width') . 'w';
+          }
         }
 
         return implode(', ', $srcset);
+    }
+
+    /**
+     * Generate derivatives
+     *
+     * @param  int $min_width
+     * @param  int $max_width
+     * @param  int $step
+     * @return $this
+     */
+    public function derivatives($min_width, $max_width, $step = 200) {
+      $width = $min_width;
+
+      // Do not upscale images.
+      if ($max_width > $this->get('width')) {
+        $max_width = $this->get('width');
+      }
+
+      while ($width <= $max_width) {
+        $ratio = $width / $this->get('width');
+        $derivative = MediumFactory::scaledFromMedium($this, 1, $ratio);
+        if (is_array($derivative)) {
+          $this->addDerivative($derivative['file']);
+        }
+        $width += $step;
+      }
+      return $this;
+    }
+
+    /**
+     * Add a derivative
+     *
+     * @param  ImageMedium $image
+     */
+    public function addDerivative(ImageMedium $image) {
+      $this->derivatives[$image->url()] = $image->get('width');
     }
 
     /**
@@ -169,7 +243,7 @@ class ImageMedium extends Medium
         $srcset = $this->srcset($reset);
         if ($srcset) {
             empty($attributes['srcset']) && $attributes['srcset'] = $srcset;
-            empty($attributes['sizes']) && $attributes['sizes'] = $this->sizes();
+            $attributes['sizes'] = $this->sizes();
         }
 
         return [ 'name' => 'img', 'attributes' => $attributes ];
@@ -216,7 +290,7 @@ class ImageMedium extends Medium
     }
 
     /**
-     * Turn the current Medium inta a Link with lightbox enabled
+     * Turn the current Medium into a Link with lightbox enabled
      *
      * @param  int  $width
      * @param  int  $height
@@ -278,11 +352,11 @@ class ImageMedium extends Medium
     {
 
         if ($sizes) {
-            $this->attributes['sizes'] = $sizes;
+            $this->sizes = $sizes;
             return $this;
         }
 
-        return empty($this->attributes['sizes']) ? '100vw' : $this->attributes['sizes'];
+        return empty($this->sizes) ? '100vw' : $this->sizes;
     }
 
     /**
@@ -364,6 +438,10 @@ class ImageMedium extends Medium
             return parent::path(false);
         }
 
+        if (isset($this->result)) {
+            return $this->result;
+        }
+
         if ($this->get('debug') && !$this->debug_watermarked) {
             $ratio = $this->get('ratio');
             if (!$ratio) {
@@ -375,9 +453,7 @@ class ImageMedium extends Medium
             $this->image->merge(ImageFile::open($overlay));
         }
 
-        $result = $this->image->cacheFile($this->format, $this->quality);
-
-        return $result;
+        return $this->image->cacheFile($this->format, $this->quality);
     }
 
     /**

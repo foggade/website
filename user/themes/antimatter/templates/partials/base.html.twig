@@ -1,39 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 {% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+
 {% block head %}
     <meta charset="utf-8" />
     <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
     {% include 'partials/metadata.html.twig' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="robots" content="index, follow, noodp, noydir, noarchive, nosnippet">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="keywords" content="{{site.keywords}}">
-    <meta name="application-name" content="{{ site.title|e('html') }}" />
-    <meta name="msapplication-tooltip" content="{{ site.title|e('html') }}" />
-    <meta name="msapplication-starturl" content="/" />
-        
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ url('theme://images') }}/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ url('theme://images') }}/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ url('theme://images') }}/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('theme://images') }}/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ url('theme://images') }}/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ url('theme://images') }}/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ url('theme://images') }}/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ url('theme://images') }}/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url('theme://images') }}/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="{{ url('theme://images') }}/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('theme://images') }}/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{ url('theme://images') }}/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('theme://images') }}/favicon-16x16.png">
-    <link rel="manifest" href="{{ url('theme://images') }}/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{ url('theme://images') }}/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png', true) }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
 
     {% block stylesheets %}
         {% do assets.addCss('theme://css/pure-0.5.0/grids-min.css', 103) %}
@@ -67,22 +43,22 @@
     <div id="sb-site">
         {% block header %}
         <header id="header">
-
-                <div id="logo">
-                    <img src="{{ url('theme://images') }}/logo-foggade.png" alt="{{ config.site.title }} Logo" style="max-width: 100%;height: auto;width: auto\9;"><h5 style="float: right; margin-left: 2rem;"><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.displayTitle }}</a></h5>
-                </div>
-                <div id="navbar">
-                    {% block header_extra %}{% endblock %}
-                    {% block header_navigation %}
-                    {% include 'partials/navigation.html.twig' %}
-                    {% endblock %}
-                    <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span>
-                </div>
-
+            <div id="logo">
+                <h3><a href="{{ base_url == '' ? '/' : base_url }}">{{ config.site.title }}</a></h3>
+            </div>
+            <div id="navbar">
+                {% block header_extra %}{% endblock %}
+                {% if config.plugins.langswitcher.enabled %}
+                {% include 'partials/langswitcher.html.twig' %}
+                {% endif %}
+                {% block header_navigation %}
+                {% include 'partials/navigation.html.twig' %}
+                {% endblock %}
+                <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span>
+            </div>
         </header>
         {% endblock %}
 
-        {% include 'modular/lightslider.html.twig' with {'page': page.find('/slider', true)} %}
         {% block showcase %}{% endblock %}
 
         {% block body %}
@@ -96,7 +72,7 @@
             <div class="totop">
                 <span><a href="#" id="toTop"><i class="fa fa-arrow-up"></i></a></span>
             </div>
-            <p><a href="./impressum" title="Impressum">Impressum</a></p>
+            <p><a href="http://getgrav.org">Grav</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://www.rockettheme.com">RocketTheme</a>.</p>
         </footer>
         {% endblock %}
     </div>
@@ -106,6 +82,7 @@
         </div>
     </div>
     {% block bottom %}
+
     <script>
     $(function () {
         $(document).ready(function() {

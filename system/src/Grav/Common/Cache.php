@@ -102,7 +102,7 @@ class Cache extends Getters
         $this->enabled = (bool) $this->config->get('system.cache.enabled');
 
         // Cache key allows us to invalidate all cache on configuration changes.
-        $this->key = substr(md5(($prefix ? $prefix : 'g') . $uri->rootUrl(true) . $this->config->key() . GRAV_VERSION), 2, 8);
+        $this->key = ($prefix ? $prefix : 'g') . '-' . substr(md5($uri->rootUrl(true) . $this->config->key() . GRAV_VERSION), 2, 8);
 
         $this->driver = $this->getCacheDriver();
 
@@ -153,6 +153,15 @@ class Cache extends Getters
                                    $this->config->get('system.cache.memcache.port', 11211));
                 $driver = new \Doctrine\Common\Cache\MemcacheCache();
                 $driver->setMemcache($memcache);
+                break;
+
+            case 'redis':
+                $redis = new \Redis();
+                $redis->connect($this->config->get('system.cache.redis.server','localhost'),
+                                $this->config->get('system.cache.redis.port', 6379));
+
+                $driver = new \Doctrine\Common\Cache\RedisCache();
+                $driver->setRedis($redis);
                 break;
 
             default:
@@ -239,18 +248,19 @@ class Cache extends Getters
             $anything = false;
             $files = glob(ROOT_DIR . $path . '*');
 
-            foreach ($files as $file) {
-                if (is_file($file)) {
-                    if (@unlink($file)) {
-                        $anything = true;
-                    }
-                } elseif (is_dir($file)) {
-                    if (@Folder::delete($file)) {
-                        $anything = true;
+            if (is_array($files)) {
+                foreach ($files as $file) {
+                    if (is_file($file)) {
+                        if (@unlink($file)) {
+                            $anything = true;
+                        }
+                    } elseif (is_dir($file)) {
+                        if (@Folder::delete($file)) {
+                            $anything = true;
+                        }
                     }
                 }
             }
-
 
             if ($anything) {
                 $output[] = '<red>Cleared:  </red>' . $path . '*';
@@ -271,7 +281,7 @@ class Cache extends Getters
 
 
     /**
-     * Set the cache lifetime programatically
+     * Set the cache lifetime programmatically
      *
      * @param int $future timestamp
      */
