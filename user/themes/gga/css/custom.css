@@ -43,8 +43,16 @@ a:hover {
     color: #7E5E3F !important;
 }
 
+#header.scrolled #navbar a:hover{
+    color: #CC9866;
+}
+
 #header.scrolled #navbar a:before, #header.scrolled #navbar a:after{
     background-color: #7E5E3F;
+}
+
+#header.scrolled #navbar a:before, #header.scrolled #navbar a:after{
+    background-color: #444 !important;
 }
 
 #header #navbar ul.navigation li a:before, #header #navbar ul.navigation li a:after {
@@ -69,6 +77,10 @@ a:hover {
 .lSSlideOuter .lSPager.lSpg{
     margin: 0 !important;
     background: #FFE5CC;
+}
+
+.lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a{
+    background-color: #7E5E3F;
 }
 
 .lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a{
