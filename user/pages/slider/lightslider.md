@@ -9,6 +9,7 @@ lightslider:
     type_text_brightness: -30
     mode: slide
     pager: 'true'
+    loop: 'true'
     controls: 'true'
     keyPress: 'true'
     pause: 2000
