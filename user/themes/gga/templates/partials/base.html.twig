@@ -59,7 +59,9 @@
         </header>
         {% endblock %}
 
-        {% block showcase %}{% endblock %}
+        {% block showcase %}
+        {% include 'modular/lightslider.html.twig' with {'page': page.find('/slider', true)} %}
+        {% endblock %}
 
         {% block body %}
         <section id="body" class="{{ class }}">
