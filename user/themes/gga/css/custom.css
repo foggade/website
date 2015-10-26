@@ -67,6 +67,10 @@ a:hover {
 }
 
 .lSSlideOuter .lSPager.lSpg{
-    margin: 0;
+    margin: 0 !important;
     background: #FFE5CC;
+}
+
+.lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a{
+    background-color: #7E5E3F;
 }
