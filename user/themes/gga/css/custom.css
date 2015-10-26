@@ -3,3 +3,7 @@
     padding-top: 0.1rem;
     padding-bottom: 10rem;
 }
+
+.padding-horiz, .fullwidth #header, .fullwidth #breadcrumbs, .fullwidth .blog-header, .fullwidth .blog-content-item, .fullwidth .content-wrapper, .fullwidth ul.pagination, .fullwidth #body > .modular-row, #body, #header, #footer {
+  padding-left: 10rem;
+  padding-right: 10rem; }
