@@ -10,6 +10,7 @@ lightslider:
     mode: slide
     pager: 'true'
     loop: 'true'
+    auto: 'true'
     controls: 'true'
     keyPress: 'true'
     pause: 2000

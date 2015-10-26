@@ -43,6 +43,10 @@ a:hover {
     color: #7E5E3F !important;
 }
 
+#header.scrolled #navbar a:before, #header.scrolled #navbar a:after{
+    background-color: #7E5E3F;
+}
+
 #header #navbar ul.navigation li a:before, #header #navbar ul.navigation li a:after {
     content: "";
     position: absolute;
@@ -60,4 +64,9 @@ a:hover {
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
+}
+
+.lSSlideOuter .lSPager.lSpg{
+    margin: 0;
+    background: #FFE5CC;
 }
