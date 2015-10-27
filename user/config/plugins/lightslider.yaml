@@ -13,7 +13,7 @@ mode: 'slide'
 controls: 'true'
 keyPress: 'true'
 auto: 'true'
-pause: 10000
+pause: 9000
 speed: 2000
 pager: 'true'
 gallery: 'false'
