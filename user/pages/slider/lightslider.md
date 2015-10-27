@@ -13,8 +13,8 @@ lightslider:
     auto: 'true'
     controls: 'true'
     keyPress: 'true'
-    pause: 2000
-    speed: 1000
+    pause: 10000
+    speed: 2000
     type_text_height: 500px
 ---
 

@@ -55,12 +55,8 @@ a:hover {
 }
 
 #header.scrolled #navbar a:before, #header.scrolled #navbar a:after{
-    background-color: #7E5E3F;
-}
-
-/*#header.scrolled #navbar a:before, #header.scrolled #navbar a:after{
     background-color: #444 !important;
-}*/
+}
 
 #header #navbar ul.navigation li a:before, #header #navbar ul.navigation li a:after {
     content: "";
