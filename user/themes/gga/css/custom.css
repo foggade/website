@@ -1,5 +1,5 @@
 #body{
-    background: #FFE5CC;
+    background: ##f6f0e0;
     padding-top: 0.1rem;
     padding-bottom: 10rem;
 }
@@ -17,7 +17,12 @@
 }
 
 #footer{
-    background: #7F7366;
+    background: #fff;
+    height: 4rem;
+}
+
+#footer{
+    bottom: 3rem;
 }
 
 a{
@@ -25,7 +30,7 @@ a{
 }
 
 a:hover {
-    color: #CC9866;
+    color: #fff;
 }
 
 #footer .totop span {
@@ -74,15 +79,20 @@ a:hover {
     transition: all 0.2s ease;
 }
 
+#header #navbar ul.navigation li:hover li.active > a {
+    background: #CC9866;
+    color: #fff;
+}
+
+/**
+lightslider plugin
+**/
+
 .lSSlideOuter .lSPager.lSpg{
     margin: 0 !important;
     background: #FFE5CC;
 }
 
 .lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a{
-    background-color: #7E5E3F;
-}
-
-.lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a{
-    background-color: #7E5E3F;
+    background-color: #7E5E3F !important;
 }
