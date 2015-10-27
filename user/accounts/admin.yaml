@@ -1,4 +1,4 @@
-email: mail@samuelstein.de
+email: 'mail@samuelstein.de'
 access:
   admin:
     login: true
