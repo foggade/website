@@ -1,5 +1,5 @@
 #body{
-    background: ##f6f0e0;
+    background: #f6f0e0;
     padding-top: 0.1rem;
     padding-bottom: 10rem;
 }
@@ -17,7 +17,6 @@
 }
 
 #footer{
-    background: #fff;
     height: 4rem;
 }
 
@@ -30,7 +29,7 @@ a{
 }
 
 a:hover {
-    color: #fff;
+    color: #7F7366;
 }
 
 #footer .totop span {
@@ -90,7 +89,7 @@ lightslider plugin
 
 .lSSlideOuter .lSPager.lSpg{
     margin: 0 !important;
-    background: #FFE5CC;
+    background: #f6f0e0;
 }
 
 .lSSlideOuter .lSPager.lSpg > li:hover a, .lSSlideOuter .lSPager.lSpg > li.active a{
