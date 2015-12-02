@@ -1,10 +1,118 @@
+# v1.0.0-rc.7
+## 12/01/2015
+
+1. [](#new)
+    * Display error page if page does not exist in admin
+    * Removed Beta message option and added toggle for GitHub message
+    * Added functionality to support Admin Pro plugin (in development)
+1. [](#improved)
+    * Added support for Markdown editor in lists #239
+    * Better Markdown Editor API with dynamic initialization
+    * Various language updates    
+    * Removed some unused variables
+    * Added admin check for pages existence
+    * Prevent the admin to cause an error when an Ajax action is in progress
+    * Force translations to be active even when disabled in site #299
+    * Do not reinitialize `Selectize` if already available
+1. [](#bugfix)
+    * Fixed full-screen markdown Editor
+    * Fix modular preview not working reliably #254
+    * **Nonce fixes** (hopefully the last of them!)
+    * Fix broken plugin enable/disable
+    * Fix issue where `_redirect: /plugins` was getting stored in the plugin configuration
+    * Replace default them service with admin one
+    * Fix saving array fields #304
+    * Fix missing translations when default language is not english
+    * Fix title variables not translated #310
+
+# v1.0.0-rc.6
+## 11/21/2015
+
+1. [](#improved)
+    * Implemented logic to detect when offline and suppress Ajax calls 
+    * Added nonce logic to be used by JS
+1. [](#bugfix)
+    * Nonce fix for updating themes
+    * Nonce fix for deleting pages
+    
+# v1.0.0-rc.5
+## 11/20/2015
+
+1. [](#new)
+    * Use **Nonce** mechanism for form security
+    * Added Hungarian translation
+    * Add support for Markdown labels #271
+    * Added support for Markdown Editor in all the things
+    * Implemented save keyboard shortcut (Ctrl + S / CMD + S)
+1. [](#improved)
+    * Better error for "Internal Server Error" when accessing GPM
+    * Updated French translation
+    * Updated Russian translation
+    * Load Gravatar image with protocol-less `//:` syntax
+    * Improved header UI in mobile browsers #265
+    * Dropped unused version of JQuery
+    * More visible Preview link icon
+    * Hide **Latest pages** if there are none
+    * Improved toggle to better support different length strings
+1. [](#bugfix)
+    * Force rescanning fields when submitting a form #243
+    * Set default lang for pages on fresh session
+    * Escaped values in `array.html.twig`
+    * Fix saving in IE Edge
+    * Fixed various typos
+    * Fixed JS button issues #370
+    * Fixed JS error in private browsing #272
+    * Fixed date field border
+    * Fixed multiple instance of Markdown Editor #285
+    * Fixed Spacer CSS #267
+
+# v1.0.0-rc.4
+## 10/29/2015
+
+1. [](#improved)
+    * Changed admin menu event hook to `onAdminMenu()`
+    * Minor improvements for admin page location
+    * Additional lang strings for Grav 1.0.0-rc.3
+
+# v1.0.0-rc.3
+## 10/27/2015
+
+1. [](#improved)
+    * Rely on context-language for active language
+    * Improved some Russian translations
+    * Only show login if not already logged in
+1. [](#bugfix)
+    * Disable asset pipeline in admin only
+    * Fix Editor cursor insertion point when text is selected in some actions
+
+# v1.0.0-rc.2
+## 10/23/2015
+
+1. [](#bugfix)
+    * Reverted lang redirect code. Needs to be reworked to be more reliable
+
+# v1.0.0-rc.1
+## 10/23/2015
+
+1. [](#new)
+    * Redirect to non-language URL except for `pages/`
+1. [](#improved)
+    * New language strings for new `system.yaml` fields
+    * Improved Russian translations
+    * Improved compatibility with PECL Yaml parser
+1. [](#bugfix)
+    * Redirect to correct page if you change folder/slug
+    * Fix issue with Asset pipeline not being disabled in admin
+    * Fix for HTML in text input fields
+    * Fixed various icons in headers
+    
 # v0.6.2
 ## 10/15/2015
 
 1. [](#improved)
     * Use `title` rather than `menu` in Page listing
     * Wrapped language strings in double-quotes
-    * New language strings for 
+    * New language strings for new fields
 1. [](#bugfix)
     * Fixed issue with IE not able to save pages
 
