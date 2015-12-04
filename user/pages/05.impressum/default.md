@@ -7,7 +7,7 @@ Verein Freunde von God's Golden Acre Deutschland e. V. (FvGGAD e. V.)
 Goethestraße 1  
 06114 Halle (Saale)  
 
-[Kontakt](../04.kontakt "Schreibe uns eine Nachricht")
+[Schreibe uns eine Nachricht](../04.kontakt "Schreibe uns eine Nachricht")
 
 Gemeinschaftlich vertretungsbefugt:
 
@@ -19,7 +19,7 @@ Registergericht: Amtsgericht Arnsberg
 Registernummer:  VR 1442
 
 Kontoverbindung:  
-IBAN: DE89 8306 5408 0004 7819 02
-BIC: GENODEF1SLR
+IBAN: DE89 8306 5408 0004 7819 02  
+BIC: GENODEF1SLR  
 
-Programmierung Website: Samuel Stein, [www.samuelstein.de](http://www.samuelstein.de "")
+Programmierung Website: Samuel Stein, [www.samuelstein.de](http://www.samuelstein.de "Website von Samuel Stein")
