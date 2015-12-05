@@ -18,6 +18,6 @@ Hilf uns mit deiner individuellen Spende oder dem "5 Euro Programm".
 + [Spenden](/impressum "Individuelle Spende")
 + [5 Euro Programm](http://godsgoldenacre.org/donate-now.html "God's Golden Acre Good Samaritan Fund")
 
-### Childsponsorship
+### Child Sponsorship
 
 Hast du ein Kind auf GGA lieb gewonnen? Unterstütze es persönlich und direkt. [Weitere Infos.](http://godsgoldenacre.org/childsponsorship.html "God's Golden Acre Childsponsorship")
