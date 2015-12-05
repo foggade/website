@@ -53,13 +53,19 @@ a:hover {
     }
 }
 
+/*@media all and (max-width: 1019px) and (min-width: 960px) {
+    #header #logo h3 a{
+        font-size: 1.0rem;
+    }
+}*/
+
 @media all and (max-width: 959px) and (min-width: 600px) {
     #header #logo h3 a{
         font-size: 1.0rem;
     }
 }
 
-@media all and (max-width: 599px) {
+@media all and (max-width: 649px) {
     #header #logo h3 a{
         font-size: 0.7rem;
     }
