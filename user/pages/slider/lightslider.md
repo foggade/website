@@ -3,23 +3,15 @@ title: Slider Content
 routable: false
 visible: false
 lightslider:
-    enabled: true
-    built_in_css: true
     slider_type: text
-    type_text_vertical_padding: 170px;
-    type_text_horizontal_padding: 0px;
-    type_text_brightness: -30
+    type_text_vertical_padding: 70px;
+    type_text_horizontal_padding: 50px;
+    type_text_brightness: -100
     mode: slide
     pager: 'true'
-    gallery: 'false'
-    loop: 'true'
-    auto: 'true'
     controls: 'true'
     keyPress: 'true'
-    enableTouch: 'true'
-    enableDrag: 'true'
-    type_text_height: 500px
-    pause: 5000
+    pause: 2000
     speed: 1000
 ---
 
