@@ -1,4 +1,4 @@
-email: mail@samuelstein.de
+email: 'mail@samuelstein.de'
 access:
   admin:
     login: true
@@ -7,4 +7,4 @@ access:
     login: true
 fullname: 'Samuel Stein'
 title: 'Site Admin'
-hashed_password: 4pVRCMSgVKtDUFGLvZAq
+password: '4pVRCMSgVKtDUFGLvZAq'
