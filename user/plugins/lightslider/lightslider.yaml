@@ -13,8 +13,8 @@ mode: 'fade'
 controls: 'true'
 keyPress: 'true'
 auto: 'false'
-pause: 9000
-speed: 2000
+pause: 2000
+speed: 1000
 pager: 'true'
 gallery: 'false'
 gallery_thumb_width: 100
