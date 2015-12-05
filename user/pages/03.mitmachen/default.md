@@ -7,7 +7,7 @@ date: 01/01/2014 3:14pm
 Neben dem "täglich Brot" müssen durch Spenden vor allem Medikamente, der Schulbesuch sowie Kleidung finanziert werden.
 
 ### Volontariat
-
+![Volunteers auf GGA](../images/volunteers-gga.jpg)
 Mach ein freiwilliges Volontariat oder Bundesfreiwilligendienst auf GGA. [Weitere Infos.](http://godsgoldenacre.org/volunteering.html "God's Golden Acre Volunteering")
 
 ### Spenden
