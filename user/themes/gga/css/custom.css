@@ -36,15 +36,26 @@ a:hover {
     color: #7F7366;
 }
 
+#header.scrolled #logo h3 {
+    color: #444 !important;
+    font-size: 0.95rem !important;
+}
+
+@media all and (max-width: 1280px) and (min-width: 959px) {
+    #header #logo h3 a{
+        font-size: 1.4rem;
+    }
+}
+
 @media all and (max-width: 959px) and (min-width: 600px) {
     #header #logo h3 a{
-        font-size: 1.5rem;
+        font-size: 1.0rem;
     }
 }
 
 @media all and (max-width: 600px) {
     #header #logo h3 a{
-        font-size: 0.3rem;
+        font-size: 0.5rem;
     }
 }
 
