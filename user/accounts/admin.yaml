@@ -7,4 +7,5 @@ access:
     login: true
 fullname: 'Samuel Stein'
 title: 'Site Admin'
-password: '4pVRCMSgVKtDUFGLvZAq'
+language: en
+hashed_password: $2y$10$1ebsNfYDAwJw4LGRRGliQu/1yNdcdEjilQ/YKDcUFrgZeUE1FIbW6
