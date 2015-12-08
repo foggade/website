@@ -36,6 +36,17 @@ a:hover {
     color: #7F7366;
 }
 
+.centeredImg img{
+    max-height: 90%;
+    max-width: 90%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
 #header.scrolled #logo h3 {
     color: #444 !important;
     font-size: 0.95rem !important;
