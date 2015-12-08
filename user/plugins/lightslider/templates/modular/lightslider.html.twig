@@ -1,16 +1,14 @@
 {% set settings = {} %}
 
 {% if header.lightslider %}
-    {{ dump(header.lightslider) }}
     {% set settings =  header.lightslider %}
 {% endif %}
 
 {% if page.header.lightslider %}
-    {{ dump(page.header.lightslider) }}
     {% set settings = settings|merge(page.header.lightslider) %}
 {%  endif %}
 
-{% set settings = config.get('plugins.lightslider') %}
+{# set settings = config.get('plugins.lightslider') #}
 {% set unique_id = 'ls-' ~ random_string(10) %}
 
 {{ dump(settings) }}
