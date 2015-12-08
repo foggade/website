@@ -9,7 +9,7 @@ item: 1
 slideMove: 1
 slideMargin: 0
 loop: 'true'
-mode: 'fade'
+mode: 'slide'
 controls: 'true'
 keyPress: 'true'
 auto: 'true'
