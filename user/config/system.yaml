@@ -31,7 +31,7 @@ cache:
 
 twig:
   cache: true
-  debug: true
+  debug: false
   auto_reload: true
   autoescape: false
 
@@ -47,7 +47,7 @@ errors:
   log: true
 
 debugger:
-  enabled: true
+  enabled: false
   twig: false
   shutdown:
     close_connection: true
