@@ -1,12 +1,12 @@
 {% set settings = {} %}
 
 {% if header.lightslider %}
-    dump(header.lightslider)
+    {{ dump(header.lightslider) }}
     {% set settings =  header.lightslider %}
 {% endif %}
 
 {% if page.header.lightslider %}
-    dump(page.header.lightslider)
+    {{ dump(page.header.lightslider) }}
     {% set settings = settings|merge(page.header.lightslider) %}
 {%  endif %}
 
