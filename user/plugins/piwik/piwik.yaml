@@ -1,0 +1,3 @@
+enabled: false        # global enable/disable the entire plugin
+siteId: 7            # site piwik tracking ID
+sitePiWikURL: 'http://analytics.samuelstein.de/'      # site piwik url
