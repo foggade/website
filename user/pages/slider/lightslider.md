@@ -13,8 +13,8 @@ lightslider:
     loop: 'true'
     controls: 'true'
     keyPress: 'true'
-    pause: 2000
-    speed: 1000
+    pause: 7000
+    speed: 1500
 ---
 
 # Eine Familie
