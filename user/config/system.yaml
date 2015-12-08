@@ -31,7 +31,7 @@ cache:
 
 twig:
   cache: true
-  debug: false
+  debug: true
   auto_reload: true
   autoescape: false
 
