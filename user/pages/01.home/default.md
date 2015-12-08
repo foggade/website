@@ -8,4 +8,4 @@ title: Home
   
 Der gemeinnützige Verein *Freunde von God's Golden Acre Deutschland* verfolgt die Zwecke jungen Menschen in Not, insbesondere in Entwicklungsländern wie Südafrika, die Chance auf Bildung zu geben, Armut zu lindern und vornehmlich junge Menschen in Deutschland für die gesellschaftliche Mitverantwortung und Hilfsbereitschaft gegenüber Menschen in den Entwicklungsländern zu sensibilisieren.
 ## News
-[plugin:page-inject](/news?template=blog_item)
+[plugin:page-inject](/news?template=partials/blog_item)
