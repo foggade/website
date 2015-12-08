@@ -1,5 +1,5 @@
 ---
-title: News
+title: Veröffentlichung der neuen Website
 routable: true
 visible: false
 date: 01/01/2014 3:14pm
