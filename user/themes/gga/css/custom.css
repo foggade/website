@@ -41,6 +41,10 @@ a:hover {
     margin: auto;
 }
 
+.grav-lightslider{
+    margin-top: 2rem;
+}
+
 #header.scrolled #logo h3 {
     color: #444 !important;
     font-size: 0.95rem !important;
