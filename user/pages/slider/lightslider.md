@@ -7,7 +7,7 @@ lightslider:
     type_text_vertical_padding: 70px;
     type_text_horizontal_padding: 50px;
     type_text_brightness: -100
-    mode: slide
+    mode: 'slide'
     pager: 'true'
     auto: 'true'
     loop: 'true'
