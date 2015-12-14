@@ -1,62 +1,37 @@
 ---
 title: Kontakt
+template: form
 
-form:
-    name: contact
+recaptchacontact: false
 
-    fields:
-        - name: name
-          label: Name
-          placeholder: Enter your name
-          autofocus: on
-          autocomplete: on
-          type: text
-          validate:
-            required: true
+simplecontact:
+  subject: "Anfrage FvGGAD e. V. über Kontaktformular"
+  recipient: "info@godsgoldenacre.de"
 
-        - name: email
-          label: Email
-          placeholder: Enter your email address
-          type: email
-          validate:
-            required: true
+  fields:
+    name:
+      label: "Name"
+      placeholder: "Dein Vor- und Nachname"
 
-        - name: message
-          label: Message
-          placeholder: Enter your message
-          type: textarea
-          validate:
-            required: true
+    email:
+      label: "E-Mail"
+      placeholder: "Deine Mailadresse"
 
-        - name: g-recaptcha-response
-          label: Captcha
-          type: captcha
-          recatpcha_site_key: 6Ld8OQ8TAAAAAOhiyI_D6lB6COlyer76Blx_Fwgo
-          recaptcha_not_validated: 'Captcha not valid!'
-          validate:
-            required: true
+    message:
+      label: "Nachricht"
+      placeholder: "Dein Anliegen"
 
-    buttons:
-        - type: submit
-          value: Submit
-        - type: reset
-          value: Reset
+    antispam:
+      label: "Antispam"
+      placeholder: "Subject"
 
-    process:
-        - captcha:
-            recatpcha_secret: 6Ld8OQ8TAAAAAMOF4s6joUZv-FOvAefTKQ9X4Kg7
-        - email:
-            from: "{{ config.plugins.email.from }}"
-            to:
-          - "{{ config.plugins.email.from }}"
-            subject: "[Site Contact Form] {{ form.value.name|e }}"
-            body: "{% include 'forms/data.html.twig' %}"
-        - save:
-            fileprefix: contact-
-            dateformat: Ymd-His-u
-            extension: txt
-            body: "{% include 'forms/data.txt.twig' %}"
-        - message: Danke für deine Nachricht.
-        - display: thankyou
+    submit:
+      label: "Absenden"
+
+  messages:
+    success: "Wir haben deine Anfrage erhalten und melden uns schnellstmöglich bei dir."
+    error: "Oops! Es gab ein Problem beim Versenden. Bitte versuche es erneut."
+    fail: "Oops! Leider konnte die Nachricht nicht versendet werden."
 
 ---
+
