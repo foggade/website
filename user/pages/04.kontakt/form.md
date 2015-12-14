@@ -56,3 +56,5 @@ form:
             body: "{% include 'forms/data.txt.twig' %}"
         - message: Danke für deine Nachricht.
         - display: thankyou
+
+---
