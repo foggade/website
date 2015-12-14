@@ -1,5 +1,4 @@
 title: Kontakt
-
 form:
     name: contact
 
@@ -45,6 +44,9 @@ form:
         - captcha:
             recatpcha_secret: 6Ld8OQ8TAAAAAMOF4s6joUZv-FOvAefTKQ9X4Kg7
         - email:
+            from: "{{ config.plugins.email.from }}"
+            to:
+          - "{{ config.plugins.email.from }}"
             subject: "[Site Contact Form] {{ form.value.name|e }}"
             body: "{% include 'forms/data.html.twig' %}"
         - save:
@@ -52,5 +54,5 @@ form:
             dateformat: Ymd-His-u
             extension: txt
             body: "{% include 'forms/data.txt.twig' %}"
-        - message: Thank you for getting in touch!
+        - message: Danke für deine Nachricht.
         - display: thankyou
