@@ -1,5 +1,6 @@
 ---
 title: Kontakt
+template: form
 
 recaptchacontact: false
 
