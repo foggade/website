@@ -8,7 +8,7 @@
     {% set settings = settings|merge(page.header.lightslider) %}
 {%  endif %}
 
-{% set settings = config.get('plugins.lightslider')|merge(settings) %}
+{% set settings = settings|merge(config.get('plugins.lightslider')) %}
 {% set unique_id = 'ls-' ~ random_string(10) %}
 
 {{ dump(settings) }}
@@ -22,10 +22,10 @@
         mode: '{{ settings.mode|default('slide') }}',
         cssEasing: '{{ settings.cssEasing|default('ease') }}',
         easing: '{{ settings.easing|default('') }}',
-        speed: {{ settings.speed|default(1000) }},
+        speed: {{ settings.speed|default(7000) }},
         auto: {{ settings.auto|default('false') }},
         loop: {{ settings.loop|default('false') }},
-        pause: {{ settings.pause|default(2000) }},
+        pause: {{ settings.pause|default(1500) }},
         controls: {{ settings.controls|default('true') }},
         keyPress: {{ settings.keyPress|default('true') }},
         adaptiveHeight: {{ settings.adaptiveHeight|default('true') }},

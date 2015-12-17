@@ -4,7 +4,7 @@ title: Kontakt
 recaptchacontact: false
 
 simplecontact:
-  subject: "Anfrage über Kontaktformular"
+  subject: "Anfrage FvGGAD e. V. über Kontaktformular"
   recipient: "info@godsgoldenacre.de"
 
   fields:

@@ -9,7 +9,8 @@ home:
 
 pages:
   theme: gga
-  markdown_extra: true
+  markdown:
+    extra: true
   process:
     markdown: true
     twig: false

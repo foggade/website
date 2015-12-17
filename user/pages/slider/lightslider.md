@@ -6,16 +6,15 @@ lightslider:
     slider_type: text
     type_text_vertical_padding: 170px;
     type_text_horizontal_padding: 0px;
-    type_text_brightness: -30
-    mode: slide
+    type_text_brightness: -100
+    mode: 'slide'
     pager: 'true'
-    loop: 'true'
     auto: 'true'
+    loop: 'true'
     controls: 'true'
     keyPress: 'true'
-    pause: 9000
-    speed: 2000
-    type_text_height: 500px
+    pause: 7000
+    speed: 1500
 ---
 
 # Eine Familie
