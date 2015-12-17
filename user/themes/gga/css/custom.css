@@ -50,6 +50,18 @@ a:hover {
     font-size: 0.95rem !important;
 }
 
+@media all and (min-width: 1400px) {
+    #header #logo h3 a{
+        font-size: 2rem;
+    }
+}
+
+@media all and (max-width: 1399px) and (min-width: 1281px) {
+    #header #logo h3 a{
+        font-size: 1.8rem;
+    }
+}
+
 @media all and (max-width: 1280px) and (min-width: 1150px) {
     #header #logo h3 a{
         font-size: 1.4rem;
