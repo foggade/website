@@ -68,15 +68,21 @@ a:hover {
     }
 }*/
 
-@media all and (max-width: 1019px) and (min-width: 600px) {
+/*@media all and (max-width: 1019px) and (min-width: 600px) {
     #header #logo h3 a{
         font-size: 1.0rem;
     }
+}*/
+
+@media all and (max-width: 649px) and (min-width: 341px) {
+    #header #logo h3 a{
+        font-size: 0.9rem;
+    }
 }
 
-@media all and (max-width: 649px) {
+@media all and (max-width: 340px) {
     #header #logo h3 a{
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
 }
 
