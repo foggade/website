@@ -56,27 +56,33 @@ a:hover {
     }
 }
 
-@media all and (max-width: 1059px) and (min-width: 1020px) {
+@media all and (max-width: 1059px) and (min-width: 560px) {
     #header #logo h3 a{
         font-size: 1.2rem;
     }
 }
 
-/*@media all and (max-width: 1019px) and (min-width: 960px) {
+@media all and (max-width: 649px) and (min-width: 490px) {
     #header #logo h3 a{
         font-size: 1.0rem;
     }
-}*/
+}
 
-/*@media all and (max-width: 1019px) and (min-width: 600px) {
-    #header #logo h3 a{
-        font-size: 1.0rem;
-    }
-}*/
-
-@media all and (max-width: 649px) and (min-width: 341px) {
+@media all and (max-width: 489px) and (min-width: 440px) {
     #header #logo h3 a{
         font-size: 0.9rem;
+    }
+}
+
+@media all and (max-width: 439px) and (min-width: 400px) {
+    #header #logo h3 a{
+        font-size: 0.8rem;
+    }
+}
+
+@media all and (max-width: 399px) and (min-width: 341px) {
+    #header #logo h3 a{
+        font-size: 0.7rem;
     }
 }
 
