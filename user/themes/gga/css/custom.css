@@ -50,40 +50,76 @@ a:hover {
     font-size: 0.95rem !important;
 }
 
-@media all and (max-width: 1280px) and (min-width: 1060px) {
+@media all and (min-width: 1400px) {
+    #header #logo h3 a{
+        font-size: 2rem;
+    }
+}
+
+@media all and (max-width: 1399px) and (min-width: 1281px) {
+    #header #logo h3 a{
+        font-size: 1.8rem;
+    }
+}
+
+@media all and (max-width: 1280px) and (min-width: 1150px) {
     #header #logo h3 a{
         font-size: 1.4rem;
     }
 }
 
-@media all and (max-width: 1059px) and (min-width: 1020px) {
+@media all and (max-width: 1149px) and (min-width: 1100px) {
+    #header #logo h3 a{
+        font-size: 1.3rem;
+    }
+}
+
+@media all and (max-width: 1099px) and (min-width: 1060px) {
     #header #logo h3 a{
         font-size: 1.2rem;
     }
 }
 
-/*@media all and (max-width: 1019px) and (min-width: 960px) {
+@media all and (max-width: 1059px) and (min-width: 1000px) {
     #header #logo h3 a{
-        font-size: 1.0rem;
+        font-size: 1.1rem;
     }
-}*/
+}
 
-@media all and (max-width: 1019px) and (min-width: 600px) {
+@media all and (max-width: 999px) and (min-width: 490px) {
     #header #logo h3 a{
         font-size: 1.0rem;
     }
 }
 
-@media all and (max-width: 649px) {
+@media all and (max-width: 489px) and (min-width: 440px) {
+    #header #logo h3 a{
+        font-size: 0.9rem;
+    }
+}
+
+@media all and (max-width: 439px) and (min-width: 400px) {
+    #header #logo h3 a{
+        font-size: 0.8rem;
+    }
+}
+
+@media all and (max-width: 399px) and (min-width: 341px) {
     #header #logo h3 a{
         font-size: 0.7rem;
     }
 }
 
-.padding-horiz, .fullwidth #header, .fullwidth #breadcrumbs, .fullwidth .blog-header, .fullwidth .blog-content-item, .fullwidth .content-wrapper, .fullwidth ul.pagination, .fullwidth #body > .modular-row, #body, #header, #footer {
+@media all and (max-width: 340px) {
+    #header #logo h3 a{
+        font-size: 0.65rem;
+    }
+}
+
+/*.padding-horiz, .fullwidth #header, .fullwidth #breadcrumbs, .fullwidth .blog-header, .fullwidth .blog-content-item, .fullwidth .content-wrapper, .fullwidth ul.pagination, .fullwidth #body > .modular-row, #body, #header, #footer {
     padding-left: 10rem;
     padding-right: 10rem;
-}
+}*/
 
 #header #logo h3{
     font-size: 2rem;
