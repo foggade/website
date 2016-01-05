@@ -1,3 +1,37 @@
+# v1.0.3
+## 12/20/2015
+
+1. [](#new)
+    * Added `pagemediaselect` field for use in pages
+1. [](#improved)
+    * Updated various languages
+    * Check for method `meetsRequirements()` prior to using
+    * Enable `file` form field to be used in plugins and theme blueprints
+
+# v1.0.2
+## 12/18/2015
+
+1. [](#bugfix)
+    * Fixed issue with user edit page causing error due to individual language files
+
+# v1.0.1
+## 12/18/2015
+
+1. [](#new)
+    * Moved languages into individual files under `languages/` folder
+    * Added a check for PHP version
+    * Dutch translation added
+1. [](#improved)
+    * Let forms work with file inputs
+    * Various file input improvements
+    * Language updates
+    * Better checks for existence of Popularity JSON data
+    * Add file processing to admin forms
+    * More Admin Pro integration fixes
+1. [](#bugfix)
+    * Set form to multipart if it contains a file field
+    * `cleanFilesData()` now returns just the filename
+
 # v1.0.0
 ## 12/11/2015
 

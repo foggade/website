@@ -32,7 +32,7 @@
                 "dev-master": "1.5.x-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
@@ -96,7 +96,7 @@
         },
         "time": "2015-09-22 21:04:13",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "files": [
                 "Source/UserAgentParser.php"
@@ -126,28 +126,27 @@
     },
     {
         "name": "erusev/parsedown",
-        "version": "1.6.0",
-        "version_normalized": "1.6.0.0",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/erusev/parsedown.git",
-            "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7"
+            "url": "https://github.com/getgrav/parsedown.git",
+            "reference": "10a7ff776c3f16b1b3aa41c176c48150fc091065"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/erusev/parsedown/zipball/3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
-            "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
+            "url": "https://api.github.com/repos/getgrav/parsedown/zipball/10a7ff776c3f16b1b3aa41c176c48150fc091065",
+            "reference": "10a7ff776c3f16b1b3aa41c176c48150fc091065",
             "shasum": ""
         },
-        "time": "2015-10-04 16:44:32",
+        "time": "2015-12-17 17:48:21",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Parsedown": ""
             }
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
@@ -163,7 +162,10 @@
         "keywords": [
             "markdown",
             "parser"
-        ]
+        ],
+        "support": {
+            "source": "https://github.com/getgrav/parsedown/tree/master"
+        }
     },
     {
         "name": "erusev/parsedown-extra",
@@ -185,7 +187,7 @@
         },
         "time": "2015-11-01 10:19:22",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "ParsedownExtra": ""
@@ -239,7 +241,7 @@
                 "dev-master": "1.2-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Whoops": "src/"
@@ -292,7 +294,7 @@
         },
         "time": "2014-09-24 11:23:30",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Gregwar\\Cache": ""
@@ -342,7 +344,7 @@
         },
         "time": "2015-05-30 19:24:37",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Gregwar\\Image": ""
@@ -391,7 +393,7 @@
                 "dev-master": "1.0-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Symfony\\Polyfill\\Mbstring\\": ""
@@ -456,7 +458,7 @@
                 "dev-master": "2.8-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "files": [
                 "Resources/functions/dump.php"
@@ -506,7 +508,7 @@
         },
         "time": "2012-12-21 11:40:51",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Psr\\Log\\": ""
@@ -564,7 +566,7 @@
                 "dev-master": "1.11-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "DebugBar\\": "src/DebugBar/"
@@ -646,7 +648,7 @@
                 "dev-master": "1.16.x-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Monolog\\": "src/Monolog"
@@ -698,7 +700,7 @@
         },
         "time": "2014-10-30 22:58:02",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "classmap": [
                 "min/lib/"
@@ -743,7 +745,7 @@
                 "dev-master": "2.8-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Symfony\\Component\\Yaml\\": ""
@@ -805,7 +807,7 @@
                 "dev-master": "2.8-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Symfony\\Component\\EventDispatcher\\": ""
@@ -856,7 +858,7 @@
                 "dev-master": "3.0.x-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Pimple": "src/"
@@ -899,7 +901,7 @@
         },
         "time": "2014-11-20 16:49:30",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "files": [
                 "lib/password.php"
@@ -950,7 +952,7 @@
         },
         "time": "2015-11-24 17:04:24",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "RocketTheme\\Toolbox\\ArrayTraits\\": "ArrayTraits/src",
@@ -1010,7 +1012,7 @@
                 "dev-master": "2.8-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Symfony\\Component\\Console\\": ""
@@ -1061,7 +1063,7 @@
                 "dev-master": "1.0-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-4": {
                 "Symfony\\Polyfill\\Iconv\\": ""
@@ -1123,7 +1125,7 @@
                 "dev-master": "1.23-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Twig_": "lib/"
