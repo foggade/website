@@ -12,7 +12,7 @@ loop: 'true'
 mode: 'slide'
 controls: 'true'
 keyPress: 'true'
-auto: 'true'
+auto: 'false'
 pause: 7000
 speed: 1500
 pager: 'true'
