@@ -11,6 +11,8 @@ use Grav\Common\Data;
 use Grav\Common\Page;
 use Grav\Common\Page\Pages;
 use Grav\Common\Page\Collection;
+use Grav\Common\Plugin;
+use Grav\Common\Theme;
 use Grav\Common\User\User;
 use Grav\Common\Utils;
 use Grav\Common\Backup\ZipBackup;
@@ -88,7 +90,12 @@ class AdminController
     {
         if (method_exists('Grav\Common\Utils', 'getNonce')) {
             if (strtolower($_SERVER['REQUEST_METHOD']) == 'post') {
-                if (!isset($this->post['admin-nonce']) || !Utils::verifyNonce($this->post['admin-nonce'], 'admin-form')) {
+                if (isset($this->post['admin-nonce'])) {
+                    $nonce = $this->post['admin-nonce'];
+                } else {
+                    $nonce = $this->grav['uri']->param('admin-nonce');
+                }
+                if (!$nonce || !Utils::verifyNonce($nonce, 'admin-form')) {
                     $this->admin->setMessage($this->admin->translate('PLUGIN_ADMIN.INVALID_SECURITY_TOKEN'), 'error');
                     $this->admin->json_response = ['status' => 'error', 'message' => $this->admin->translate('PLUGIN_ADMIN.INVALID_SECURITY_TOKEN')];
                     return false;
@@ -1064,12 +1071,29 @@ class AdminController
         if ($this->view == 'pages') {
             /** @var Page\Pages $pages */
             $pages = $this->grav['pages'];
+            $config = $this->grav['config'];
 
             // Find new parent page in order to build the path.
             $route = !isset($data['route']) ? dirname($this->admin->route) : $data['route'];
-            $parent = $route && $route != '/' ? $pages->dispatch($route, true) : $pages->root();
-
             $obj = $this->admin->page(true);
+
+            //Handle system.home.hide_in_urls
+            $hide_home_route = $config->get('system.home.hide_in_urls', false);
+            if ($hide_home_route) {
+                $home_route = $config->get('system.home.alias');
+                $topParent = $obj->topParent();
+                if (isset($topParent)) {
+                    if ($topParent->route() == $home_route) {
+                        $baseRoute = (string) $topParent->route();
+                        if ($obj->parent() != $topParent) {
+                            $baseRoute .= $obj->parent()->route();
+                        }
+                    }
+                }
+                $route = isset($baseRoute) ? $baseRoute : null;
+            }
+
+            $parent = $route && $route != '/' ? $pages->dispatch($route, true) : $pages->root();
 
             $original_slug = $obj->slug();
             $original_order = intval(trim($obj->order(), '.'));
@@ -1138,7 +1162,21 @@ class AdminController
                 }
             }
             $admin_route = $this->grav['config']->get('plugins.admin.route');
-            $redirect_url = '/' . ($multilang ? ($obj->language()) : '') . $admin_route . '/' . $this->view . $obj->route();
+
+            //Handle system.home.hide_in_urls
+            $route = $obj->route();
+            $hide_home_route = $config->get('system.home.hide_in_urls', false);
+            if ($hide_home_route) {
+                $home_route = $config->get('system.home.alias');
+                $topParent = $obj->topParent();
+                if (isset($topParent)) {
+                    if ($topParent->route() == $home_route) {
+                        $route = (string) $topParent->route() . $route;
+                    }
+                }
+            }
+
+            $redirect_url = '/' . ($multilang ? ($obj->language()) : '') . $admin_route . '/' . $this->view . $route;
 
             $this->setRedirect($redirect_url);
         }
@@ -1399,6 +1437,90 @@ class AdminController
         $this->admin->setMessage($this->admin->translate('PLUGIN_ADMIN.SUCCESSFULLY_SWITCHED_LANGUAGE'), 'info');
         $this->setRedirect('/' . $language . $uri->route());
 
+        return true;
+    }
+
+    /**
+     * Determine if the user can edit media
+     *
+     * @return bool True if the media action is allowed
+     */
+    protected function canEditMedia()
+    {
+        $type = 'media';
+        if (!$this->authorizeTask('edit media', ['admin.' . $type, 'admin.super'])) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Handles removing a media file
+     *
+     * @return bool True if the action was performed
+     */
+    public function taskRemoveMedia()
+    {
+        if (!$this->canEditMedia()) {
+            return false;
+        }
+
+        $filename = base64_decode($this->route);
+        $file = File::instance($filename);
+        $resultRemoveMedia = false;
+        $resultRemoveMediaMeta = true;
+
+        if ($file->exists()) {
+            $resultRemoveMedia = $file->delete();
+
+            $metaFilePath = $filename . '.meta.yaml';
+            $metaFilePath = str_replace('@3x', '', $metaFilePath);
+            $metaFilePath = str_replace('@2x', '', $metaFilePath);
+
+            if (is_file($metaFilePath)) {
+                $metaFile = File::instance($metaFilePath);
+                $resultRemoveMediaMeta = $metaFile->delete();
+            }
+        }
+
+        if ($resultRemoveMedia && $resultRemoveMediaMeta) {
+            $this->admin->setMessage($this->admin->translate('PLUGIN_ADMIN.REMOVE_SUCCESSFUL'), 'info');
+        } else {
+            $this->admin->setMessage($this->admin->translate('PLUGIN_ADMIN.REMOVE_FAILED'), 'error');
+        }
+
+        $this->post = array('_redirect' => 'media');
+        return true;
+    }
+
+    /**
+     * Handle deleting a file from a blueprint
+     *
+     * @return bool True if the action was performed.
+     */
+    protected function taskRemoveFileFromBlueprint()
+    {
+        $uri = $this->grav['uri'];
+        $this->taskRemoveMedia();
+
+        $field = $uri->param('field');
+        $blueprint = $uri->param('blueprint');
+        $this->grav['config']->set($blueprint . '.' . $field, '');
+        if (substr($blueprint, 0, 7) == 'plugins') {
+            Plugin::saveConfig(substr($blueprint, 8));
+        }
+        if (substr($blueprint, 0, 6) == 'themes') {
+            Theme::saveConfig(substr($blueprint, 7));
+        }
+
+        $redirect = base64_decode($uri->param('redirect'));
+        $route = $this->grav['config']->get('plugins.admin.route');
+
+        if (substr($redirect, 0, strlen($route)) == $route) {
+            $redirect = substr($redirect, strlen($route) + 1);
+        }
+
+        $this->post = array('_redirect' => $redirect);
         return true;
     }
 
