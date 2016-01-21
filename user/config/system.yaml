@@ -6,7 +6,7 @@ wrapped_site: false
 languages:
   supported:
     - de
-  include_default_lang: true
+  include_default_lang: false
   translations: true
   translations_fallback: true
   session_store_active: false
