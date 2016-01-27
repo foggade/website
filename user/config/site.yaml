@@ -1,9 +1,11 @@
 title: 'Freunde von God''s Golden Acre Deutschland e. V.'
 keywords: GGA, FvGGAD e. V., Verein, gemeinnützig, Gods Golden Acre, Spenden, Waisenheim, Südafrika, AIDS, Pandemie, Armut
-taxonomies: [category,tag]                  # Arbitrary list of taxonomy types
+#taxonomies: [category,tag]                  # Arbitrary list of taxonomy types
 author:
   name: 'Samuel Stein'
   email: 'mail@samuelstein.de'
 metadata:
     description: 'Der Verein verfolgt die Zwecke jungen Menschen in Not, insbesondere in Entwicklungsländern wie Südafrika, die Chance auf Bildung zu geben, der Bevölkerung in Deutschland die Auswirkungen von Armut auf Bildung bekannt zu machen und vornehmlich junge Menschen in Deutschland für die gesellschaftliche Mitverantwortung und Hilfsbereitschaft gegenüber Menschen in den Entwicklungsländern zu sensibilisieren.'
+    robots: 'index, follow'
+    generator: ''
 
