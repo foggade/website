@@ -5,7 +5,7 @@ visible: false
 
 ### Kontaktdaten
 Verein Freunde von God's Golden Acre Deutschland e. V. (FvGGAD e. V.)  
-Goethestraße 1  
+Goethestraße 28  
 06114 Halle (Saale)  
 
 [Schreibe uns eine Nachricht](../04.kontakt "Schreibe uns eine Nachricht")
