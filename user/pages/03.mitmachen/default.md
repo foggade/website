@@ -7,6 +7,10 @@ date: 01/01/2014 3:14pm
 Als Nichtregierungsorganisation (NRO bzw. aus dem Englischen NGO) ist God's Golden Acre ausschließlich auf Spenden angewiesen. Neben dem "täglich Brot" müssen durch Spenden vor allem Medikamente, der Schulbesuch sowie Kleidung finanziert werden.  
 Durch folgende Möglichkeiten kannst du helfen:
 
+## Mitgliedschaft
+Am Meisten hilfst du uns mit deiner Mitgliedschaft. Sie sorgt dafür, dass wir unabhängig bleiben, das Waisenheim unterstützen und die Betriebskosten decken können.
+Schreibe uns mithilfe des Kontaktformulars. Wir melden uns bei dir.
+
 ## Volontariat
 ![Volunteers auf GGA](../images/volunteers-gga.jpg)  
 Mach ein Volontariat oder Bundesfreiwilligendienst auf GGA. 
