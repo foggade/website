@@ -1,6 +1,6 @@
 absolute_urls: false
-timezone: Europe/Berlin
-default_locale: delete
+timezone: 'Europe/Berlin'
+default_locale: system
 param_sep: ':'
 wrapped_site: false
 languages:
