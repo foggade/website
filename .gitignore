@@ -41,4 +41,7 @@ tests/_output/*
 tests/_support/_generated/*
 tests/cache/*
 tests/error.log
-/logs/grav.log
+logs/grav.log
+/cache/compiled/blueprints/master-localhost.php
+/cache/compiled/config/master-localhost.php
+/cache/compiled/files/4af200865fb764667a2615e7f7189c2d.yaml.php
