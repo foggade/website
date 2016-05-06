@@ -1,7 +1,7 @@
 ---
 title: News
 routable: true
-visible: true
+visible: false
 slug: news
 template: blog
 

@@ -1,5 +1,9 @@
 ---
 title: Home
+
+twig_first: true
+process:
+    twig: true
 ---
 <div class="centeredImage" markdown="1" >
 ![Logo God's Golden Acre](../images/logo-gga.png)
@@ -8,3 +12,12 @@ title: Home
   
 Der gemeinnützige Verein *Freunde von God's Golden Acre Deutschland* will jungen Menschen, insbesondere in Entwicklungsländern wie Südafrika, in Not helfen, die Chance auf Bildung geben und Armut lindern.  
 Unser Ziel ist es, vornehmlich junge Menschen in Deutschland für die gesellschaftliche Mitverantwortung und Hilfsbereitschaft gegenüber Menschen in den Entwicklungsländern zu sensibilisieren.
+
+### News
+<ul>
+{% for post in page.find('/blog').children.order('date', 'desc').slice(0, 5) %}
+    <li class="recent-posts">
+        <strong><a href="{{ post.url }}">{{ post.title }}</a></strong>
+    </li>
+{% endfor %}
+</ul>
