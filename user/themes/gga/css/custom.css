@@ -1,6 +1,6 @@
 #body{
     background: #f6f0e0;
-    /*padding-top: 0.1rem;*/
+    padding-top: 0.1rem;
     padding-bottom: 10rem;
 }
 
@@ -42,8 +42,8 @@ a:hover {
 }
 
 .contentContainer{
-    padding: 2rem 2rem 2rem 2rem;
-    margin-top: 35rem;
+    padding: 0.1rem 2rem 2rem 2rem;
+    margin-top: 30rem;
     color: #000000;
     background-color: #ffffff;
 }
@@ -60,7 +60,12 @@ opacity: 0.9;
 
 .onepage-header-yzw{
     /*background-image: url('/foggade/user/pages/images/overlay.png'), url('/foggade/user/pages/images/young-zulu-warriors-lineup-2016.jpg') !important;*/
-    background: url('/foggade/user/pages/images/young-zulu-warriors-lineup-2016.jpg') no-repeat top center fixed !important;
+    /*background: url('/foggade/user/pages/images/young-zulu-warriors-lineup-2016.jpg') no-repeat top center fixed !important;*/
+    /*background: url(/foggade/user/pages/images/young-zulu-warriors-lineup-2016.jpg) no-repeat center center fixed !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
     padding-top: 10rem !important;
 }
 
