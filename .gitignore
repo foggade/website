@@ -8,8 +8,6 @@ vendor/
 # Grav Specific
 backup/*
 !backup/.*
-cache/*
-!cache/.*
 assets/*
 !assets/.*
 logs/*
@@ -22,8 +20,6 @@ user/data/*
 !user/data/.*
 user/plugins/*
 !user/plugins/.*
-user/themes/*
-!user/themes/.*
 user/localhost/config/security.yaml
 
 # OS Generated
@@ -42,6 +38,4 @@ tests/_support/_generated/*
 tests/cache/*
 tests/error.log
 logs/grav.log
-/cache/compiled/blueprints/master-localhost.php
-/cache/compiled/config/master-localhost.php
-/cache/compiled/files/4af200865fb764667a2615e7f7189c2d.yaml.php
+cache/compiled/*
