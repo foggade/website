@@ -41,8 +41,48 @@ a:hover {
     margin: auto;
 }
 
+.contentContainer{
+    padding: 0.1rem 2rem 2rem 2rem;
+    margin-top: 30rem;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.semi_transparent {
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+filter: alpha(opacity=90);
+opacity: 0.9;
+}
+
 .grav-lightslider{
     padding-top: 5rem;
+}
+
+.onepage-header-yzw{
+    /*background-image: url('/foggade/user/pages/images/overlay.png'), url('/foggade/user/pages/images/young-zulu-warriors-lineup-2016.jpg') !important;*/
+    /*background: url('/foggade/user/pages/images/young-zulu-warriors-lineup-2016.jpg') no-repeat top center fixed !important;*/
+    /*background: url(/foggade/user/pages/images/young-zulu-warriors-lineup-2016.jpg) no-repeat center center fixed !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+    padding-top: 10rem !important;
+}
+
+td{
+    border: 1px solid #cccccc;
+}
+
+.grav-youtube{
+    margin: 0 auto !important;
+    max-width: 853px !important;
+    max-height: 505px !important;
+    padding-bottom: 26.34% !important;
+}
+
+.grav-youtube iframe{
+    max-width: 853px !important;
+    max-height: 505px !important;
 }
 
 #header.scrolled #logo h3 {

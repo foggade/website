@@ -9,7 +9,9 @@ Durch folgende Möglichkeiten kannst du helfen:
 
 ## Mitgliedschaft
 Am Meisten hilfst du uns mit deiner Mitgliedschaft. Sie sorgt dafür, dass wir unabhängig bleiben, das Waisenheim unterstützen und die Betriebskosten decken können.
-Schreibe uns mithilfe des Kontaktformulars. Wir melden uns bei dir.
++ [Mitgliedsantrag](../documents/Mitgliedsantrag-FvGGAD.pdf")  
+
+Fülle den Antrag bitte vollständig aus und schicke ihn an die angegebene Adresse.
 
 ## Volontariat
 ![Volunteers auf GGA](../images/volunteers-gga.jpg)  
