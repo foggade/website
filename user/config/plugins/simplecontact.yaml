@@ -1,4 +1,4 @@
-enabled: true
+enabled: false
 
 subject: "New contact from Grav site!"
 recipient: "hello@example.com"

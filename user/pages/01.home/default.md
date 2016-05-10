@@ -16,8 +16,10 @@ Unser Ziel ist es, vornehmlich junge Menschen in Deutschland für die gesellscha
 ### News
 <ul>
 {% for post in page.find('/blog').children.order('date', 'desc').slice(0, 5) %}
-    <li class="recent-posts">
-        <strong><a href="{{ post.url }}">{{ post.title }}</a></strong>
-    </li>
+    {% if post.visible %}
+        <li class="recent-posts">
+            <strong><a href="{{ post.url }}">{{ post.title }}</a></strong>
+        </li>
+    {% endif %}
 {% endfor %}
 </ul>

@@ -11,7 +11,6 @@ backup/*
 assets/*
 !assets/.*
 logs/*
-!logs/.*
 images/*
 !images/.*
 user/accounts/*
@@ -35,5 +34,5 @@ tests/_output/*
 tests/_support/_generated/*
 tests/cache/*
 tests/error.log
+cache/**
 logs/grav.log
-cache/compiled/*

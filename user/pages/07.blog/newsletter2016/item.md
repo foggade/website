@@ -1,7 +1,7 @@
 ---
 title: GGA Newsletter April 2016
-routable: true
-visible: true
+routable: false
+visible: false
 date: 18.04.2016
 taxonomy:
     category: news
