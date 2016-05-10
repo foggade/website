@@ -2,6 +2,15 @@
 
 RewriteEngine On
 
+RewriteCond %{HTTPS} off
+# First rewrite to HTTPS:
+# Don't put www. here. If it is already there it will be included, if not
+# the subsequent rule will catch it.
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Now, rewrite any request to the wrong domain to use www.
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 ## Begin RewriteBase
 # If you are getting 404 errors on subpages, you may have to uncomment the RewriteBase entry
 # You should change the '/' to your appropriate subfolder. For example if you have
