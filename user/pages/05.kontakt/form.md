@@ -58,6 +58,6 @@ form:
             dateformat: Ymd-His-u
             extension: txt
             body: "{% include 'forms/data.txt.twig' %}"
-        - message: Danke für deine Nachricht.
+        - message: Danke für deine Anfrage.
         - display: thankyou
 ---
