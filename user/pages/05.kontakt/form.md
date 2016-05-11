@@ -51,7 +51,7 @@ form:
             from: "{{ form.value.email }}"
             to:
               - "{{ config.plugins.email.from }}"
-            subject: "[Anfrage über FvGGAD-Website Kontaktformular] {{ form.value.name|e }}"
+            subject: "[Anfrage über FvGGAD-Website Kontaktformular] von: {{ form.value.name|e }}"
             body: "{% include 'forms/data.html.twig' %}"
         - save:
             fileprefix: feedback-
