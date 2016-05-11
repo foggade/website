@@ -1,0 +1,12 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+	<div id="error">
+		<div>
+			<h1>Error {{ page.header.http_response_code }}</h1>
+			<p>
+				<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Es ist ein Fehler aufgetreten.
+			</p>
+		</div>
+	</div>
+{% endblock %}

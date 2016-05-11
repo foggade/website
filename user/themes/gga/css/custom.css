@@ -17,7 +17,7 @@ h3 {
 }
 
 h4 {
-	font-size: 0.75rem;
+	font-size: 0.90rem;
 }
 
 h5 {
@@ -39,6 +39,16 @@ a:hover {
 .centeredImage p img{
     display: block;
     margin: auto;
+}
+
+.center{
+    display: block;
+    margin: auto;
+}
+
+.ticket-button{
+    width: 12%;
+    text-align: center;
 }
 
 .contentContainer{
@@ -87,6 +97,21 @@ td{
 #header.scrolled #logo h3 {
     color: #444 !important;
     font-size: 0.95rem !important;
+}
+
+.tags a{
+    border: 1px solid #000000 !important;
+}
+
+.button{
+    border: none;
+    color: #7E5E3F;
+}
+
+.button:hover{
+    border: none;
+    color: #ffffff;
+    background-color: #7E5E3F;
 }
 
 @media all and (min-width: 1400px) {

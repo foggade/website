@@ -1,6 +1,6 @@
 absolute_urls: false
 timezone: 'Europe/Berlin'
-default_locale: system
+default_locale: de
 param_sep: ':'
 wrapped_site: false
 languages:
@@ -22,7 +22,7 @@ pages:
   list:
     count: 20
   dateformat:
-    default: 'd-m-Y H:i'
+    default: 'd.m.Y H:i'
     short: 'jS M Y'
     long: 'l jS \of F g:i A'
   publish_dates: true

@@ -35,6 +35,8 @@ form:
           recaptcha_not_validated: 'Captcha nicht korrekt!'
           validate:
             required: true
+          process:
+            ignore: true
 
     buttons:
         - type: submit
@@ -46,10 +48,9 @@ form:
 
     process:
         - email:
-            from: "{{ config.plugins.email.from }}"
+            from: "{{ form.value.email }}"
             to:
               - "{{ config.plugins.email.from }}"
-              - "{{ form.value.email }}"
             subject: "[Anfrage über FvGGAD-Website Kontaktformular] {{ form.value.name|e }}"
             body: "{% include 'forms/data.html.twig' %}"
         - save:
