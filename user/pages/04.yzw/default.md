@@ -31,7 +31,7 @@ Die Tour im Sommer 2016 führt durch Deutschland, die Niederlande und Frankreich
 | ------ | ----------- |  | |
 | 10.06 | 19:00 Uhr | [St. Jakobi Kirche, Braunschweig](https://goo.gl/maps/WokfVHaPHLF2) | [Tickets online kaufen](http://www.konzertkasse.de/product/benefizkonzert-der-young-zulu-warriors-traditioneller-gospel-und-zulu-dance-tickets.html)| [Facebook Event](https://www.facebook.com/events/1040782939321182/)|
 | 11.06 | 16:00 Uhr | [Kirche im St. Michaels-Heim, Berlin](https://goo.gl/maps/4QfZxDzsLCQ2) | [Tickets online kaufen](https://shop.ticketscript.com/channel/web2/start-order/rid/P38CFKGZ/language/de)|[Facebook Event](https://www.facebook.com/events/108845399526089/)|
-| 13.06 | ? | ?, Haselünne  | ? | ? |
+| 13.06 | 19:00 Uhr | [Schleperhalle, Haselünne](https://goo.gl/maps/fGAYdvZn8AF2)  | [Veranstaltungskalender](http://veranstaltungen.noz.de/musik_szene/benefizkonzert_in_der_schleperhalle/2078702-121/3387118-121) | ? |
   
 ##Weitere Infos
 + [offizielle Young Zulu Warriors Seite](http://godsgoldenacre.org/youngzuluwarriors.html "God's Golden Acre Young Zulu Warriors")  
