@@ -19,11 +19,7 @@ Die „Young Zulu Warriors“ sind eine junge und lebendige Gruppe von talentier
 Die Zulu Warriors traten unter anderem bei der Welt AIDS Konferenz in Durban und der Eröffnung des "Nelson Mandela Hospitals" auf.
 Mit ihrem Können machen sie auf das Kinderheim aufmerksam und tourten bereits mehrfach für den guten Zweck durch Europa.  
 Sie verstehen sich dabei als Botschafter ihres Landes, die das Leben in ihrer Heimat auf die Bühne bringen.
-
-
 [plugin:youtube](https://www.youtube.com/watch?v=tjZm0SIyDMs)
-
-
 ##Tourdaten
 Die Tour im Sommer 2016 führt durch Deutschland, die Niederlande und Frankreich.
 
@@ -32,8 +28,13 @@ Die Tour im Sommer 2016 führt durch Deutschland, die Niederlande und Frankreich
 | 10.06 | 19:00 Uhr | [St. Jakobi Kirche, Braunschweig](https://goo.gl/maps/WokfVHaPHLF2) | [Tickets online kaufen](http://www.konzertkasse.de/product/benefizkonzert-der-young-zulu-warriors-traditioneller-gospel-und-zulu-dance-tickets.html)| [Facebook Event](https://www.facebook.com/events/1040782939321182/)|
 | 11.06 | 16:00 Uhr | [Kirche im St. Michaels-Heim, Berlin](https://goo.gl/maps/4QfZxDzsLCQ2) | [Tickets online kaufen](https://shop.ticketscript.com/channel/web2/start-order/rid/P38CFKGZ/language/de)|[Facebook Event](https://www.facebook.com/events/108845399526089/)|
 | 13.06 | 19:00 Uhr | [Schleperhalle, Haselünne](https://goo.gl/maps/fGAYdvZn8AF2)  | [Musikschule Klangwelten](http://www.musikschule-klangwelten.de) | [Facebook Event](https://www.facebook.com/events/629076323911639/) |
+
+##Pressestimmen
++ [Remscheider General-Anzeiger, 09.04.2014](http://www.rga.de/lokales/wermelskirchen/mitreissender-auftritt-young-zulu-warriors-4081813.html "Mitreißender Auftritt der Young Zulu Warriors")
++ [Märkische Oderzeitung, 20.06.2013](http://www.moz.de/heimat/lokalredaktionen/bernau/artikel3/dg/0/1/1164975/ "Südafrikanische Rhythmen")
++ [Nürtinger Zeitung, 08.03.2008](http://www.ntz.de/nachrichten/kultur/artikel/young-zulu-warriors-im-k3n/ "Young Zulu Warriors im K3N")
   
 ##Weitere Infos
-+ [offizielle Young Zulu Warriors Seite](http://godsgoldenacre.org/youngzuluwarriors.html "God's Golden Acre Young Zulu Warriors")  
++ [offizielle „Young Zulu Warriors“ Seite](http://godsgoldenacre.org/youngzuluwarriors.html "God's Golden Acre's Young Zulu Warriors")  
 + [Tourdaten Niederlande](http://www.godsgoldenacre.nl/tour-zuid-afrikaanse-god-s-golden-acre")
 <!--/div-->
