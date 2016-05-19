@@ -2,7 +2,7 @@ en:
   PLUGIN_LOGIN:
     USERNAME: Username
     PASSWORD: Password
-
+    
     ACCESS_DENIED: Access denied...
     LOGIN_FAILED: Login failed...
     LOGIN_SUCCESSFUL: You have been successfully logged in.

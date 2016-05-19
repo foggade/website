@@ -1,6 +1,6 @@
 enabled: true
-from: info@godsgoldenacre.de
-from_name: Gods Golden Acre Deutschland
+from:
+from_name:
 to:
 to_name:
 mailer:
