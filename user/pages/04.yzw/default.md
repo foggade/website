@@ -23,17 +23,21 @@ Die „Young Zulu Warriors“ sind eine junge und lebendige Gruppe von talentier
 Die Zulu Warriors traten unter anderem bei der Welt AIDS Konferenz in Durban und der Eröffnung des "Nelson Mandela Hospitals" auf.
 Mit ihrem Können machen sie auf das Kinderheim aufmerksam und tourten bereits mehrfach für den guten Zweck durch Europa.  
 Sie verstehen sich dabei als Botschafter ihres Landes, die das Leben in ihrer Heimat auf die Bühne bringen.
+###Young Zulu Warriors Variety Concerts
 [plugin:youtube](https://www.youtube.com/watch?v=tjZm0SIyDMs)
+###Young Zulu Warriors zu Gast am Gymnasium Panketal
 [plugin:youtube](https://www.youtube.com/watch?v=KAZ-O5zTzCw)
+###Young Zulu Warriors "Thula Sizwe" Tour
 [plugin:youtube](https://www.youtube.com/watch?v=21EJLJHfXbM)
 ##Tourdaten
-Die Tour im Sommer 2016 führt durch Deutschland, die Niederlande und Frankreich.
+Die Tour im Sommer 2016 führt durch Deutschland und die Niederlande.
 
 | Datum  | Uhrzeit | Ort | Tickets | Veranstaltungsseite
 | ------ | ----------- |  | |
 | 10.06 | 19:00 Uhr | [St. Jakobi Kirche, Braunschweig](https://goo.gl/maps/WokfVHaPHLF2) | [Tickets online kaufen](http://www.konzertkasse.de/product/benefizkonzert-der-young-zulu-warriors-traditioneller-gospel-und-zulu-dance-tickets.html)| [Facebook Event](https://www.facebook.com/events/1040782939321182/)|
 | 11.06 | 16:00 Uhr | [Kirche im St. Michaels-Heim, Berlin](https://goo.gl/maps/4QfZxDzsLCQ2) | [Tickets online kaufen](https://shop.ticketscript.com/channel/web2/start-order/rid/P38CFKGZ/language/de)|[Facebook Event](https://www.facebook.com/events/108845399526089/)|
 | 13.06 | 19:00 Uhr | [Schleperhalle, Haselünne](https://goo.gl/maps/fGAYdvZn8AF2)  | [Musikschule Klangwelten](http://www.musikschule-klangwelten.de) | [Facebook Event](https://www.facebook.com/events/629076323911639/) |
++ [Tourdaten Niederlande](http://www.godsgoldenacre.nl/tour-zuid-afrikaanse-god-s-golden-acre)
 
 ##Pressestimmen
 + [Remscheider General-Anzeiger, 09.04.2014](http://www.rga.de/lokales/wermelskirchen/mitreissender-auftritt-young-zulu-warriors-4081813.html "Mitreißender Auftritt der Young Zulu Warriors")
@@ -62,9 +66,8 @@ _bp_iframe.recurring_interval = 'single'; /* Interval for recurring donations, s
   })();
 </script>
 <div id="betterplace_donation_iframe" style="background: transparent url('https://www.betterplace.org/assets/new_spinner.gif') 275px 20px no-repeat;"><strong><a href="https://www.betterplace.org/de/projects/43332-benefizkonzert-der-young-zulu-warriors-aus-sudafrika/donations/new">Jetzt Spenden für „Benefizkonzert der Young Zulu Warriors aus Südafrika“ bei unserem Partner betterplace.org</a></strong></div>
-[Projektseite „Benefizkonzert der Young Zulu Warriors aus Südafrika“ bei unserem Partner betterplace.org](https://www.betterplace.org/de/projects/43332-benefizkonzert-der-young-zulu-warriors-aus-sudafrika)
++ [Projektseite „Benefizkonzert der Young Zulu Warriors aus Südafrika“ bei unserem Partner betterplace.org](https://www.betterplace.org/de/projects/43332-benefizkonzert-der-young-zulu-warriors-aus-sudafrika)
   
 ##Weitere Infos
 + [offizielle „Young Zulu Warriors“ Seite](http://godsgoldenacre.org/youngzuluwarriors.html "God's Golden Acre's Young Zulu Warriors")  
-+ [Tourdaten Niederlande](http://www.godsgoldenacre.nl/tour-zuid-afrikaanse-god-s-golden-acre")
 <!--/div-->

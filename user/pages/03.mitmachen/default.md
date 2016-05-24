@@ -8,8 +8,8 @@ Als Nichtregierungsorganisation (NRO bzw. aus dem Englischen NGO) ist God's Gold
 Durch folgende Möglichkeiten kannst du helfen:
 
 ## Mitgliedschaft
-Am Meisten hilfst du uns mit deiner Mitgliedschaft. Sie sorgt dafür, dass wir unabhängig bleiben, das Waisenheim unterstützen und die Betriebskosten decken können.
-+ [Mitgliedsantrag](../documents/Mitgliedsantrag-FvGGAD.pdf")  
+Am Meisten hilfst du uns mit deiner Mitgliedschaft. Sie sorgt dafür, dass wir unabhängig bleiben, das Waisenheim unterstützen und die Betriebskosten decken können.  
+<a class="button" href="../documents/Mitgliedsantrag-FvGGAD.pdf"><i class="fa fa-download"></i> Mitgliedsantrag herunterladen</a>
 
 Fülle den Antrag bitte vollständig aus und schicke ihn an die angegebene Adresse.
 
