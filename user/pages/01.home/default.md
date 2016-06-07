@@ -14,7 +14,6 @@ Der gemeinnützige Verein *Freunde von God's Golden Acre Deutschland* will junge
 Unser Ziel ist es, vornehmlich junge Menschen in Deutschland für die gesellschaftliche Mitverantwortung und Hilfsbereitschaft gegenüber Menschen in den Entwicklungsländern zu sensibilisieren.
 
 ### News
-#### Letzte Neuigkeiten:
 <ul>
 {% for post in page.find('/blog').children.order('date', 'desc').slice(0, 15) %}
     {% if post.visible %}

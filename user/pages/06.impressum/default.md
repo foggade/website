@@ -22,6 +22,7 @@ Registergericht: Amtsgericht Arnsberg
 Registernummer:  VR 1442
 
 ### Kontoverbindung  
+VR-Bank Altenburger Land  
 IBAN: DE89 8306 5408 0004 7819 02  
 BIC: GENODEF1SLR  
 
