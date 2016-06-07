@@ -39,6 +39,10 @@ Die Tour im Sommer 2016 führt durch Deutschland und die Niederlande.
 | 13.06 | 19:00 Uhr | [Schleperhalle, Haselünne](https://goo.gl/maps/fGAYdvZn8AF2)  | [Musikschule Klangwelten](http://www.musikschule-klangwelten.de) | [Facebook Event](https://www.facebook.com/events/629076323911639/) |
 + [Tourdaten Niederlande](http://www.godsgoldenacre.nl/tour-zuid-afrikaanse-god-s-golden-acre)
 
+##Die Sänger/-innen
+
+{{ images_collage(page.find('/images/yzw-2016-members').media.images, 3, 5, 900).html }}
+
 ##Pressestimmen
 + [Remscheider General-Anzeiger, 09.04.2014](http://www.rga.de/lokales/wermelskirchen/mitreissender-auftritt-young-zulu-warriors-4081813.html "Mitreißender Auftritt der Young Zulu Warriors")
 + [Märkische Oderzeitung, 20.06.2013](http://www.moz.de/heimat/lokalredaktionen/bernau/artikel3/dg/0/1/1164975/ "Südafrikanische Rhythmen")
