@@ -14,8 +14,7 @@ process:
 
 
 #Young Zulu Warriors Europa Tour 2016
-<a class="button exclude center ticket-button" href="https://shop.ticketscript.com/channel/web2/start-order/rid/P38CFKGZ/language/de"><i class="fa fa-ticket"></i> Tickets für Berlin kaufen</a>
-<!--div class="contentContainer semi_transparent" markdown="1" -->
+
 <div class="centeredImage" markdown="1" >
 ![Young Zulu Warriors Lineup 2016](../images/young-zulu-warriors-lineup-2016.jpg)
 </div>
@@ -30,7 +29,7 @@ Sie verstehen sich dabei als Botschafter ihres Landes, die das Leben in ihrer He
 ###Young Zulu Warriors "Thula Sizwe" Tour
 [plugin:youtube](https://www.youtube.com/watch?v=21EJLJHfXbM)
 ##Tourdaten
-Die Tour im Sommer 2016 führt durch Deutschland und die Niederlande.
+Die Tour im Sommer 2016 führt durch Deutschland, die Niederlande und Frankreich.
 
 | Datum  | Uhrzeit | Ort | Tickets | Veranstaltungsseite
 | ------ | ----------- |  | |
@@ -48,7 +47,7 @@ Die Tour im Sommer 2016 führt durch Deutschland und die Niederlande.
 + [Märkische Oderzeitung, 20.06.2013](http://www.moz.de/heimat/lokalredaktionen/bernau/artikel3/dg/0/1/1164975/ "Südafrikanische Rhythmen")
 + [Nürtinger Zeitung, 08.03.2008](http://www.ntz.de/nachrichten/kultur/artikel/young-zulu-warriors-im-k3n/ "Young Zulu Warriors im K3N")
 
-##Unterstützung
+<!--##Unterstützung
 Du kannst leider nicht an einem der Konzerte teilnehmen, möchtest die Tour aber trotzdem unterstützen?  
 Über einen kleinen Betrag für die wichtigsten Dinge wie Unterkunft, Verpflegung und Transport sind wir sehr dankbar. Unterstütze uns mit einer Spende bei Betterplace!
 <script type="text/javascript">
@@ -70,8 +69,7 @@ _bp_iframe.recurring_interval = 'single'; /* Interval for recurring donations, s
   })();
 </script>
 <div id="betterplace_donation_iframe" style="background: transparent url('https://www.betterplace.org/assets/new_spinner.gif') 275px 20px no-repeat;"><strong><a href="https://www.betterplace.org/de/projects/43332-benefizkonzert-der-young-zulu-warriors-aus-sudafrika/donations/new">Jetzt Spenden für „Benefizkonzert der Young Zulu Warriors aus Südafrika“ bei unserem Partner betterplace.org</a></strong></div>
-+ [Projektseite „Benefizkonzert der Young Zulu Warriors aus Südafrika“ bei unserem Partner betterplace.org](https://www.betterplace.org/de/projects/43332-benefizkonzert-der-young-zulu-warriors-aus-sudafrika)
++ [Projektseite „Benefizkonzert der Young Zulu Warriors aus Südafrika“ bei unserem Partner betterplace.org](https://www.betterplace.org/de/projects/43332-benefizkonzert-der-young-zulu-warriors-aus-sudafrika)-->
   
 ##Weitere Infos
 + [offizielle „Young Zulu Warriors“ Seite](http://godsgoldenacre.org/youngzuluwarriors.html "God's Golden Acre's Young Zulu Warriors")  
-<!--/div-->
