@@ -4,12 +4,12 @@ date: 01/01/2014 3:14pm
 
 ---
 
-Als Nichtregierungsorganisation (NRO bzw. aus dem Englischen NGO) ist God's Golden Acre ausschließlich auf Spenden angewiesen. Neben dem "täglich Brot" müssen durch Spenden vor allem Medikamente, der Schulbesuch sowie Kleidung finanziert werden.  
-Durch folgende Möglichkeiten kannst du helfen:
+Als Nichtregierungsorganisation ist God's Golden Acre ausschließlich auf Spenden angewiesen. Neben dem "täglich Brot" müssen durch Spenden vor allem Medikamente, der Schulbesuch sowie Kleidung finanziert werden.  
+Es gibt mehrere Möglichkeiten uns zu unterstützen:
 
 ## Mitgliedschaft
-Am Meisten hilfst du uns mit deiner Mitgliedschaft. Sie sorgt dafür, dass wir unabhängig bleiben, das Waisenheim unterstützen und die Betriebskosten decken können.
-+ [Mitgliedsantrag](../documents/Mitgliedsantrag-FvGGAD.pdf")  
+Am Meisten hilfst du uns mit deiner Mitgliedschaft. Sie sorgt dafür, dass wir unabhängig bleiben, das Waisenheim unterstützen und unsere Betriebskosten decken können.  
+<a class="button" href="../documents/Mitgliedsantrag-FvGGAD.pdf"><i class="fa fa-download"></i> Mitgliedsantrag herunterladen</a>
 
 Fülle den Antrag bitte vollständig aus und schicke ihn an die angegebene Adresse.
 
@@ -21,7 +21,7 @@ Schreibe uns mithilfe des Kontaktformulars. Wir melden uns bei dir.
 
 ## Spenden
 
-Hilf uns mit deiner individuellen Spende oder dem "5 Euro Programm".  
+Hilf uns mit deiner individuellen Spende oder dem "5-Euro-Programm".  
 + [Spenden](/impressum "Individuelle Spende")
 + [5 Euro Programm](http://godsgoldenacre.org/donate-now.html "God's Golden Acre Good Samaritan Fund")
 
