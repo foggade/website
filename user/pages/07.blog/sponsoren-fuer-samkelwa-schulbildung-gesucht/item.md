@@ -16,9 +16,10 @@ process:
 wir hoffen, ihr seid alle wohlauf!   
 
 Die Leiterin des Bereiches „Schule und Bildung“ bei GGA, Evelyn Marx, hat sich mit einem wichtigen Anliegen an uns gewandt:   
-<div class="floatLeftImage" markdown="1" >
+Für unsere Samkelwa wird dringend Unterstützung für die Finanzierung des weiteren Schulbesuches gesucht!
+<div class="floatLeftImage" markdown="1">
 ![Samkelwa](../../images/samkelwa.png)
-</div>Für unsere Samkelwa wird dringend Unterstützung für die Finanzierung des weiteren Schulbesuches gesucht!
+</div>
 Samkelwa besucht aktuell noch die Primary School (Erweiterte Grundschule) in Camperdown bei Cato Ridge. Sie wird nach Ablauf des aktuellen Schuljahres im Dezember auf die High School wechseln. Im Moment setzt sich Evelyn mit großem Engagement dafür ein, eine möglichst gute Schule für Samkelwa zu finden, wofür zahlreiche Bewerbungsverfahren bereits durchlaufen wurden.   
 Samkelwa konnte bei den diesbezüglichen Vorstellungsgesprächen mit exzellenten Lesefähigkeiten überzeugen und beeindrucken, so dass ihr ein Platz am sehr begehrten _Inanda Seminary_ in Durban angeboten wurde, ein hervorragendes Internat für junge Frauen. Dort wird ein qualitativ hochwertiges Bildungsangebot bereitgestellt, was jedes Jahr wieder durch entsprechend herausragende Matric(Abitur)-Ergebnisse der Absolventen bestätigt wird.   
 Einigen wenigen Kindern von GGA konnten wir zuvor schon einen Besuch dieser Schule ermöglichen. GGA hat mit dem Inanda Seminary sehr gute Erfahrungen gemacht, mit dem Unterricht, besonderen außerschulischen Aktivitäten, jedoch auch mit dem Förderungssystem der Schule, das insbesondere den Schülern eine wichtige Unterstützung bietet, die mit sich mit dem Unterrichtsstoff schwerer tun.   
