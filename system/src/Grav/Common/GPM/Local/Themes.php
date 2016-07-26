@@ -1,15 +1,10 @@
 <?php
-/**
- * @package    Grav.Common.GPM
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\GPM\Local;
 
-use Grav\Common\Grav;
-
+/**
+ * Class Themes
+ * @package Grav\Common\GPM\Local
+ */
 class Themes extends AbstractPackageCollection
 {
     /**
@@ -22,6 +17,6 @@ class Themes extends AbstractPackageCollection
      */
     public function __construct()
     {
-        parent::__construct(Grav::instance()['themes']->all());
+        parent::__construct(self::getGrav()['themes']->all());
     }
 }

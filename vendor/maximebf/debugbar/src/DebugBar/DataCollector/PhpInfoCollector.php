@@ -15,20 +15,13 @@ namespace DebugBar\DataCollector;
  */
 class PhpInfoCollector extends DataCollector
 {
-    /**
-     * @return array
-     */
     public function collect()
     {
         return array(
-            'version' => PHP_VERSION,
-            'interface' => PHP_SAPI
+            'version' => PHP_VERSION
         );
     }
 
-    /**
-     * @return string
-     */
     public function getName()
     {
         return 'php';

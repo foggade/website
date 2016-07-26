@@ -1,18 +1,21 @@
 <?php
-/**
- * @package    Grav.Common.Page
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\Page\Medium;
 
-use Grav\Common\Grav;
+use Grav\Common\GravTrait;
 use Grav\Common\Data\Blueprint;
 
+/**
+ * MediumFactory can be used to more easily create various Medium objects from files or arrays, it should
+ * contain most logic for instantiating a Medium object.
+ *
+ * @author Grav
+ * @license MIT
+ *
+ */
 class MediumFactory
 {
+    use GravTrait;
+
     /**
      * Create Medium from a file
      *
@@ -32,9 +35,9 @@ class MediumFactory
         $ext = array_pop($parts);
         $basename = implode('.', $parts);
 
-        $config = Grav::instance()['config'];
+        $config = self::getGrav()['config'];
 
-        $media_params = $config->get("media.types.".strtolower($ext));
+        $media_params = $config->get("media.".strtolower($ext));
         if (!$media_params) {
             return null;
         }
@@ -42,7 +45,7 @@ class MediumFactory
         $params += $media_params;
 
         // Add default settings for undefined variables.
-        $params += $config->get('media.types.defaults');
+        $params += $config->get('media.defaults');
         $params += [
             'type' => 'file',
             'thumb' => 'media/thumb.png',
@@ -56,11 +59,14 @@ class MediumFactory
             'thumbnails' => []
         ];
 
-        $locator = Grav::instance()['locator'];
+        $locator = self::getGrav()['locator'];
 
-        $file = $locator->findResource("image://{$params['thumb']}");
-        if ($file) {
-            $params['thumbnails']['default'] = $file;
+        $lookup = $locator->findResources('image://');
+        foreach ($lookup as $lookupPath) {
+            if (is_file($lookupPath . '/' . $params['thumb'])) {
+                $params['thumbnails']['default'] = $lookupPath . '/' . $params['thumb'];
+                break;
+            }
         }
 
         return static::fromArray($params);

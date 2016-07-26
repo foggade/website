@@ -1,15 +1,14 @@
----
 FRONTMATTER_ERROR_PAGE: |
   ---
   title: %1$s
   ---
-  
+
   # Error: Nieprawidłowy Frontmatter
-  
+
   Path: `%2$s`
-  
+
   **%3$s**
-  
+
   ```
   %4$s
   ```
@@ -29,8 +28,8 @@ NICETIME:
   SEC: sek
   MIN: min
   HR: godz
-  WK: tydz
-  MO: m-c
+  WK: tydź
+  MO: mieś
   YR: rok
   DEC: dekada
   SECOND_PLURAL: sekund
@@ -41,16 +40,16 @@ NICETIME:
   MONTH_PLURAL: miesięcy
   YEAR_PLURAL: lat
   DECADE_PLURAL: dekad
-  SEC_PLURAL: sek
-  MIN_PLURAL: min
+  SEC_PLURAL: sekund
+  MIN_PLURAL: minut
   HR_PLURAL: godz
   WK_PLURAL: tyg
-  MO_PLURAL: m-ce
+  MO_PLURAL: mieś
   YR_PLURAL: lat
   DEC_PLURAL: dekad
 FORM:
   VALIDATION_FAIL: '<b>Weryfikacja nie powiodła się:</b>'
-  INVALID_INPUT: Nieprawidłowe dane wejściowe
+  INVALID_INPUT: Nieprawidłowe dane w
   MISSING_REQUIRED_FIELD: 'Opuszczono wymagane pole:'
 MONTHS_OF_THE_YEAR:
   - Styczeń

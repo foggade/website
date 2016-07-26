@@ -1,15 +1,8 @@
 <?php
-/**
- * @package    Grav.Common.GPM
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\GPM;
 
 use Grav\Common\Filesystem\Folder;
-use Grav\Common\Grav;
+use Symfony\Component\Yaml\Yaml;
 
 class Installer
 {
@@ -37,14 +30,10 @@ class Installer
     protected static $target;
 
     /**
-     * @var integer Error Code
+     * Error Code
+     * @var integer
      */
     protected static $error = 0;
-
-    /**
-     * @var string Post install message
-     */
-    protected static $message = '';
 
     /**
      * Default options for the install
@@ -54,7 +43,7 @@ class Installer
         'overwrite'       => true,
         'ignore_symlinks' => true,
         'sophisticated'   => false,
-        'theme'           => false,
+        'theme'            => false,
         'install_path'    => '',
         'exclude_checks'  => [self::EXISTS, self::NOT_FOUND, self::IS_LINK]
     ];
@@ -74,22 +63,21 @@ class Installer
         $options = array_merge(self::$options, $options);
         $install_path = rtrim($destination . DS . ltrim($options['install_path'], DS), DS);
 
-        if (!self::isGravInstance($destination) || !self::isValidDestination($install_path,
-                $options['exclude_checks'])
-        ) {
+        if (!self::isGravInstance($destination) || !self::isValidDestination($install_path, $options['exclude_checks'])) {
             return false;
         }
 
         if (self::lastErrorCode() == self::IS_LINK && $options['ignore_symlinks'] ||
-            self::lastErrorCode() == self::EXISTS && !$options['overwrite']
-        ) {
+            self::lastErrorCode() == self::EXISTS && !$options['overwrite']) {
             return false;
         }
 
+        // Pre install checks
+        static::flightProcessing('pre_install', $install_path);
+
         $zip = new \ZipArchive();
         $archive = $zip->open($package);
-        $cache_dir = Grav::instance()['locator']->findResource('cache://', true);
-        $tmp = $cache_dir . DS . 'tmp/Grav-' . uniqid();
+        $tmp = CACHE_DIR . 'tmp/Grav-' . uniqid();
 
         if ($archive !== true) {
             self::$error = self::ZIP_OPEN_ERROR;
@@ -103,35 +91,13 @@ class Installer
 
         if (!$unzip) {
             self::$error = self::ZIP_EXTRACT_ERROR;
+
             $zip->close();
             Folder::delete($tmp);
 
             return false;
         }
 
-        $package_folder_name = $zip->getNameIndex(0);
-        $installer_file_folder = $tmp . '/' . $package_folder_name;
-
-        $is_install = true;
-        $installer = self::loadInstaller($installer_file_folder, $is_install);
-
-        if (isset($options['is_update']) && $options['is_update'] === true) {
-            $method = 'preUpdate';
-        } else {
-            $method = 'preInstall';
-        }
-
-        if ($installer && method_exists($installer, $method)) {
-            $method_result = $installer::$method();
-            if ($method_result !== true) {
-                self::$error = 'An error occurred';
-                if (is_string($method_result)) {
-                    self::$error = $method_result;
-                }
-
-                return false;
-            }
-        }
 
         if (!$options['sophisticated']) {
             if ($options['theme']) {
@@ -146,16 +112,8 @@ class Installer
         Folder::delete($tmp);
         $zip->close();
 
-        if (isset($options['is_update']) && $options['is_update'] === true) {
-            $method = 'postUpdate';
-        } else {
-            $method = 'postInstall';
-        }
-
-        self::$message = '';
-        if ($installer && method_exists($installer, $method)) {
-            self::$message = $installer::$method();
-        }
+        // Post install checks
+        static::flightProcessing('post_install', $install_path);
 
         self::$error = self::OK;
 
@@ -164,50 +122,26 @@ class Installer
     }
 
     /**
-     * Instantiates and returns the package installer class
-     *
-     * @param string $installer_file_folder The folder path that contains install.php
-     * @param bool $is_install True if install, false if removal
-     *
-     * @return null|string
+     * @param $state
+     * @param $install_path
      */
-    private static function loadInstaller($installer_file_folder, $is_install)
+    protected static function flightProcessing($state, $install_path)
     {
-        $installer = null;
+        $blueprints_path = $install_path . DS . 'blueprints.yaml';
 
-        $installer_file_folder = rtrim($installer_file_folder, DS);
-
-        $install_file = $installer_file_folder . DS . 'install.php';
-
-        if (file_exists($install_file)) {
-            require_once($install_file);
-        } else {
-            return null;
-        }
-
-        if ($is_install) {
-            $slug = '';
-            if (($pos = strpos($installer_file_folder, 'grav-plugin-')) !== false) {
-                $slug = substr($installer_file_folder, $pos + strlen('grav-plugin-'));
-            } elseif (($pos = strpos($installer_file_folder, 'grav-theme-')) !== false) {
-                $slug = substr($installer_file_folder, $pos + strlen('grav-theme-'));
+        if (file_exists($blueprints_path)) {
+            $package_yaml = Yaml::parse(file_get_contents($blueprints_path));
+            if (isset($package_yaml['install'][$state]['create'])) {
+                foreach ((array) $package_yaml['install']['pre_install']['create'] as $file) {
+                    Folder::mkdir($install_path . '/' . ltrim($file, '/'));
+                }
             }
-        } else {
-            $path_elements = explode('/', $installer_file_folder);
-            $slug = end($path_elements);
+            if (isset($package_yaml['install'][$state]['remove'])) {
+                foreach ((array) $package_yaml['install']['pre_install']['remove'] as $file) {
+                    Folder::delete($install_path . '/' . ltrim($file, '/'));
+                }
+            }
         }
-
-        if (!$slug) {
-            return null;
-        }
-
-        $class_name = ucfirst($slug) . 'Install';
-
-        if (class_exists($class_name)) {
-            return $class_name;
-        }
-
-        return $installer;
     }
 
     /**
@@ -294,8 +228,8 @@ class Installer
     /**
      * Uninstalls one or more given package
      *
-     * @param  string $path    The slug of the package(s)
-     * @param  array  $options Options to use for uninstalling
+     * @param  string $path     The slug of the package(s)
+     * @param  array  $options     Options to use for uninstalling
      *
      * @return boolean True if everything went fine, False otherwise.
      */
@@ -307,30 +241,7 @@ class Installer
             return false;
         }
 
-        $installer_file_folder = $path;
-        $is_install = false;
-        $installer = self::loadInstaller($installer_file_folder, $is_install);
-
-        if ($installer && method_exists($installer, 'preUninstall')) {
-            $method_result = $installer::preUninstall();
-            if ($method_result !== true) {
-                self::$error = 'An error occurred';
-                if (is_string($method_result)) {
-                    self::$error = $method_result;
-                }
-
-                return false;
-            }
-        }
-
-        $result = Folder::delete($path);
-
-        self::$message = '';
-        if ($result && $installer && method_exists($installer, 'postUninstall')) {
-            self::$message = $installer::postUninstall();
-        }
-
-        return $result;
+        return Folder::delete($path);
     }
 
     /**
@@ -385,15 +296,6 @@ class Installer
         }
 
         return !self::$error;
-    }
-
-    /**
-     * Returns the last message added by the installer
-     * @return string The message
-     */
-    public static function getMessage()
-    {
-        return self::$message;
     }
 
     /**
@@ -458,7 +360,6 @@ class Installer
 
     /**
      * Allows to manually set an error
-     *
      * @param int|string $error the Error code
      */
 

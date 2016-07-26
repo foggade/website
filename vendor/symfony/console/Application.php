@@ -430,7 +430,7 @@ class Application
     public function getNamespaces()
     {
         $namespaces = array();
-        foreach ($this->all() as $command) {
+        foreach ($this->commands as $command) {
             $namespaces = array_merge($namespaces, $this->extractAllNamespaces($command->getName()));
 
             foreach ($command->getAliases() as $alias) {

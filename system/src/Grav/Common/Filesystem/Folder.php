@@ -1,16 +1,12 @@
 <?php
-/**
- * @package    Grav.Common.FileSystem
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\Filesystem;
 
-use Grav\Common\Grav;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
-
+/**
+ * Folder helper class.
+ *
+ * @author RocketTheme
+ * @license MIT
+ */
 abstract class Folder
 {
     /**
@@ -23,14 +19,7 @@ abstract class Folder
     {
         $last_modified = 0;
 
-        /** @var UniformResourceLocator $locator */
-        $locator = Grav::instance()['locator'];
-        $flags = \RecursiveDirectoryIterator::SKIP_DOTS;
-        if ($locator->isStream($path)) {
-            $directory = $locator->getRecursiveIterator($path, $flags);
-        } else {
-            $directory = new \RecursiveDirectoryIterator($path, $flags);
-        }
+        $directory = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
         $filter  = new RecursiveFolderFilterIterator($directory);
         $iterator = new \RecursiveIteratorIterator($filter, \RecursiveIteratorIterator::SELF_FIRST);
 
@@ -57,14 +46,7 @@ abstract class Folder
     {
         $last_modified = 0;
 
-        /** @var UniformResourceLocator $locator */
-        $locator = Grav::instance()['locator'];
-        $flags = \RecursiveDirectoryIterator::SKIP_DOTS;
-        if ($locator->isStream($path)) {
-            $directory = $locator->getRecursiveIterator($path, $flags);
-        } else {
-            $directory = new \RecursiveDirectoryIterator($path, $flags);
-        }
+        $directory = new \RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS);
         $recursive = new \RecursiveIteratorIterator($directory, \RecursiveIteratorIterator::SELF_FIRST);
         $iterator = new \RegexIterator($recursive, '/^.+\.'.$extensions.'$/i');
 
@@ -163,7 +145,7 @@ abstract class Folder
     public static function all($path, array $params = [])
     {
         if ($path === false) {
-            throw new \RuntimeException("Path doesn't exist.");
+            throw new \RuntimeException("Path to {$path} doesn't exist.");
         }
 
         $compare = isset($params['compare']) ? 'get' . $params['compare'] : null;
@@ -176,23 +158,13 @@ abstract class Folder
         $folders = isset($params['folders']) ? $params['folders'] : true;
         $files = isset($params['files']) ? $params['files'] : true;
 
-        /** @var UniformResourceLocator $locator */
-        $locator = Grav::instance()['locator'];
         if ($recursive) {
-            $flags = \RecursiveDirectoryIterator::SKIP_DOTS + \FilesystemIterator::UNIX_PATHS + \FilesystemIterator::CURRENT_AS_SELF;
-            if ($locator->isStream($path)) {
-                $directory = $locator->getRecursiveIterator($path, $flags);
-            } else {
-                $directory = new \RecursiveDirectoryIterator($path, $flags);
-            }
+            $directory = new \RecursiveDirectoryIterator($path,
+                \RecursiveDirectoryIterator::SKIP_DOTS + \FilesystemIterator::UNIX_PATHS + \FilesystemIterator::CURRENT_AS_SELF);
             $iterator = new \RecursiveIteratorIterator($directory, \RecursiveIteratorIterator::SELF_FIRST);
             $iterator->setMaxDepth(max($levels, -1));
         } else {
-            if ($locator->isStream($path)) {
-                $iterator = $locator->getIterator($path);
-            } else {
-                $iterator = new \FilesystemIterator($path);
-            }
+            $iterator = new \FilesystemIterator($path);
         }
 
         $results = [];

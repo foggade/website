@@ -19,7 +19,6 @@ class OpenHandler
 
     /**
      * @param DebugBar $debugBar
-     * @throws DebugBarException
      */
     public function __construct(DebugBar $debugBar)
     {
@@ -33,10 +32,6 @@ class OpenHandler
      * Handles the current request
      *
      * @param array $request Request data
-     * @param bool $echo
-     * @param bool $sendHeader
-     * @return string
-     * @throws DebugBarException
      */
     public function handle($request = null, $echo = true, $sendHeader = true)
     {
@@ -67,8 +62,6 @@ class OpenHandler
 
     /**
      * Find operation
-     * @param $request
-     * @return array
      */
     protected function find($request)
     {
@@ -94,9 +87,6 @@ class OpenHandler
 
     /**
      * Get operation
-     * @param $request
-     * @return array
-     * @throws DebugBarException
      */
     protected function get($request)
     {

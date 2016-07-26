@@ -1,23 +1,19 @@
 <?php
-/**
- * @package    Grav.Console
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Console\Gpm;
 
 use Grav\Common\Filesystem\Folder;
 use Grav\Common\GPM\Installer;
 use Grav\Common\GPM\Response;
 use Grav\Common\GPM\Upgrader;
-use Grav\Common\Grav;
 use Grav\Console\ConsoleCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 
+/**
+ * Class SelfupgradeCommand
+ * @package Grav\Console\Gpm
+ */
 class SelfupgradeCommand extends ConsoleCommand
 {
     /**
@@ -39,7 +35,7 @@ class SelfupgradeCommand extends ConsoleCommand
     /**
      * @var array
      */
-    protected $types = ['plugins', 'themes'];
+    protected $types = array('plugins', 'themes');
     /**
      * @var
      */
@@ -79,8 +75,6 @@ class SelfupgradeCommand extends ConsoleCommand
     protected function serve()
     {
         $this->upgrader = new Upgrader($this->input->getOption('force'));
-
-        $this->displayGPMRelease();
 
         $update = $this->upgrader->getAssets()['grav-update'];
 
@@ -177,8 +171,7 @@ class SelfupgradeCommand extends ConsoleCommand
      */
     private function download($package)
     {
-        $cache_dir = Grav::instance()['locator']->findResource('cache://', true);
-        $this->tmp = $cache_dir . DS . 'tmp/Grav-' . uniqid();
+        $this->tmp = CACHE_DIR . DS . 'tmp/Grav-' . uniqid();
         $output = Response::get($package['download'], [], [$this, 'progress']);
 
         Folder::mkdir($this->tmp);

@@ -1,11 +1,4 @@
 <?php
-/**
- * @package    Grav.Common
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common;
 
 use Grav\Common\Config\Config;
@@ -28,6 +21,9 @@ use Grav\Common\Page\Page;
  * [tag][grav][path/to/item1]
  * [tag][grav][path/to/item2]
  * [tag][dog][path/to/item3]
+ *
+ * @author  RocketTheme
+ * @license MIT
  */
 class Taxonomy
 {
@@ -80,7 +76,7 @@ class Taxonomy
      * particular taxonomy.
      *
      * @param  array  $taxonomies taxonomies to search, eg ['tag'=>['animal','cat']]
-     * @param  string $operator   can be 'or' or 'and' (defaults to 'and')
+     * @param  string $operator   can be 'or' or 'and' (defaults to 'or')
      *
      * @return Collection       Collection object set to contain matches found in the taxonomy map
      */

@@ -60,8 +60,6 @@ class JavascriptRenderer
 
     protected $enableJqueryNoConflict = true;
 
-    protected $useRequireJs = false;
-
     protected $initialization;
 
     protected $controls = array();
@@ -144,9 +142,6 @@ class JavascriptRenderer
         }
         if (array_key_exists('enable_jquery_noconflict', $options)) {
             $this->setEnableJqueryNoConflict($options['enable_jquery_noconflict']);
-        }
-        if (array_key_exists('use_requirejs', $options)) {
-            $this->setUseRequireJs($options['use_requirejs']);
         }
         if (array_key_exists('controls', $options)) {
             foreach ($options['controls'] as $name => $control) {
@@ -355,28 +350,6 @@ class JavascriptRenderer
     public function isJqueryNoConflictEnabled()
     {
         return $this->enableJqueryNoConflict;
-    }
-
-    /**
-     * Sets whether to use RequireJS or not
-     *
-     * @param boolean $enabled
-     * @return $this
-     */
-    public function setUseRequireJs($enabled = true)
-    {
-        $this->useRequireJs = $enabled;
-        return $this;
-    }
-
-    /**
-     * Checks if RequireJS is used
-     *
-     * @return boolean
-     */
-    public function isRequireJsUsed()
-    {
-        return $this->useRequireJs;
     }
 
     /**
@@ -737,7 +710,7 @@ class JavascriptRenderer
      */
     public function dumpJsAssets($targetFilename = null)
     {
-        $this->dumpAssets($this->getAssets('js'), $targetFilename, $this->useRequireJs);
+        $this->dumpAssets($this->getAssets('js'), $targetFilename);
     }
 
     /**
@@ -745,16 +718,12 @@ class JavascriptRenderer
      *
      * @param array $files
      * @param string $targetFilename
-     * @param bool $useRequireJs
      */
-    protected function dumpAssets($files, $targetFilename = null, $useRequireJs = false)
+    protected function dumpAssets($files, $targetFilename = null)
     {
         $content = '';
         foreach ($files as $file) {
             $content .= file_get_contents($file) . "\n";
-        }
-        if ($useRequireJs) {
-            $content = "define('debugbar', ['jquery'], function($){\r\n" . $content . "\r\n return PhpDebugBar; \r\n});";
         }
         if ($targetFilename !== null) {
             file_put_contents($targetFilename, $content);
@@ -783,7 +752,7 @@ class JavascriptRenderer
             $html .= sprintf('<script type="text/javascript" src="%s"></script>' . "\n", $file);
         }
 
-        if ($this->enableJqueryNoConflict && !$this->useRequireJs) {
+        if ($this->enableJqueryNoConflict) {
             $html .= '<script type="text/javascript">jQuery.noConflict(true);</script>' . "\n";
         }
 
@@ -795,8 +764,6 @@ class JavascriptRenderer
      *
      * @param boolean $here Set position of HTML. True if is to current position or false for end file
      * @param boolean $initialize Whether to render the de bug bar initialization code
-     * @param bool $renderStackedData
-     * @param bool $head
      * @return string Return "{--DEBUGBAR_OB_START_REPLACE_ME--}" or return an empty string if $here == false
      */
     public function renderOnShutdown($here = true, $initialize = true, $renderStackedData = true, $head = false)
@@ -828,8 +795,6 @@ class JavascriptRenderer
      *
      * @param boolean $here Set position of HTML. True if is to current position or false for end file
      * @param boolean $initialize Whether to render the de bug bar initialization code
-     * @param bool $renderStackedData
-     * @param bool $head
      */
     public function replaceTagInBuffer($here = true, $initialize = true, $renderStackedData = true, $head = false)
     {
@@ -850,8 +815,7 @@ class JavascriptRenderer
      *
      * AJAX request should not render the initialization code.
      *
-     * @param boolean $initialize Whether or not to render the debug bar initialization code
-     * @param boolean $renderStackedData Whether or not to render the stacked data
+     * @param boolean $initialize Whether to render the de bug bar initialization code
      * @return string
      */
     public function render($initialize = true, $renderStackedData = true)
@@ -871,12 +835,7 @@ class JavascriptRenderer
         $suffix = !$initialize ? '(ajax)' : null;
         $js .= $this->getAddDatasetCode($this->debugBar->getCurrentRequestId(), $this->debugBar->getData(), $suffix);
 
-        if ($this->useRequireJs){
-            return "<script type=\"text/javascript\">\nrequire(['debugbar'], function(PhpDebugBar){ $js });\n</script>\n";
-        } else {
-            return "<script type=\"text/javascript\">\n$js\n</script>\n";
-        }
-
+        return "<script type=\"text/javascript\">\n$js\n</script>\n";
     }
 
     /**
@@ -986,7 +945,6 @@ class JavascriptRenderer
      *
      * @param string $requestId
      * @param array $data
-     * @param mixed $suffix
      * @return string
      */
     protected function getAddDatasetCode($requestId, $data, $suffix = null)

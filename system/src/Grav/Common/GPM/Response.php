@@ -1,18 +1,17 @@
 <?php
-/**
- * @package    Grav.Common.GPM
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\GPM;
 
 use Grav\Common\Utils;
-use Grav\Common\Grav;
+use Grav\Common\GravTrait;
 
+/**
+ * Class Response
+ * @package Grav\Common\GPM
+ */
 class Response
 {
+    use GravTrait;
+
     /**
      * The callback for the progress
      *
@@ -200,18 +199,9 @@ class Response
         $callback = $args[2];
 
         // if proxy set add that
-        $config = Grav::instance()['config'];
-        $proxy_url = $config->get('system.gpm.proxy_url', $config->get('system.proxy_url'));
+        $proxy_url = self::getGrav()['config']->get('system.proxy_url');
         if ($proxy_url) {
-            $parsed_url = parse_url($proxy_url);
-
-            $options['fopen']['proxy'] = ($parsed_url['scheme'] ?: 'http') . '://' . $parsed_url['host'] . (isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '');
-            $options['fopen']['request_fulluri'] = true;
-
-            if (isset($parsed_url['user']) && isset($parsed_url['pass'])) {
-                $auth = base64_encode($parsed_url['user'] . ':' . $parsed_url['pass']);
-                $options['fopen']['header'] = "Proxy-Authorization: Basic $auth";
-            }
+            $options['fopen']['proxy'] = $proxy_url;
         }
 
         if ($callback) {
@@ -277,21 +267,9 @@ class Response
         }
 
         // if proxy set add that
-        $config = Grav::instance()['config'];
-        $proxy_url = $config->get('system.gpm.proxy_url', $config->get('system.proxy_url'));
+        $proxy_url = self::getGrav()['config']->get('system.proxy_url');
         if ($proxy_url) {
-            $parsed_url = parse_url($proxy_url);
-
-            $options['curl'][CURLOPT_PROXY] = $parsed_url['host'];
-            $options['curl'][CURLOPT_PROXYTYPE] = 'HTTP';
-
-            if (isset($parsed_url['port'])) {
-                $options['curl'][CURLOPT_PROXYPORT] = $parsed_url['port'];
-            }
-
-            if (isset($parsed_url['user']) && isset($parsed_url['pass'])) {
-                $options['curl'][CURLOPT_PROXYUSERPWD] = $parsed_url['user'] . ':' . $parsed_url['pass'];
-            }
+            $options['curl'][CURLOPT_PROXY] = $proxy_url;
         }
 
         // no open_basedir set, we can proceed normally
@@ -300,7 +278,7 @@ class Response
             return curl_exec($ch);
         }
 
-        $max_redirects = isset($options['curl'][CURLOPT_MAXREDIRS]) ? $options['curl'][CURLOPT_MAXREDIRS] : 3;
+        $max_redirects                           = isset($options['curl'][CURLOPT_MAXREDIRS]) ? $options['curl'][CURLOPT_MAXREDIRS] : 3;
         $options['curl'][CURLOPT_FOLLOWLOCATION] = false;
 
         // open_basedir set but no redirects to follow, we can disable followlocation and proceed normally

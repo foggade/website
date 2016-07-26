@@ -1,16 +1,8 @@
 <?php
-/**
- * @package    Grav.Common.Page
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\Page\Medium;
 
-use Grav\Common\Data\Blueprint;
-use Grav\Common\Grav;
 use Grav\Common\Utils;
+use Grav\Common\Data\Blueprint;
 
 class ImageMedium extends Medium
 {
@@ -85,11 +77,7 @@ class ImageMedium extends Medium
     {
         parent::__construct($items, $blueprint);
 
-        $config = Grav::instance()['config'];
-
-        if (filesize($this->get('filepath')) === 0) {
-            return;
-        }
+        $config = self::$grav['config'];
 
         $image_info = getimagesize($this->get('filepath'));
         $this->def('width', $image_info[0]);
@@ -125,14 +113,6 @@ class ImageMedium extends Medium
     }
 
     /**
-     * Clear out the alternatives
-     */
-    public function clearAlternatives()
-    {
-        $this->alternatives = [];
-    }
-
-    /**
      * Return PATH to image.
      *
      * @param bool $reset
@@ -157,8 +137,8 @@ class ImageMedium extends Medium
      */
     public function url($reset = true)
     {
-        $image_path = Grav::instance()['locator']->findResource('cache://images', true);
-        $image_dir = Grav::instance()['locator']->findResource('cache://images', false);
+        $image_path = self::$grav['locator']->findResource('cache://images', true);
+        $image_dir = self::$grav['locator']->findResource('cache://images', false);
         $saved_image_path = $this->saveImage();
 
         $output = preg_replace('|^' . preg_quote(GRAV_ROOT) . '|', '', $saved_image_path);
@@ -171,7 +151,7 @@ class ImageMedium extends Medium
             $this->reset();
         }
 
-        return Grav::instance()['base_url'] . $output . $this->querystring() . $this->urlHash();
+        return self::$grav['base_url'] . $output . $this->querystring() . $this->urlHash();
     }
 
     /**
@@ -293,7 +273,6 @@ class ImageMedium extends Medium
             $this->image->clearOperations(); // Clear previously applied operations
             $this->querystring('');
             $this->filter();
-            $this->clearAlternatives();
         }
 
         $this->format = 'guess';
@@ -491,7 +470,7 @@ class ImageMedium extends Medium
      */
     protected function image()
     {
-        $locator = Grav::instance()['locator'];
+        $locator = self::$grav['locator'];
 
         $file = $this->get('filepath');
         $cacheDir = $locator->findResource('cache://images', true);
@@ -527,7 +506,7 @@ class ImageMedium extends Medium
                 $ratio = 1;
             }
 
-            $locator = Grav::instance()['locator'];
+            $locator = self::$grav['locator'];
             $overlay = $locator->findResource("system://assets/responsive-overlays/{$ratio}x.png") ?: $locator->findResource('system://assets/responsive-overlays/unknown.png');
             $this->image->merge(ImageFile::open($overlay));
         }

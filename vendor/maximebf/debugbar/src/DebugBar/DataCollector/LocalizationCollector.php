@@ -35,9 +35,6 @@ class LocalizationCollector extends DataCollector implements Renderable
         return textdomain();
     }
 
-    /**
-     * @return array
-     */
     public function collect()
     {
         return array(
@@ -46,17 +43,11 @@ class LocalizationCollector extends DataCollector implements Renderable
         );
     }
 
-    /**
-     * @return string
-     */
     public function getName()
     {
         return 'localization';
     }
 
-    /**
-     * @return array
-     */
     public function getWidgets()
     {
         return array(

@@ -15,23 +15,11 @@ class TraceablePDOStatement extends PDOStatement
 
     protected $boundParameters = array();
 
-    /**
-     * TraceablePDOStatement constructor.
-     * @param TraceablePDO $pdo
-     */
     protected function __construct(TraceablePDO $pdo)
     {
         $this->pdo = $pdo;
     }
 
-    /**
-     * @param mixed $column
-     * @param mixed $param
-     * @param null $type
-     * @param null $maxlen
-     * @param null $driverdata
-     * @return mixed
-     */
     public function bindColumn($column, &$param, $type = null, $maxlen = null, $driverdata = null)
     {
         $this->boundParameters[$column] = $param;
@@ -39,14 +27,6 @@ class TraceablePDOStatement extends PDOStatement
         return call_user_func_array(array("parent", 'bindColumn'), $args);
     }
 
-    /**
-     * @param mixed $param
-     * @param mixed $var
-     * @param int $data_type
-     * @param null $length
-     * @param null $driver_options
-     * @return mixed
-     */
     public function bindParam($param, &$var, $data_type = PDO::PARAM_STR, $length = null, $driver_options = null)
     {
         $this->boundParameters[$param] = $var;
@@ -54,23 +34,12 @@ class TraceablePDOStatement extends PDOStatement
         return call_user_func_array(array("parent", 'bindParam'), $args);
     }
 
-    /**
-     * @param mixed $param
-     * @param mixed $value
-     * @param int $data_type
-     * @return mixed
-     */
     public function bindValue($param, $value, $data_type = PDO::PARAM_STR)
     {
         $this->boundParameters[$param] = $value;
         return call_user_func_array(array("parent", 'bindValue'), func_get_args());
     }
 
-    /**
-     * @param null $params
-     * @return bool
-     * @throws null
-     */
     public function execute($params = null)
     {
         $preparedId = spl_object_hash($this);

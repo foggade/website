@@ -1,12 +1,7 @@
 <?php
-/**
- * @package    Grav.Common.GPM
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\GPM;
+
+use Grav\Common\Grav;
 
 /**
  * Class Upgrader
@@ -37,7 +32,7 @@ class Upgrader
      */
     public function __construct($refresh = false, $callback = null)
     {
-        $this->remote = new Remote\GravCore($refresh, $callback);
+        $this->remote = new Remote\Grav($refresh, $callback);
     }
 
     /**

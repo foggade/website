@@ -1,16 +1,11 @@
 <?php
-/**
- * @package    Grav.Common.Language
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\Language;
 
 use Grav\Common\Grav;
-use Grav\Common\Config\Config;
 
+/**
+ * Language and translation functionality for Grav
+ */
 class Language
 {
     protected $grav;
@@ -20,10 +15,7 @@ class Language
     protected $fallback_languages = [];
     protected $default;
     protected $active = null;
-
-    /** @var Config $config */
     protected $config;
-
     protected $http_accept_language;
     protected $lang_in_url = false;
 
@@ -414,7 +406,7 @@ class Language
             }
 
             foreach ((array)$languages as $lang) {
-                $translation_array = (array)Grav::instance()['languages']->get($lang . '.' . $key, null);
+                $translation_array = (array)$this->config->getLanguages()->get($lang . '.' . $key, null);
                 if ($translation_array && array_key_exists($index, $translation_array)) {
                     return $translation_array[$index];
                 }
@@ -439,7 +431,7 @@ class Language
      */
     public function getTranslation($lang, $key, $array_support = false)
     {
-        $translation = Grav::instance()['languages']->get($lang . '.' . $key, null);
+        $translation = $this->config->getLanguages()->get($lang . '.' . $key, null);
         if (!$array_support && is_array($translation)) {
             return (string)array_shift($translation);
         }

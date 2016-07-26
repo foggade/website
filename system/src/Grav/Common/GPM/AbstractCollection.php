@@ -1,17 +1,13 @@
 <?php
-/**
- * @package    Grav.Common.GPM
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\GPM;
 
+use Grav\Common\GravTrait;
 use Grav\Common\Iterator;
 
-abstract class AbstractCollection extends Iterator
-{
+abstract class AbstractCollection extends Iterator {
+
+    use GravTrait;
+
     public function toJson()
     {
         $items = [];

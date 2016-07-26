@@ -1,92 +1,85 @@
 title: Site
 form:
     validation: loose
-
     fields:
 
-            info:
-                type: userinfo
-                size: large
+        content:
+            type: section
+            title: PLUGIN_ADMIN.ACCOUNT
 
-            content:
-                type: section
-                title: PLUGIN_ADMIN.ACCOUNT
-                underline: true
+            fields:
+                username:
+                    type: text
+                    size: large
+                    label: PLUGIN_ADMIN.USERNAME
+                    disabled: true
+                    readonly: true
 
+                email:
+                    type: email
+                    size: large
+                    label: PLUGIN_ADMIN.EMAIL
+                    validate:
+                      type: email
+                      message: PLUGIN_ADMIN.EMAIL_VALIDATION_MESSAGE
+                      required: true
 
-            username:
-                type: text
-                size: large
-                label: PLUGIN_ADMIN.USERNAME
-                disabled: true
-                readonly: true
+                password:
+                    type: password
+                    size: large
+                    label: PLUGIN_ADMIN.PASSWORD
+                    validate:
+                      required: false
+                      message: PLUGIN_ADMIN.PASSWORD_VALIDATION_MESSAGE
+                      pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
 
-            email:
-                type: email
-                size: large
-                label: PLUGIN_ADMIN.EMAIL
-                validate:
-                  type: email
-                  message: PLUGIN_ADMIN.EMAIL_VALIDATION_MESSAGE
-                  required: true
+                fullname:
+                    type: text
+                    size: large
+                    label: PLUGIN_ADMIN.FULL_NAME
+                    validate:
+                      required: true
 
-            password:
-                type: password
-                size: large
-                label: PLUGIN_ADMIN.PASSWORD
-                validate:
-                  required: false
-                  message: PLUGIN_ADMIN.PASSWORD_VALIDATION_MESSAGE
-                  pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+                title:
+                    type: text
+                    size: large
+                    label: PLUGIN_ADMIN.TITLE
 
-            fullname:
-                type: text
-                size: large
-                label: PLUGIN_ADMIN.FULL_NAME
-                validate:
-                  required: true
+                language:
+                    type: select
+                    label: PLUGIN_ADMIN.LANGUAGE
+                    size: medium
+                    classes: fancy
+                    '@data-options': '\Grav\Plugin\admin::adminLanguages'
+                    default: 'en'
+                    help: PLUGIN_ADMIN.LANGUAGE_HELP
 
-            title:
-                type: text
-                size: large
-                label: PLUGIN_ADMIN.TITLE
+                security:
+                    title: PLUGIN_ADMIN.ACCESS_LEVELS
+                    type: section
+                    security: admin.super
 
-            language:
-                type: select
-                label: PLUGIN_ADMIN.LANGUAGE
-                size: medium
-                classes: fancy
-                data-options@: '\Grav\Plugin\admin::adminLanguages'
-                default: 'en'
-                help: PLUGIN_ADMIN.LANGUAGE_HELP
+                    fields:
+                        groups:
+                            type: selectize
+                            size: large
+                            label: PLUGIN_ADMIN.GROUPS
+                            '@data-options': '\Grav\User\Groups::groups'
+                            classes: fancy
+                            help: PLUGIN_ADMIN.GROUPS_HELP
+                            validate:
+                                type: commalist
 
-            security:
-                title: PLUGIN_ADMIN.ACCESS_LEVELS
-                type: section
-                security: admin.super
-                underline: true
-
-                fields:
-                    groups:
-                        type: selectize
-                        size: large
-                        label: PLUGIN_ADMIN.GROUPS
-                        data-options@: '\Grav\User\Groups::groups'
-                        classes: fancy
-                        help: PLUGIN_ADMIN.GROUPS_HELP
-                        validate:
-                            type: commalist
-
-                    access.admin:
-                        type: array
-                        label: PLUGIN_ADMIN.ADMIN_ACCESS
-                        multiple: false
-                        validate:
+                        access.admin:
                             type: array
+                            label: PLUGIN_ADMIN.ADMIN_ACCESS
+                            multiple: false
+                            validate:
+                                type: array
 
-                    access.site:
-                        type: array
-                        label: PLUGIN_ADMIN.SITE_ACCESS
-                        multiple: false
-                        validate:
+                        access.site:
                             type: array
+                            label: PLUGIN_ADMIN.SITE_ACCESS
+                            multiple: false
+                            validate:
+                                type: array

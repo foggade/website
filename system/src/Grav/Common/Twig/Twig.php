@@ -1,11 +1,4 @@
 <?php
-/**
- * @package    Grav.Common.Twig
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\Twig;
 
 use Grav\Common\Grav;
@@ -15,6 +8,14 @@ use Grav\Common\Page\Page;
 use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 use RocketTheme\Toolbox\Event\Event;
 
+/**
+ * The Twig object handles all the Twig template rendering for Grav. It's a singleton object
+ * that is optimized so that it only needs to be initialized once and can be reused for individual
+ * page template rendering as well as the main site template rendering.
+ *
+ * @author  RocketTheme
+ * @license MIT
+ */
 class Twig
 {
     /**
@@ -52,8 +53,6 @@ class Twig
      */
     protected $loaderArray;
 
-
-    protected $autoescape;
 
     /**
      * Constructor
@@ -106,12 +105,7 @@ class Twig
 
             $params = $config->get('system.twig');
             if (!empty($params['cache'])) {
-                $cachePath = $locator->findResource('cache://twig', true, true);
-                $params['cache'] = new \Twig_Cache_Filesystem($cachePath, \Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION);
-            }
-
-            if (!empty($this->autoescape)) {
-                $params['autoescape'] = $this->autoescape;
+                $params['cache'] = $locator->findResource('cache://twig', true, true);
             }
 
             $this->twig = new TwigEnvironment($loader_chain, $params);
@@ -370,14 +364,5 @@ class Twig
         } else {
             return $template;
         }
-    }
-
-    /**
-     * Overrides the autoescape setting
-     *
-     * @param boolean $state
-     */
-    public function setAutoescape($state) {
-        $this->autoescape = (bool) $state;
     }
 }

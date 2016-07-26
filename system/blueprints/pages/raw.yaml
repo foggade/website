@@ -19,22 +19,13 @@ form:
 
           fields:
             frontmatter:
-              classes: frontmatter
-              type: editor
+              type: frontmatter
               label: PLUGIN_ADMIN.FRONTMATTER
               autofocus: true
-              codemirror:
-                mode: 'yaml'
-                indentUnit: 4
-                autofocus: true
-                indentWithTabs: false
-                lineNumbers: true
-                styleActiveLine: true
-                gutters: ['CodeMirror-lint-markers']
-                lint: true
 
             content:
               type: markdown
+              showPreview: true
 
             uploads:
               type: pagemedia
@@ -78,8 +69,8 @@ form:
                       type: select
                       label: PLUGIN_ADMIN.PARENT
                       classes: fancy
-                      data-options@: '\Grav\Common\Page\Pages::parentsRawRoutes'
-                      data-default@: '\Grav\Plugin\admin::rawRoute'
+                      '@data-options': '\Grav\Common\Page\Pages::parents'
+                      '@data-default': '\Grav\Plugin\admin::route'
                       options:
                         '/': PLUGIN_ADMIN.DEFAULT_OPTION_ROOT
 
@@ -89,7 +80,7 @@ form:
                       label: PLUGIN_ADMIN.DISPLAY_TEMPLATE
                       help: PLUGIN_ADMIN.DISPLAY_TEMPLATE_HELP
                       default: default
-                      data-options@: '\Grav\Common\Page\Pages::types'
+                      '@data-options': '\Grav\Common\Page\Pages::types'
                       validate:
                         required: true
 

@@ -1,13 +1,10 @@
 <?php
-/**
- * @package    Grav.Common.GPM
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\GPM\Remote;
 
+/**
+ * Class Plugins
+ * @package Grav\Common\GPM\Remote
+ */
 class Plugins extends AbstractPackageCollection
 {
     /**

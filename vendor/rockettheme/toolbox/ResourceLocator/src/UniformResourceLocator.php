@@ -72,27 +72,12 @@ class UniformResourceLocator implements ResourceLocatorInterface
     }
 
     /**
-     * Reset a locator scheme
-     *
-     * @param string $scheme The scheme to reset
-     *
-     * @return $this
-     */
-    public function resetScheme($scheme)
-    {
-        $this->schemes[$scheme] = [];
-        $this->cache = [];
-
-        return $this;
-    }
-
-    /**
      * Add new paths to the scheme.
      *
      * @param string $scheme
      * @param string $prefix
      * @param string|array $paths
-     * @param bool|string  $override  True to add path as override, string
+     * @param bool  $override  Add path as override.
      * @param bool  $force     True to add paths even if them do not exist.
      * @throws \BadMethodCallException
      */
@@ -108,10 +93,7 @@ class UniformResourceLocator implements ResourceLocatorInterface
                 $list[] = $path;
             } elseif (strstr($path, '://')) {
                 // Support stream lookup in 'theme://path/to' format.
-                $stream = explode('://', $path, 2);
-                $stream[1] = trim($stream[1], '/');
-
-                $list[] = $stream;
+                $list[] = explode('://', $path, 2);
             } else {
                 // Normalize path.
                 $path = rtrim(str_replace('\\', '/', $path), '/');
@@ -123,14 +105,9 @@ class UniformResourceLocator implements ResourceLocatorInterface
         }
 
         if (isset($this->schemes[$scheme][$prefix])) {
-            $paths = $this->schemes[$scheme][$prefix];
-            if (!$override || $override == 1) {
-                $list = $override ? array_merge($paths, $list) : array_merge($list, $paths);
-            } else {
-                $location = array_search($override, $paths) ?: count($paths);
-                array_splice($paths, $location, 0, $list);
-                $list = $paths;
-            }
+            $list = $override
+                ? array_merge($this->schemes[$scheme][$prefix], $list)
+                : array_merge($list, $this->schemes[$scheme][$prefix]);
         }
 
         $this->schemes[$scheme][$prefix] = $list;
@@ -198,82 +175,6 @@ class UniformResourceLocator implements ResourceLocatorInterface
     }
 
     /**
-     * Returns true if uri is resolvable by using locator.
-     *
-     * @param  string $uri
-     * @return bool
-     */
-    public function isStream($uri)
-    {
-        try {
-            list ($scheme,) = $this->normalize($uri, true, true);
-        } catch (\Exception $e) {
-            return false;
-        }
-
-        return $this->schemeExists($scheme);
-    }
-
-    /**
-     * Returns the canonicalized URI on success. The resulting path will have no '/./' or '/../' components.
-     * Trailing delimiter `/` is kept.
-     *
-     * By default (if $throwException parameter is not set to true) returns false on failure.
-     *
-     * @param string $uri
-     * @param bool $throwException
-     * @param bool $splitStream
-     * @return string|array|bool
-     * @throws \BadMethodCallException
-     */
-    public function normalize($uri, $throwException = false, $splitStream = false)
-    {
-        if (!is_string($uri)) {
-            if ($throwException) {
-                throw new \BadMethodCallException('Invalid parameter $uri.');
-            } else {
-                return false;
-            }
-        }
-
-        $uri = preg_replace('|\\\|u', '/', $uri);
-        $segments = explode('://', $uri, 2);
-        $path = array_pop($segments);
-        $scheme = array_pop($segments) ?: 'file';
-
-        if ($path) {
-            $path = preg_replace('|\\\|u', '/', $path);
-            $parts = explode('/', $path);
-
-            $list = [];
-            foreach ($parts as $i => $part) {
-                if ($part === '..') {
-                    $part = array_pop($list);
-                    if ($part === null || $part === '' || (!$list && strpos($part, ':'))) {
-                        if ($throwException) {
-                            throw new \BadMethodCallException('Invalid parameter $uri.');
-                        } else {
-                            return false;
-                        }
-                    }
-                } elseif (($i && $part === '') || $part === '.') {
-                    continue;
-                } else {
-                    $list[] = $part;
-                }
-            }
-
-            if (($l = end($parts)) === '' || $l === '.' || $l === '..') {
-                $list[] = '';
-            }
-
-            $path = implode('/', $list);
-        }
-
-        return $splitStream ? [$scheme, $path] : ($scheme !== 'file' ? "{$scheme}://{$path}" : $path);
-    }
-
-    /**
      * Find highest priority instance from a resource.
      *
      * @param  string $uri      Input URI to be searched.
@@ -330,30 +231,29 @@ class UniformResourceLocator implements ResourceLocatorInterface
     }
 
     /**
-     * Pre-fill cache by a stream.
+     * Parse resource.
      *
-     * @param string $uri
-     * @return $this
+     * @param $uri
+     * @return array
+     * @throws \InvalidArgumentException
+     * @internal
      */
-    public function fillCache($uri)
+    protected function parseResource($uri)
     {
-        $cacheKey = $uri . '@cache';
+        $segments = explode('://', $uri, 2);
+        $file = array_pop($segments);
+        $scheme = array_pop($segments);
 
-        if (!isset($this->cache[$cacheKey])) {
-            $this->cache[$cacheKey] = true;
-
-            $iterator = new \RecursiveIteratorIterator($this->getRecursiveIterator($uri), \RecursiveIteratorIterator::SELF_FIRST);
-
-            /** @var UniformResourceIterator $uri */
-            foreach ($iterator as $uri) {
-                $key = $uri->getUrl() . '@010';
-                $this->cache[$key] = $uri->getPathname();
-            }
+        if (!$scheme) {
+            $scheme = 'file';
         }
 
-        return $this;
-    }
+        if (!$file && $scheme == 'file') {
+            $file = $this->base;
+        }
 
+        return [$scheme, $file];
+    }
 
 
     protected function findCached($uri, $array, $absolute, $all)
@@ -362,18 +262,9 @@ class UniformResourceLocator implements ResourceLocatorInterface
         $key = $uri .'@'. (int) $array . (int) $absolute . (int) $all;
 
         if (!isset($this->cache[$key])) {
-            try {
-                list ($scheme, $file) = $this->normalize($uri, true, true);
+            list ($scheme, $file) = $this->parseResource($uri);
 
-                if (!$file && $scheme === 'file') {
-                    $file = $this->base;
-                }
-
-                $this->cache[$key] = $this->find($scheme, $file, $array, $absolute, $all);
-
-            } catch (\BadMethodCallException $e) {
-                $this->cache[$key] =  $array ? [] : false;
-            }
+            $this->cache[$key] = $this->find($scheme, $file, $array, $absolute, $all);
         }
 
         return $this->cache[$key];
@@ -408,7 +299,7 @@ class UniformResourceLocator implements ResourceLocatorInterface
             foreach ($paths as $path) {
                 if (is_array($path)) {
                     // Handle scheme lookup.
-                    $relPath = trim($path[1] . $filename, '/');
+                    $relPath = trim(trim($path[1], '/') . $filename, '/');
                     $found = $this->find($path[0], $relPath, $array, $absolute, $all);
                     if ($found) {
                         if (!$array) {
@@ -427,7 +318,7 @@ class UniformResourceLocator implements ResourceLocatorInterface
                         // Handle absolute path lookup.
                         $fullPath = rtrim($path . $filename, '/');
                         if (!$absolute) {
-                            throw new \RuntimeException("UniformResourceLocator: Absolute stream path with relative lookup not allowed ({$prefix})", 500);
+                            throw new \RuntimeException('UniformResourceLocator: Absolute stream path with relative lookup not allowed', 500);
                         }
                     }
 

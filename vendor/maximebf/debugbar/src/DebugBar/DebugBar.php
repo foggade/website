@@ -84,7 +84,6 @@ class DebugBar implements ArrayAccess
      *
      * @param string $name
      * @return DataCollectorInterface
-     * @throws DebugBarException
      */
     public function getCollector($name)
     {
@@ -108,7 +107,6 @@ class DebugBar implements ArrayAccess
      * Sets the request id generator
      *
      * @param RequestIdGeneratorInterface $generator
-     * @return $this
      */
     public function setRequestIdGenerator(RequestIdGeneratorInterface $generator)
     {
@@ -144,7 +142,6 @@ class DebugBar implements ArrayAccess
      * Sets the storage backend to use to store the collected data
      *
      * @param StorageInterface $storage
-     * @return $this
      */
     public function setStorage(StorageInterface $storage = null)
     {
@@ -174,7 +171,6 @@ class DebugBar implements ArrayAccess
      * Sets the HTTP driver
      *
      * @param HttpDriverInterface $driver
-     * @return $this
      */
     public function setHttpDriver(HttpDriverInterface $driver)
     {
@@ -291,7 +287,6 @@ class DebugBar implements ArrayAccess
      * @param bool $useOpenHandler
      * @param string $headerName
      * @param integer $maxHeaderLength
-     * @return $this
      */
     public function sendDataInHeaders($useOpenHandler = null, $headerName = 'phpdebugbar', $maxHeaderLength = 4096)
     {
@@ -374,7 +369,6 @@ class DebugBar implements ArrayAccess
      * Sets the key to use in the $_SESSION array
      *
      * @param string $ns
-     * @return $this
      */
     public function setStackDataSessionNamespace($ns)
     {
@@ -397,7 +391,6 @@ class DebugBar implements ArrayAccess
      * if a storage is enabled
      *
      * @param boolean $enabled
-     * @return $this
      */
     public function setStackAlwaysUseSessionStorage($enabled = true)
     {
@@ -418,8 +411,8 @@ class DebugBar implements ArrayAccess
 
     /**
      * Initializes the session for stacked data
+     *
      * @return HttpDriverInterface
-     * @throws DebugBarException
      */
     protected function initStackSession()
     {
@@ -437,8 +430,9 @@ class DebugBar implements ArrayAccess
 
     /**
      * Returns a JavascriptRenderer for this instance
+     *
      * @param string $baseUrl
-     * @param string $basePath
+     * @param string $basePathng
      * @return JavascriptRenderer
      */
     public function getJavascriptRenderer($baseUrl = null, $basePath = null)

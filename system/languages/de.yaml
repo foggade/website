@@ -1,14 +1,13 @@
----
 FRONTMATTER_ERROR_PAGE: |
   ---
   title: %1$s
   ---
   # Fehler: Frontmatter enthält Fehler
-  
+
   Pfad: `%2$s`
-  
-  **%3$s ** 
-  
+
+  **%3$s **
+
   ```
   %4$s
   ```
@@ -22,13 +21,8 @@ INFLECTOR_IRREGULAR:
   child: Kinder
   sex: Geschlecht
   move: Züge
-INFLECTOR_ORDINALS:
-  default: '.'
-  first: '.'
-  second: '.'
-  third: '.'
 NICETIME:
-  NO_DATE_PROVIDED: Kein Datum angegeben
+  NO_DATE_PROVIDED: Keine Daten vorhanden
   BAD_DATE: Falsches Datum
   AGO: her
   FROM_NOW: ab jetzt
@@ -39,14 +33,13 @@ NICETIME:
   WEEK: Woche
   MONTH: Monat
   YEAR: Jahr
-  DECADE: Jahrzehnt
-  SEC: Sek.
-  MIN: Min.
-  HR: Std.
-  WK: Wo.
-  MO: Mo.
-  YR: J.
-  DEC: Dek.
+  DECADE: Dekade
+  SEC: sek
+  MIN: Min
+  HR: std
+  WK: wo
+  YR: yh
+  DEC: Jz
   SECOND_PLURAL: Sekunden
   MINUTE_PLURAL: Minuten
   HOUR_PLURAL: Stunden
@@ -54,14 +47,14 @@ NICETIME:
   WEEK_PLURAL: Wochen
   MONTH_PLURAL: Monate
   YEAR_PLURAL: Jahre
-  DECADE_PLURAL: Jahrzehnte
+  DECADE_PLURAL: Dekaden
   SEC_PLURAL: Sekunden
   MIN_PLURAL: Minuten
   HR_PLURAL: Stunden
   WK_PLURAL: Wochen
   MO_PLURAL: Monate
   YR_PLURAL: Jahre
-  DEC_PLURAL: Jahrzehnten
+  DEC_PLURAL: Dekaden
 FORM:
   VALIDATION_FAIL: '<b>Überprüfung fehlgeschlagen:</b>'
   INVALID_INPUT: Ungültige Eingabe in
@@ -75,7 +68,7 @@ MONTHS_OF_THE_YEAR:
   - Juni
   - Juli
   - August
-  - September
+  - Semptember
   - Oktober
   - November
   - Dezember

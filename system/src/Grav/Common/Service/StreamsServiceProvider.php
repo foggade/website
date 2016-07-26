@@ -1,11 +1,4 @@
 <?php
-/**
- * @package    Grav.Common.Service
- *
- * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
- * @license    MIT License; see LICENSE file for details.
- */
-
 namespace Grav\Common\Service;
 
 use Grav\Common\Config\Setup;
@@ -41,7 +34,7 @@ class StreamsServiceProvider implements ServiceProviderInterface
             Stream::setLocator($locator);
             ReadOnlyStream::setLocator($locator);
 
-            return new StreamBuilder($setup->getStreams());
+            return new StreamBuilder($setup->getStreams($c));
         };
     }
 }

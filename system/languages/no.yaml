@@ -1,15 +1,14 @@
----
 FRONTMATTER_ERROR_PAGE: |
   ---
   Tittel: %1$s
   ---
-  
+
   # Feilmelding: Ugyldig Frontmatter
-  
+
   Pane: '%2$s'
-  
+
   **%3$s **
-  
+
   ```
   %4$s
   ```
@@ -63,9 +62,7 @@ NICETIME:
   MIN_PLURAL: min
   HR_PLURAL: timer
   WK_PLURAL: uker
-  MO_PLURAL: mdr
   YR_PLURAL: år
-  DEC_PLURAL: årtier
 FORM:
   VALIDATION_FAIL: '<b>Validering mislyktes:</b>'
   INVALID_INPUT: Ugyldig innhold i

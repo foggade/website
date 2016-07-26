@@ -1,18 +1,3 @@
----
-FRONTMATTER_ERROR_PAGE: |
-  ---
-  título: %1$s
-  ---
-  
-  # Erro: Frontmatter inválida
-  
-  Caminho: `%2$s`
-  
-  **%3$s**
-  
-  ```
-  %4$s
-  ```
 INFLECTOR_UNCOUNTABLE:
   1: informação
   2: arroz
@@ -21,10 +6,6 @@ INFLECTOR_IRREGULAR:
   man: homens
   sex: sexos
 NICETIME:
-  NO_DATE_PROVIDED: Não foi fornecida data
-  BAD_DATE: Data inválida
-  AGO: atrás
-  FROM_NOW: a partir de agora
   SECOND: segundo
   MINUTE: minuto
   HOUR: hora
@@ -35,11 +16,8 @@ NICETIME:
   DECADE: década
   SEC: seg
   MIN: mín
-  HR: h
-  WK: sem
-  MO: m
-  YR: a
-  DEC: dec
+  MO: mês
+  YR: ano
   SECOND_PLURAL: segundos
   MINUTE_PLURAL: minutos
   HOUR_PLURAL: horas
@@ -51,11 +29,9 @@ NICETIME:
   SEC_PLURAL: seg
   MIN_PLURAL: mins
   HR_PLURAL: hrs
-  WK_PLURAL: sems
   YR_PLURAL: anos
 FORM:
   VALIDATION_FAIL: '<b>Validação falhada: </b>'
-  MISSING_REQUIRED_FIELD: 'Campo obrigatório ausente:'
 MONTHS_OF_THE_YEAR:
   - Janeiro
   - Fevereiro
