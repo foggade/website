@@ -41,6 +41,11 @@ a:hover {
     margin: auto;
 }
 
+.floatLeftImage p img{
+    float: left;
+    margin: 0px 15px 15px 0px;
+}
+
 .center{
     display: block;
     margin: 0 auto;
@@ -249,6 +254,8 @@ td{
     background: #CC9866;
     color: #fff;
 }
+
+.blog-content-item .list-blog-padding > p:nth-child(2){}
 
 /*
 lightslider plugin
