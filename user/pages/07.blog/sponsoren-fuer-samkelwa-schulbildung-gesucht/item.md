@@ -15,8 +15,7 @@ process:
 ####Liebe Freunde und Unterstützer von God’s Golden Acre,   
 wir hoffen, ihr seid alle wohlauf!   
 
-Die Leiterin des Bereiches „Schule und Bildung“ bei GGA, Evelyn Marx, hat sich mit einem wichtigen Anliegen an uns gewandt:   
-Für unsere Samkelwa wird dringend Unterstützung für die Finanzierung des weiteren Schulbesuches gesucht!
+Die Leiterin des Bereiches „Schule und Bildung“ bei GGA, Evelyn Marx, hat sich mit einem wichtigen Anliegen an uns gewandt: Für unsere Samkelwa wird dringend Unterstützung für die Finanzierung des weiteren Schulbesuches gesucht!
 <div class="floatLeftImage" markdown="1">
 ![Samkelwa](../../images/samkelwa.png)
 </div>
