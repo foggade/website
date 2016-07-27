@@ -13,7 +13,7 @@ process:
 ---
 
 <div class="centeredImage" markdown="1" >
-![Young Zulu Warriors Lineup 2016](../images/young-zulu-warriors-lineup-2016-small.jpg)
+![Young Zulu Warriors Lineup 2016](../../images/young-zulu-warriors-lineup-2016-small.jpg)
 </div>
 Abenteuer, fremde Kulturen und immerwährender Sonnenschein: Wer wünscht sich das nicht? Vor fünf Jahren wurde dieser Traum für uns wahr, und wir machten uns auf nach Südafrika. Aber wir wollten diese bewusste Auszeit unter einen besonderen Stern stellen, denn „nur Urlaub“ war uns zu wenig. Schließlich fanden wir ein Projekt, dass uns bis heute begeistert: _God’s Golden Acre_ (zu deutsch: Gottes goldener Acker) ist eine Nichtregierungsorganisation (NGO) in Südafrika, die Kinder und Jugendliche in einem Kinderdorf 60 Kilometer westlich von Durban beherbergt. GGA wurde 1994 von Heather Reynolds unter dem Motto _„Give a Child a Home“_ (Kindern ein Zuhause geben) gegründet. Die dort wohnenden Kinder wurden Opfer von Missbrauch, Vergewaltigung oder verloren ihre Eltern durch Gewalt und AIDS.   
 Das Projekt bietet zudem für viele Kinder in den Slums eine Grundversorgung an Nahrungsmitteln, fördert ihre Bildung und versucht, die Kinder durch Aufklärung vor Vergewaltigung, Kriminalität, Gewalt sowie AIDS zu schützen. Trotz aller widrigen Lebendbedingungen erlebten wir tagtäglich Freundlichkeit, Fröhlichkeit und ein hoffnungsvolles Gottvertrauen der Kinder und Mitarbeiter im Kinderheim. Es war unglaublich zu erfahren, wie bescheiden und glücklich diese Menschen im weit entfernten Südafrika in Armut und materieller Not ihren Alltag bestreiten. Wie so oft gibt es kaum staatliche Unterstützung für diese wichtige Arbeit, daher ist GGA stets auf Spenden angewiesen.   

@@ -12,7 +12,7 @@ process:
     twig: true
 ---
 
-<iframe src="https://player.vimeo.com/video/172533764" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/172533764" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 Rund 150 Zuschauer ließen sich am Samstag, dem 11. Juni 2016, im St.-Michaels-Heim von den Klängen und Tänzen der Young Zulu Warriors in ihre ferne südafrikanische Heimat entführen. Die 12-köpfi ge Zulu-Gospel-Gruppe besuchte Berlin unter Leitung von Heather Reynolds und ihrem Ehemann Patrick für ein Benefizkonzert zu Gunsten des Kinderheimes God’s Golden Acre.   
 In diesem Kinderdorf werden derzeit rund 32 Kinder beherbergt, welche Opfer von Missbrauch und Vergewaltigung wurden oder ihre Eltern durch Gewalt und AIDS verloren.   
