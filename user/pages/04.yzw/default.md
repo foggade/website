@@ -23,11 +23,11 @@ Die Zulu Warriors traten unter anderem bei der Welt AIDS Konferenz in Durban und
 Mit ihrem Können machen sie auf das Kinderheim aufmerksam und tourten bereits mehrfach für den guten Zweck durch Europa.  
 Sie verstehen sich dabei als Botschafter ihres Landes, die das Leben in ihrer Heimat auf die Bühne bringen.
 ###Young Zulu Warriors Variety Concerts
-[plugin:youtube](https://www.youtube.com/watch?v=tjZm0SIyDMs)
+<div class='embed-container' markdown="1"><iframe src='https://www.youtube.com/embed/tjZm0SIyDMs' frameborder='0' allowfullscreen></iframe></div>
 ###Young Zulu Warriors zu Gast am Gymnasium Panketal
-[plugin:youtube](https://www.youtube.com/watch?v=KAZ-O5zTzCw)
+<div class='embed-container' markdown="1"><iframe src='https://www.youtube.com/embed/KAZ-O5zTzCw' frameborder='0' allowfullscreen></iframe></div>
 ###Young Zulu Warriors "Thula Sizwe" Tour
-[plugin:youtube](https://www.youtube.com/watch?v=21EJLJHfXbM)
+<div class='embed-container'><iframe src='https://www.youtube.com/embed/21EJLJHfXbM' frameborder='0' allowfullscreen></iframe></div>
 ##Tourdaten
 Die Tour im Sommer 2016 führt durch Deutschland, die Niederlande und Frankreich.
 
