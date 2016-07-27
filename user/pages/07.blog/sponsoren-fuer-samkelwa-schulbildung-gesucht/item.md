@@ -1,5 +1,5 @@
 ---
-title: Sponsoren für Samkelwa's weitere Schulbildung gesucht
+title: Sponsoren für Samkelwas weitere Schulbildung gesucht
 routable: true
 visible: true
 date: 18.07.2016
