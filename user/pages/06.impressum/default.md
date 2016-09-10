@@ -15,7 +15,7 @@ Verantwortlich für journalistisch-redaktionelle Inhalte: Der Vorstand (siehe un
 ### Gemeinschaftlich vertretungsbefugt
 
 1. Vorsitzender: Moritz Putzar-Sattler 
-2. Vorsitzender: Jenny Simon  
+2. Vorsitzende: Jenny Simon  
 Kassenwart: Luca Diem
 
 Registergericht: Amtsgericht Arnsberg  
