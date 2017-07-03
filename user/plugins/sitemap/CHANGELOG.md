@@ -1,3 +1,21 @@
+# v1.7.0
+## 10/19/2016
+
+1. [](#new)
+    * Use new Grav feature to force output to be XML even when not passed `.xml` in URL
+
+# v1.6.2
+## 07/14/2016
+
+1. [](#bugfix)
+    * Fix sitemap XLS in multilanguage
+
+# v1.6.1
+## 05/30/2016
+
+1. [](#bugfix)
+    * Priority should be `float` in blueprints
+
 # v1.6.0
 ## 04/29/2016
 

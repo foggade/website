@@ -1,4 +1,11 @@
 <?php
+/**
+ * @package    Grav.Common.Twig
+ *
+ * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common\Twig;
 
 use Grav\Common\Grav;
@@ -8,12 +15,6 @@ use Grav\Common\Markdown\ParsedownExtra;
 use Grav\Common\Uri;
 use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
-/**
- * The Twig extension adds some filters and functions that are useful for Grav
- *
- * @author  RocketTheme
- * @license MIT
- */
 class TwigExtension extends \Twig_Extension
 {
     protected $grav;
@@ -25,9 +26,9 @@ class TwigExtension extends \Twig_Extension
      */
     public function __construct()
     {
-        $this->grav = Grav::instance();
+        $this->grav     = Grav::instance();
         $this->debugger = isset($this->grav['debugger']) ? $this->grav['debugger'] : null;
-        $this->config = $this->grav['config'];
+        $this->config   = $this->grav['config'];
     }
 
     /**
@@ -75,6 +76,7 @@ class TwigExtension extends \Twig_Extension
             new \Twig_SimpleFilter('modulus', [$this, 'modulusFilter']),
             new \Twig_SimpleFilter('rtrim', [$this, 'rtrimFilter']),
             new \Twig_SimpleFilter('pad', [$this, 'padFilter']),
+            new \Twig_SimpleFilter('regex_replace', [$this, 'regexReplace']),
             new \Twig_SimpleFilter('safe_email', [$this, 'safeEmailFilter']),
             new \Twig_SimpleFilter('safe_truncate', ['\Grav\Common\Utils', 'safeTruncate']),
             new \Twig_SimpleFilter('safe_truncate_html', ['\Grav\Common\Utils', 'safeTruncateHTML']),
@@ -84,6 +86,8 @@ class TwigExtension extends \Twig_Extension
             new \Twig_SimpleFilter('ta', [$this, 'translateArray']),
             new \Twig_SimpleFilter('truncate', ['\Grav\Common\Utils', 'truncate']),
             new \Twig_SimpleFilter('truncate_html', ['\Grav\Common\Utils', 'truncateHTML']),
+            new \Twig_SimpleFilter('json_decode', [$this, 'jsonDecodeFilter']),
+            new \Twig_SimpleFilter('array_unique', 'array_unique'),
         ];
     }
 
@@ -96,6 +100,7 @@ class TwigExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('array', [$this, 'arrayFunc']),
+            new \Twig_SimpleFunction('array_key_value', [$this, 'arrayKeyValueFunc']),
             new \Twig_simpleFunction('authorize', [$this, 'authorize']),
             new \Twig_SimpleFunction('debug', [$this, 'dump'], ['needs_context' => true, 'needs_environment' => true]),
             new \Twig_SimpleFunction('dump', [$this, 'dump'], ['needs_context' => true, 'needs_environment' => true]),
@@ -104,12 +109,15 @@ class TwigExtension extends \Twig_Extension
             new \Twig_SimpleFunction('nonce_field', [$this, 'nonceFieldFunc']),
             new \Twig_simpleFunction('random_string', [$this, 'randomStringFunc']),
             new \Twig_SimpleFunction('repeat', [$this, 'repeatFunc']),
+            new \Twig_SimpleFunction('regex_replace', [$this, 'regexReplace']),
             new \Twig_SimpleFunction('string', [$this, 'stringFunc']),
             new \Twig_simpleFunction('t', [$this, 'translate']),
             new \Twig_simpleFunction('ta', [$this, 'translateArray']),
             new \Twig_SimpleFunction('url', [$this, 'urlFunc']),
-
-
+            new \Twig_SimpleFunction('json_decode', [$this, 'jsonDecodeFilter']),
+            new \Twig_SimpleFunction('get_cookie', [$this, 'getCookie']),
+            new \Twig_SimpleFunction('redirect_me', [$this, 'redirectFunc']),
+            new \Twig_SimpleFunction('range', [$this, 'rangeFunc']),
         ];
     }
 
@@ -136,13 +144,17 @@ class TwigExtension extends \Twig_Extension
      */
     public function safeEmailFilter($str)
     {
-        $email = '';
-        $str_len = strlen($str);
-        for ($i = 0; $i < $str_len; $i++) {
-            $email .= "&#" . ord($str[$i]) . ";";
+        $email   = '';
+        for ( $i = 0, $len = strlen( $str ); $i < $len; $i++ ) {
+            $j = rand( 0, 1);
+            if ( $j == 0 ) {
+                $email .= '&#' . ord( $str[$i] ) . ';';
+            } elseif ( $j == 1 ) {
+                $email .= $str[$i];
+            }
         }
 
-        return $email;
+        return str_replace( '@', '&#64;', $email );
     }
 
     /**
@@ -217,7 +229,7 @@ class TwigExtension extends \Twig_Extension
      * {{ 'CamelCased'|underscorize }} => camel_cased
      * {{ 'Something Text'|hyphenize }} => something-text
      * {{ 'something_text_to_read'|humanize }} => "Something text to read"
-     * {{ '181'|monthize }} => 6
+     * {{ '181'|monthize }} => 5
      * {{ '10'|ordinalize }} => 10th
      *
      * @param string $action
@@ -293,8 +305,11 @@ class TwigExtension extends \Twig_Extension
      *
      * @return array
      */
-    public function ksortFilter(array $array)
+    public function ksortFilter($array)
     {
+        if (is_null($array)) {
+            $array = [];
+        }
         ksort($array);
 
         return $array;
@@ -318,7 +333,6 @@ class TwigExtension extends \Twig_Extension
      *
      * @param $date
      * @param $long_strings
-     * @param String
      *
      * @return boolean
      */
@@ -371,11 +385,11 @@ class TwigExtension extends \Twig_Extension
         // is it future date or past date
         if ($now > $unix_date) {
             $difference = $now - $unix_date;
-            $tense = $this->grav['language']->translate('NICETIME.AGO', null, true);
+            $tense      = $this->grav['language']->translate('NICETIME.AGO', null, true);
 
         } else {
             $difference = $unix_date - $now;
-            $tense = $this->grav['language']->translate('NICETIME.FROM_NOW', null, true);
+            $tense      = $this->grav['language']->translate('NICETIME.FROM_NOW', null, true);
         }
 
         for ($j = 0; $difference >= $lengths[$j] && $j < count($lengths) - 1; $j++) {
@@ -408,7 +422,7 @@ class TwigExtension extends \Twig_Extension
      */
     public function absoluteUrlFilter($string)
     {
-        $url = $this->grav['uri']->base();
+        $url    = $this->grav['uri']->base();
         $string = preg_replace('/((?:href|src) *= *[\'"](?!(http|ftp)))/i', "$1$url", $string);
 
         return $string;
@@ -422,7 +436,7 @@ class TwigExtension extends \Twig_Extension
      */
     public function markdownFilter($string)
     {
-        $page = $this->grav['page'];
+        $page     = $this->grav['page'];
         $defaults = $this->config->get('system.pages.markdown');
 
         // Initialize the preferred variant of Parsedown
@@ -577,6 +591,9 @@ class TwigExtension extends \Twig_Extension
      */
     public function evaluateFunc($input)
     {
+        if (!$input) { //prevent an obscure Twig error if $input is not set
+            $input = '""';
+        }
         return $this->grav['twig']->processString("{{ $input }}");
     }
 
@@ -619,12 +636,17 @@ class TwigExtension extends \Twig_Extension
      * Output a Gist
      *
      * @param  string $id
+     * @param  string $file
      *
      * @return string
      */
-    public function gistFunc($id)
+    public function gistFunc($id, $file = false)
     {
-        return '<script src="https://gist.github.com/' . $id . '.js"></script>';
+        $url = 'https://gist.github.com/' . $id . '.js';
+        if ($file) {
+            $url .= '?file=' . $file;
+        }
+        return '<script src="' . $url . '"></script>';
     }
 
     /**
@@ -668,6 +690,26 @@ class TwigExtension extends \Twig_Extension
     }
 
     /**
+     * Workaround for twig associative array initialization
+     * Returns a key => val array
+     *
+     * @param string $key           key of item
+     * @param string $val           value of item
+     * @param string $current_array optional array to add to
+     *
+     * @return array
+     */
+    public function arrayKeyValueFunc($key, $val, $current_array = null)
+    {
+        if (empty($current_array)) {
+            return array($key => $val);
+        } else {
+            $current_array[$key] = $val;
+            return $current_array;
+        }
+    }
+
+    /**
      * Returns a string from a value. If the value is array, return it json encoded
      *
      * @param $value
@@ -694,11 +736,15 @@ class TwigExtension extends \Twig_Extension
     }
 
     /**
-     * Authorize an action. Returns true if the user is logged in and has the right to execute $action.
+     * Authorize an action. Returns true if the user is logged in and
+     * has the right to execute $action.
      *
-     * @param string $action
-     *
-     * @return bool
+     * @param  string|array $action An action or a list of actions. Each
+     *                              entry can be a string like 'group.action'
+     *                              or without dot notation an associative
+     *                              array.
+     * @return bool                 Returns TRUE if the user is authorized to
+     *                              perform the action, FALSE otherwise.
      */
     public function authorize($action)
     {
@@ -706,11 +752,14 @@ class TwigExtension extends \Twig_Extension
             return false;
         }
 
-        $action = (array)$action;
-
-        foreach ($action as $a) {
-            if ($this->grav['user']->authorize($a)) {
-                return true;
+        $action = (array) $action;
+        foreach ($action as $key => $perms) {
+            $prefix = is_int($key) ? '' : $key . '.';
+            $perms = $prefix ? (array) $perms : [$perms => true];
+            foreach ($perms as $action => $authenticated) {
+                if ($this->grav['user']->authorize($prefix . $action)) {
+                    return $authenticated;
+                }
             }
         }
 
@@ -732,5 +781,72 @@ class TwigExtension extends \Twig_Extension
         $string = '<input type="hidden" id="' . $nonceParamName . '" name="' . $nonceParamName . '" value="' . Utils::getNonce($action) . '" />';
 
         return $string;
+    }
+
+    /**
+     * Decodes string from JSON.
+     *
+     * @param  string  $str
+     * @param  bool  $assoc
+     * @param int $depth
+     * @param int $options
+     * @return array
+     */
+    public function jsonDecodeFilter($str, $assoc = false, $depth = 512, $options = 0)
+    {
+        return json_decode(html_entity_decode($str), $assoc, $depth, $options);
+    }
+
+    /**
+     * Used to retrieve a cookie value
+     *
+     * @param string $key     The cookie name to retrieve
+     *
+     * @return mixed
+     */
+    public function getCookie($key)
+    {
+        return filter_input(INPUT_COOKIE, $key, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * Twig wrapper for PHP's preg_replace method
+     *
+     * @param mixed $subject the content to perform the replacement on
+     * @param mixed $pattern the regex pattern to use for matches
+     * @param mixed $replace the replacement value either as a string or an array of replacements
+     * @param int   $limit   the maximum possible replacements for each pattern in each subject
+     *
+     * @return mixed the resulting content
+     */
+    public function regexReplace($subject, $pattern, $replace, $limit = -1)
+    {
+        return preg_replace($pattern, $replace, $subject, $limit);
+    }
+
+    /**
+     * redirect browser from twig
+     *
+     * @param string $url          the url to redirect to
+     * @param int $statusCode      statusCode, default 303
+     */
+    public function redirectFunc($url, $statusCode = 303)
+    {
+        header('Location: ' . $url, true, $statusCode);
+        die();
+    }
+
+    /**
+     * Generates an array containing a range of elements, optionally stepped
+     *
+     * @param int $start      Minimum number, default 0
+     * @param int $end        Maximum number, default `getrandmax()`
+     * @param int $step       Increment between elements in the sequence, default 1
+     *
+     * @return array
+     */
+    public function rangeFunc($start = 0, $end = 100, $step = 1)
+    {
+        return range($start, $end, $step);
     }
 }

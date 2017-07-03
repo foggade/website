@@ -1,4 +1,11 @@
-{% if form.message %}<div class="alert">{{ form.message }}</div>{% endif %}
+{% if form.message %}
+    {% if form.inline_errors and form.messages %}
+        <div class="alert notices {{ form.message_color ?: 'green' }}"><p>{{ "FORM.VALIDATION_FAIL"|t|raw }}</p></div>
+    {% else %}
+        <div class="alert notices {{ form.message_color ?: 'green' }}"><p>{{ form.message|raw }}</p></div>
+    {% endif %}
+{% endif %}
+{% set scope = scope ?: 'data.' %}
 {% set multipart = '' %}
 {% set method = form.method|upper|default('POST') %}
 
@@ -8,22 +15,61 @@
     {% endif %}
 {% endfor %}
 
+{% set action = form.action ? base_url ~ form.action : base_url ~ page.route ~ uri.params %}
+
+{% if (action == base_url_relative) %}
+    {% set action = base_url_relative ~ '/' ~ page.slug %}
+{% endif %}
+
 <form name="{{ form.name }}"
-      action="{{ form.action ? base_url ~ form.action : page.url }}"
-      method="{{ method }}"{{ multipart }}>
+      action="{{ action }}"
+      method="{{ method }}"{{ multipart }}
+      {% if form.id %}id="{{ form.id }}"{% endif %}
+      {% block form_classes %}
+      {% if form.classes %}class="{{ form.classes }}"{% endif %}
+      {% endblock %}
+>
 
-{% for field in form.fields %}
+  {% block inner_markup_fields_start %}{% endblock %}
+
+  {% for field in form.fields %}
+    {% if field.type == 'file' %}
+        {% do assets.addJs('plugin://form/assets/form.min.js') %}
+    {% endif %}
     {% set value = form.value(field.name) %}
-    <div>
-        {% include "forms/fields/#{field.type}/#{field.type}.html.twig" %}
-    </div>
-{% endfor %}
+    {% include "forms/fields/#{field.type}/#{field.type}.html.twig" ignore missing %}
+  {% endfor %}
 
-	<div class="buttons">
-	{% for button in form.buttons %}
-	    <button class="{{ button.classes|default('button') }}" type="{{ button.type|default('submit') }}">{{ button.value|t|default('Submit') }}</button>
-	{% endfor %}
-	</div>
+  {% include "forms/fields/formname/formname.html.twig" %}
 
-  {{ nonce_field('form', 'form-nonce') }}
+  {% block inner_markup_fields_end %}{% endblock %}
+
+  {% block inner_markup_buttons_start %}
+  <div class="buttons">
+  {% endblock %}
+
+  {% for button in form.buttons %}
+      {% if button.url %}
+          <a href="{{ button.url starts with 'http' ? button.url : url(button.url) }}">
+      {% endif %}
+      <button
+            {% if button.id %}id="{{ button.id }}"{% endif %}
+            {% block button_classes %}
+            class="{{ button.classes|default('button') }}"
+            {% endblock %}
+            {% if button.disabled %}disabled="disabled"{% endif %}
+            type="{{ button.type|default('submit') }}"
+        >
+            {{ button.value|t|default('Submit') }}
+      </button>
+      {% if button.url %}
+          </a>
+      {% endif %}
+  {% endfor %}
+
+  {% block inner_markup_buttons_end %}
+  </div>
+  {% endblock %}
+
+  {{ nonce_field('form', 'form-nonce')|raw }}
 </form>

@@ -1,8 +1,9 @@
 absolute_urls: false
-timezone: 'Europe/Berlin'
+timezone: Europe/Berlin
 default_locale: de
 param_sep: ':'
 wrapped_site: false
+reverse_proxy_setup: false
 languages:
   supported:
     - de
@@ -14,6 +15,7 @@ languages:
   override_locale: false
 home:
   alias: /home
+  hide_in_urls: false
 pages:
   theme: gga
   order:
@@ -29,6 +31,7 @@ pages:
   process:
     markdown: true
     twig: false
+  twig_first: false
   events:
     page: true
     twig: true
@@ -62,6 +65,10 @@ pages:
     - .idea
   ignore_hidden: true
   url_taxonomy_filters: true
+  frontmatter:
+    process_twig: false
+    ignore_fields:
+      - form
 cache:
   enabled: false
   check:
@@ -80,10 +87,14 @@ twig:
   umask_fix: false
 assets:
   css_pipeline: false
+  css_pipeline_include_externals: true
+  css_pipeline_before_excludes: true
   css_minify: true
   css_minify_windows: false
   css_rewrite: true
   js_pipeline: false
+  js_pipeline_include_externals: true
+  js_pipeline_before_excludes: true
   js_minify: true
   enable_asset_timestamp: false
   collections:
@@ -108,6 +119,10 @@ session:
   enabled: true
   timeout: 1800
   name: gga-site
+  secure: true
+  httponly: true
+gpm:
+  releases: stable
 dateformat:
   default: null
   short: 'jS M Y'

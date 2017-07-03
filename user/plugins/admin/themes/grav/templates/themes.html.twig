@@ -2,17 +2,22 @@
 
 {% if admin.route %}
     {% set installing = admin.route starts with 'install' %}
-    {% set installed = true %}
 
-    {# Try installed packages first, then remote #}
-    {% set package = admin.themes(true)[admin.route] %}
-    {% if (not package) %}
-        {% set package = admin.themes(false)[admin.route] %}
-        {% set installed = false %}
+    {% if installing %}
+        {% set title = "PLUGIN_ADMIN.THEMES"|tu %}
+    {% else %}
+        {% set installed = true %}
+
+        {# Try installed packages first, then remote #}
+        {% set package = admin.themes(true)[admin.route] %}
+        {% if (not package) %}
+            {% set package = admin.themes(false)[admin.route] %}
+            {% set installed = false %}
+        {% endif %}
+
+        {% set theme = package.toArray() %}
+        {% set title = "PLUGIN_ADMIN.THEME"|tu ~ ": " ~ theme.name|e %}
     {% endif %}
-
-    {% set theme = package.toArray() %}
-    {% set title = "PLUGIN_ADMIN.THEME"|tu ~ ": " ~ theme.name|e %}
 {% else %}
     {% set title = "PLUGIN_ADMIN.THEMES"|tu %}
 {% endif %}
@@ -24,8 +29,6 @@
     {% endblock %}
 
     {% block javascripts %}
-        {% do assets.addJs(theme_url~'/js/codemirror-compressed.js') %}
-        {% do assets.addJs(theme_url~'/js/mdeditor.js') %}
         {{ parent() }}
     {% endblock %}
 {% endif %}
@@ -59,15 +62,21 @@
     {% endif %}
 {% endblock %}
 
+{% block messages %}
+    {{ parent() }}
+    {% if config.plugins.admin.notifications.themes %}
+        <div class="themes-notifications-container hidden"></div>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
-
     <div class="gpm gpm-themes">
-
-        {% include 'partials/messages.html.twig' %}
-
         {% if not admin.route or installing %}
             {%  include 'partials/themes-list.html.twig' %}
         {% else %}
+            {% if theme is null %}
+                {{redirect_me(base_url_relative ~ '/404')}}
+            {% endif %}
             {% include 'partials/themes-details.html.twig' %}
         {% endif %}
     </div>

@@ -1,10 +1,10 @@
 <?php
-namespace Grav\Plugin;
+namespace Grav\Plugin\Admin;
 
 /**
  * Admin theme object
  *
- * @author RocketTheme
+ * @author  RocketTheme
  * @license MIT
  */
 class Themes extends \Grav\Common\Themes

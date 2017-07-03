@@ -11,7 +11,7 @@ INFLECTOR_IRREGULAR:
     'child': '子供'
     'sex': '性別'
     'move': '移動'
-
+    
 INFLECTOR_ORDINALS: []
 
 NICETIME:

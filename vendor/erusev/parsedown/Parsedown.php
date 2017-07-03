@@ -278,9 +278,6 @@ class Parsedown
         return $markup;
     }
 
-    #
-    # Allow for plugin extensibility
-    #
     protected function isBlockContinuable($Type)
     {
         return method_exists($this, 'block'.$Type.'Continue');
@@ -517,6 +514,16 @@ class Parsedown
                     'handler' => 'elements',
                 ),
             );
+
+            if($name === 'ol') 
+            {
+                $listStart = stristr($matches[0], '.', true);
+                
+                if($listStart !== '1')
+                {
+                    $Block['element']['attributes'] = array('start' => $listStart);
+                }
+            }
 
             $Block['li'] = array(
                 'name' => 'li',
@@ -1197,7 +1204,7 @@ class Parsedown
 
         $remainder = $Excerpt['text'];
 
-        if (preg_match('/\[((?:[^][]|(?R))*)\]/', $remainder, $matches))
+        if (preg_match('/\[((?:[^][]++|(?R))*+)\]/', $remainder, $matches))
         {
             $Element['text'] = $matches[1];
 
@@ -1210,7 +1217,7 @@ class Parsedown
             return;
         }
 
-        if (preg_match('/^[(]((?:[^ ()]|[(][^ )]+[)])+)(?:[ ]+("[^"]*"|\'[^\']*\'))?[)]/', $remainder, $matches))
+        if (preg_match('/^[(]\s*+((?:[^ ()]++|[(][^ )]+[)])++)(?:[ ]+("[^"]*"|\'[^\']*\'))?\s*[)]/', $remainder, $matches))
         {
             $Element['attributes']['href'] = $matches[1];
 

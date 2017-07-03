@@ -18,7 +18,7 @@ RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # along the lines of: RewriteBase /<your_sub_folder>
 ##
 
-# RewriteBase /
+RewriteBase /
 
 ## End - RewriteBase
 
@@ -69,7 +69,7 @@ RewriteRule ^(LICENSE.txt|composer.lock|composer.json|nginx.conf|web.config|htac
 </IfModule>
 
 # Begin - Prevent Browsing and Set Default Resources
-Options -Indexes
+#Options -Indexes
 DirectoryIndex index.php index.html index.htm
 # End - Prevent Browsing and Set Default Resources
 

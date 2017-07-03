@@ -78,20 +78,39 @@ class ProblemsPlugin extends Plugin
 
         $html = file_get_contents(__DIR__ . '/html/problems.html');
 
-        $problems = '';
-        foreach ($this->results as $key => $result) {
-            if ($key == 'files' || $key == 'apache' || $key == 'execute') {
-                foreach ($result as $key_text => $value_text) {
-                    foreach ($value_text as $status => $text) {
-                        $problems .= $this->getListRow($status, '<b>' . $key_text . '</b> ' . $text);
+        /**
+         * Process the results, ignore the statuses passed as $ignore_status
+         *
+         * @param $results
+         * @param $ignore_status
+         */
+        $processResults = function ($results, $ignore_status) {
+            $problems = '';
+
+            foreach ($results as $key => $result) {
+                if ($key == 'files' || $key == 'apache' || $key == 'execute') {
+                    foreach ($result as $key_text => $value_text) {
+                        foreach ($value_text as $status => $text) {
+                            if ($status == $ignore_status) continue;
+                            $problems .= $this->getListRow($status, '<b>' . $key_text . '</b> ' . $text);
+                        }
+                    }
+                } else {
+                    foreach ($result as $status => $text) {
+                        if ($status == $ignore_status) continue;
+                        $problems .= $this->getListRow($status, $text);
                     }
                 }
-            } else {
-                foreach ($result as $status => $text) {
-                    $problems .= $this->getListRow($status, $text);
-                }
             }
-        }
+
+            return $problems;
+        };
+
+        // First render the errors
+        $problems  = $processResults($this->results, 'success');
+
+        // Then render the successful checks
+        $problems .= $processResults($this->results, 'error');
 
         $html = str_replace('%%BASE_URL%%', $baseUrlRelative, $html);
         $html = str_replace('%%THEME_URL%%', $themeUrl, $html);
@@ -99,6 +118,7 @@ class ProblemsPlugin extends Plugin
         $html = str_replace('%%PROBLEMS%%', $problems, $html);
 
         echo $html;
+        http_response_code(500);
 
         exit();
 
@@ -144,7 +164,16 @@ class ProblemsPlugin extends Plugin
             $backup_folder = ROOT_DIR . 'backup';
             // try to create backup folder if missing
             if (!file_exists($backup_folder)) {
-                mkdir($backup_folder, 0770);
+                @mkdir($backup_folder, 0770);
+            }
+        }
+
+        if (version_compare(GRAV_VERSION, '1.1.4', ">=")) {
+            $essential_files['tmp'] = true;
+            $tmp_folder = ROOT_DIR . 'tmp';
+            // try to create tmp folder if missing
+            if (!file_exists($tmp_folder)) {
+                @mkdir($tmp_folder, 0770);
             }
         }
 
@@ -239,6 +268,17 @@ class ProblemsPlugin extends Plugin
             $mbstring_status = 'error';
         }
         $this->results['mbstring'] = [$mbstring_status => 'PHP Mbstring (Multibyte String Library) is '. $mbstring_adjective . 'installed'];
+
+        // Check for PHP Zip library
+        if (extension_loaded('zip')) {
+            $zip_adjective = '';
+            $zip_status = 'success';
+        } else {
+            $problems_found = true;
+            $zip_adjective = 'not ';
+            $zip_status = 'error';
+        }
+        $this->results['zip'] = [$zip_status => 'PHP Zip extension is '. $zip_adjective . 'installed'];
 
         // Check for essential files & perms
         $file_problems = [];

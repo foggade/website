@@ -3,6 +3,7 @@ namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
 use Grav\Common\Twig\Twig;
+use Grav\Plugin\Email\Email;
 use RocketTheme\Toolbox\Event\Event;
 
 class EmailPlugin extends Plugin
@@ -19,7 +20,8 @@ class EmailPlugin extends Plugin
     {
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
-            'onFormProcessed' => ['onFormProcessed', 0]
+            'onFormProcessed' => ['onFormProcessed', 0],
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0]
         ];
     }
 
@@ -28,7 +30,6 @@ class EmailPlugin extends Plugin
      */
     public function onPluginsInitialized()
     {
-        require_once __DIR__ . '/classes/email.php';
         require_once __DIR__ . '/vendor/autoload.php';
 
         $this->email = new Email();
@@ -36,6 +37,15 @@ class EmailPlugin extends Plugin
         if ($this->email->enabled()) {
             $this->grav['Email'] = $this->email;
         }
+    }
+
+    /**
+     * Add twig paths to plugin templates.
+     */
+    public function onTwigTemplatePaths()
+    {
+        $twig = $this->grav['twig'];
+        $twig->twig_paths[] = __DIR__ . '/templates';
     }
 
     /**
@@ -67,8 +77,14 @@ class EmailPlugin extends Plugin
                     $filesToAttach = (array)$params['attachments'];
                     if ($filesToAttach) foreach ($filesToAttach as $fileToAttach) {
                         $filesValues = $form->value($fileToAttach);
+
                         if ($filesValues) foreach($filesValues as $fileValues) {
-                            $filename = $fileValues['file'];
+                            if (isset($fileValues['file'])) {
+                                $filename = $fileValues['file'];
+                            } else {
+                                $filename = ROOT_DIR . $fileValues['path'];
+                            }
+
                             $message->attach(\Swift_Attachment::fromPath($filename));
                         }
                     }
@@ -105,6 +121,7 @@ class EmailPlugin extends Plugin
             'subject' => !empty($vars['form']) && $vars['form'] instanceof Form ? $vars['form']->page()->title() : null,
             'to' => $this->config->get('plugins.email.to'),
             'to_name' => $this->config->get('plugins.email.to_name'),
+            'process_markdown' => false,
         );
 
         // Create message object.
@@ -129,6 +146,12 @@ class EmailPlugin extends Plugin
                 case 'body':
                     if (is_string($value)) {
                         $body = $twig->processString($value, $vars);
+
+                        if ($params['process_markdown']) {
+                            $parsedown = new \Parsedown();
+                            $body = $parsedown->text($body);
+                        }
+
                         $content_type = !empty($params['content_type']) ? $twig->processString($params['content_type'], $vars) : null;
                         $charset = !empty($params['charset']) ? $twig->processString($params['charset'], $vars) : null;
 
@@ -137,6 +160,12 @@ class EmailPlugin extends Plugin
                     elseif (is_array($value)) {
                         foreach ($value as $body_part) {
                             $body = !empty($body_part['body']) ? $twig->processString($body_part['body'], $vars) : null;
+
+                            if ($params['process_markdown']) {
+                                $parsedown = new \Parsedown();
+                                $body = $parsedown->text($body);
+                            }
+
                             $content_type = !empty($body_part['content_type']) ? $twig->processString($body_part['content_type'], $vars) : null;
                             $charset = !empty($body_part['charset']) ? $twig->processString($body_part['charset'], $vars) : null;
 

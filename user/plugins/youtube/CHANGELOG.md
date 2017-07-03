@@ -1,3 +1,18 @@
+# v2.0.3
+## 12/23/2016
+
+1. [](#bugfix)
+    * Fixed a JavaScript issue [#16](https://github.com/getgrav/grav-plugin-youtube/pull/16)
+
+# v2.0.2
+## 05/23/2016
+
+1. [](#improved)
+    * Supports `youtu.be` based short links
+1. [](#bugfix)
+    * Fixed for invalid URL with YouTube editor buttons
+    * Fixed editor button to work with Admin v1.1
+
 # v2.0.1
 ## 11/24/2015
 

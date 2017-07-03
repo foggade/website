@@ -1,7 +1,14 @@
 <?php
+/**
+ * @package    Grav.Common.GPM
+ *
+ * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common\GPM;
 
-use Grav\Common\Grav;
+use Grav\Common\GPM\Remote\GravCore;
 
 /**
  * Class Upgrader
@@ -13,16 +20,9 @@ class Upgrader
     /**
      * Remote details about latest Grav version
      *
-     * @var Packages
+     * @var GravCore
      */
     private $remote;
-
-    /**
-     * Internal cache
-     *
-     * @var Iterator
-     */
-    protected $cache;
 
     /**
      * Creates a new GPM instance with Local and Remote packages available
@@ -32,7 +32,7 @@ class Upgrader
      */
     public function __construct($refresh = false, $callback = null)
     {
-        $this->remote = new Remote\Grav($refresh, $callback);
+        $this->remote = new Remote\GravCore($refresh, $callback);
     }
 
     /**

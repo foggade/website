@@ -1,11 +1,12 @@
-email: 'mail@samuelstein.de'
+email: mail@samuelstein.de
 access:
   admin:
-    login: true
-    super: true
+    login: 'true'
+    super: 'true'
   site:
-    login: true
+    login: 'true'
 fullname: 'Samuel Stein'
 title: 'Site Admin'
-language: en
+language: de
 hashed_password: $2y$10$1ebsNfYDAwJw4LGRRGliQu/1yNdcdEjilQ/YKDcUFrgZeUE1FIbW6
+state: enabled

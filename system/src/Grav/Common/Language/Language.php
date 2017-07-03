@@ -1,11 +1,16 @@
 <?php
+/**
+ * @package    Grav.Common.Language
+ *
+ * @copyright  Copyright (C) 2014 - 2016 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common\Language;
 
 use Grav\Common\Grav;
+use Grav\Common\Config\Config;
 
-/**
- * Language and translation functionality for Grav
- */
 class Language
 {
     protected $grav;
@@ -15,7 +20,10 @@ class Language
     protected $fallback_languages = [];
     protected $default;
     protected $active = null;
+
+    /** @var Config $config */
     protected $config;
+
     protected $http_accept_language;
     protected $lang_in_url = false;
 
@@ -286,6 +294,21 @@ class Language
     }
 
     /**
+     * Resets the page_extensions value.
+     *
+     * Useful to re-initialize the pages and change site language at runtime, example:
+     *
+     * ```
+     * $this->grav['language']->setActive('it');
+     * $this->grav['language']->resetFallbackPageExtensions();
+     * $this->grav['pages']->init();
+     * ```
+     */
+    public function resetFallbackPageExtensions() {
+        $this->page_extensions = null;
+    }
+
+    /**
      * Gets an array of languages with active first, then fallback languages
      *
      * @return array
@@ -406,7 +429,7 @@ class Language
             }
 
             foreach ((array)$languages as $lang) {
-                $translation_array = (array)$this->config->getLanguages()->get($lang . '.' . $key, null);
+                $translation_array = (array)Grav::instance()['languages']->get($lang . '.' . $key, null);
                 if ($translation_array && array_key_exists($index, $translation_array)) {
                     return $translation_array[$index];
                 }
@@ -431,7 +454,7 @@ class Language
      */
     public function getTranslation($lang, $key, $array_support = false)
     {
-        $translation = $this->config->getLanguages()->get($lang . '.' . $key, null);
+        $translation = Grav::instance()['languages']->get($lang . '.' . $key, null);
         if (!$array_support && is_array($translation)) {
             return (string)array_shift($translation);
         }
