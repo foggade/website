@@ -1,4 +1,4 @@
-[![Deployment status from dploy.io](https://foggade.dploy.io/badge/34534835988474/35201.svg)](http://dploy.io)
+[![Deployment status from DeployBot](https://foggade.deploybot.com/badge/56046447984632/35201.svg)](http://deploybot.com)
 
 # website
 Website für den deutschen Unterstützerverein von God's Golden Acre (http://www.godsgoldenacre.org). 
