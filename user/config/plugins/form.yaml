@@ -1,0 +1,14 @@
+enabled: true
+built_in_css: true
+refresh_prevention: false
+files:
+  multiple: false
+  limit: 10
+  destination: '@self'
+  avoid_overwriting: false
+  random_name: false
+  accept:
+    - 'image/*'
+recaptcha:
+  site_key: 6Ld8OQ8TAAAAAOhiyI_D6lB6COlyer76Blx_Fwgo
+  secret_key: 6Ld8OQ8TAAAAAMOF4s6joUZv-FOvAefTKQ9X4Kg7

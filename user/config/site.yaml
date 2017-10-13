@@ -1,0 +1,20 @@
+title: 'Freunde von God''s Golden Acre Deutschland e. V.'
+default_lang: de
+author:
+  name: 'Samuel Stein'
+  email: mail@samuelstein.de
+taxonomies:
+  - category
+  - tag
+metadata:
+  generator:
+  description: 'Der Verein verfolgt die Zwecke jungen Menschen in Not, insbesondere in Entwicklungsländern wie Südafrika, die Chance auf Bildung zu geben, der Bevölkerung in Deutschland die Auswirkungen von Armut auf Bildung bekannt zu machen und vornehmlich junge Menschen in Deutschland für die gesellschaftliche Mitverantwortung und Hilfsbereitschaft gegenüber Menschen in den Entwicklungsländern zu sensibilisieren.'
+  robots: 'index, follow'
+summary:
+  enabled: true
+  format: short
+  size: 300
+  delimiter: '==='
+blog:
+  route: /blog
+keywords: 'GGA, foggade, FvGGAD e. V., Verein, gemeinnützig, Gods Golden Acre, Gods Golden Acre Deutschland, Voluntariat, Spenden, Waisenheim, Südafrika, AIDS, Pandemie, Armut'
