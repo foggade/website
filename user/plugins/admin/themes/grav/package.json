@@ -15,7 +15,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "chartist": "^0.10.1",
-    "codemirror": "^5.20.2",
+    "codemirror": "^5.58.2",
     "cookies-js": "^1.2.2",
     "debounce": "^1.0.0",
     "dropzone": "^4.3.0",
