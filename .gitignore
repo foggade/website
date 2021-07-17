@@ -1,0 +1,37 @@
+# Composer
+.composer
+vendor/
+
+# Sass
+.sass-cache
+
+# Grav Specific
+backup/*
+!backup/.*
+assets/*
+!assets/.*
+logs/*
+images/*
+!images/.*
+user/accounts/.*
+user/data/*
+!user/data/.*
+user/config/security
+
+# OS Generated
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+*.swp
+
+# phpstorm
+.idea/*
+user/config/security.yaml
+
+tests/_output/*
+tests/_support/_generated/*
+tests/cache/*
+tests/error.log
+cache/**
+logs/grav.log

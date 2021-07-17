@@ -1,0 +1,12 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+    {{ content }}
+
+    <div class="alert">{{ form.message }}</div>
+    <p>Diese Nachricht haben wir soeben von dir erhalten:</p>
+
+    {% include "forms/data.html.twig" %}
+
+{% endblock %}

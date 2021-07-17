@@ -1,0 +1,15 @@
+{% for meta in page.metadata %}
+<meta {% if meta.name %}name="{{ meta.name }}" {% endif %}{% if meta.http_equiv %}http-equiv="{{ meta.http_equiv }}" {% endif %}{% if meta.charset %}charset="{{ meta.charset }}" {% endif %}{% if meta.property %}property="{{ meta.property }}" {% endif %}{% if meta.content %}content="{{ meta.content }}" {% endif %}/>
+{% endfor %}
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="format-detection" content="telephone=no">
+<meta name="keywords" content="{{site.keywords}}">
+<meta name="application-name" content="{{ site.title|e('html') }}" />
+<meta name="msapplication-tooltip" content="{{ site.title|e('html') }}" />
+<meta name="msapplication-starturl" content="/" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="{{ url('theme://images') }}/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="google-site-verification" content="rIKTYN1PvN3aL0SHPVG2GIKOw13mviIDnFU-pKGH_Yg" />
